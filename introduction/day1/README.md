@@ -2,6 +2,8 @@
 
 Hello! Yes, it is me. Your favourite developer of all time, Jacob. You are currently viewing the first day of the entire course. Let's start this journey together.
 
+Let's start off our first day by going over what seems to be complicated terms that you will need to understand for the journey ahead.
+
 ## What the heck is a Blockchain?
 *If you already understand what the Blockchain is or you simply don't care (that's fair!), you can skip this section.*
 
@@ -43,14 +45,14 @@ What are some downsides?
 ## Transactions & Scripts
 *"Okay, so we have a Smart Contract. How do I actually interact with it? You keep saying call a function, but what does that mean!?"*
 
-A transaction is a glorified, paid function call. That's pretty much the simplest I can put it. Transactions can cost different amounts of money depending on which Blockchain you are on. On Ethereum, to store your favourite fruit on the Blockchain, it could cost dang near 100$. On Flow, it's fractions of a cent.
+A transaction is a glorified, paid function call. That's pretty much the simplest I can put it. What's important to know is that a transaction CHANGES the data on the Blockchain, and usually is the ONLY way we can change the data on the Blockchain. Transactions can cost different amounts of money depending on which Blockchain you are on. On Ethereum, to store your favourite fruit on the Blockchain, it could cost dang near 100$. On Flow, it's fractions of a cent.
+
+On the other hand, a script is used to VIEW data on the Blockchain, they do not change it. Scripts do not cost any money, that'd be rediculous.
 
 Here is the normal workflow:
 1. A developer "deploys" a Smart Contract to the Blockchain 
 2. A user runs a "transaction" that takes in some payment (to pay for gas fees, execution, etc) that calls some functions in the Smart Contract
-3. **The Smart Contract changes it's data in some way**
-
-A transaction CHANGES the data on the Blockchain. On the other hand, a "script" is used to VIEW data on the Blockchain. Scripts do not cost any money, that'd be rediculous. 
+3. **The Smart Contract changes its data in some way**
 
 ## Decentralized Applications (DApps)
 
