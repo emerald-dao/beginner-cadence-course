@@ -34,7 +34,7 @@ After Dapper Labs had immense success with CryptoKitties, which was on Ethereum,
 ## Cadence
 
 
-<img src="../../images/cadence.png" alt="drawing" width="400"/>
+<img src="../../images/cadence.png" alt="drawing" width="600"/>
 
 Cadence is the Smart Contract programming language for the Flow Blockchain. That is, the code you will be writing to make Smart Contracts in this course will be in Cadence.
 

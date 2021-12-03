@@ -50,7 +50,7 @@ What are some downsides?
 
 ## Transactions & Scripts
 
-<img src="../../images/transaction.jpeg" alt="drawing" width="400"/>
+<img src="../../images/transaction.jpeg" alt="drawing" width="600"/>
 
 *"Okay, so we have a Smart Contract. How do I actually interact with it? You keep saying call a function, but what does that mean!?"*
 
@@ -65,7 +65,7 @@ Here is the normal workflow:
 
 ## Decentralized Applications (DApps)
 
-<img src="../../images/dapps.jpeg" alt="drawing" width="200"/>
+<img src="../../images/dapps.jpeg" alt="drawing" width="300"/>
 
 Oh no, this sounds complicated. Nope! It's not. DApps are literally just normal applications (Javascript, Python, etc) that ALSO have Smart Contracts involved. That's it.
 
