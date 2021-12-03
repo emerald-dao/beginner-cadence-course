@@ -6,7 +6,7 @@ Let's start off our first day by going over what seems to be complicated terms t
 
 ## What the heck is a Blockchain?
 
-<img src="../../files/blockchain.png" alt="drawing" width="400"/>
+<img src="../../images/blockchain.png" alt="drawing" width="600"/>
 
 *If you already understand what the Blockchain is or you simply don't care (that's fair!), you can skip this section.*
 
@@ -27,7 +27,7 @@ It's also important to note that there are many different Blockchains out there.
 
 ## Smart Contracts? Ooo, that sounds cool.
 
-<img src="../../files/smart contract.png" alt="drawing" width="400"/>
+<img src="../../images/smart contract.png" alt="drawing" width="600"/>
 
 Why yes, yes it is. Smart Contracts are very cool. Smart Contracts are programs, or "rulebooks" that developers make. Developers create them because it allows us to specify some functionality that users can interact with. For example, if I want to make an application that allows users to store their favourite fruit on the Blockchain, I need to make a Smart Contract that:
 
@@ -50,7 +50,7 @@ What are some downsides?
 
 ## Transactions & Scripts
 
-<img src="../../files/transaction.jpeg" alt="drawing" width="400"/>
+<img src="../../images/transaction.jpeg" alt="drawing" width="400"/>
 
 *"Okay, so we have a Smart Contract. How do I actually interact with it? You keep saying call a function, but what does that mean!?"*
 
@@ -65,7 +65,7 @@ Here is the normal workflow:
 
 ## Decentralized Applications (DApps)
 
-<img src="../../files/dapps.jpeg" alt="drawing" width="200"/>
+<img src="../../images/dapps.jpeg" alt="drawing" width="200"/>
 
 Oh no, this sounds complicated. Nope! It's not. DApps are literally just normal applications (Javascript, Python, etc) that ALSO have Smart Contracts involved. That's it.
 

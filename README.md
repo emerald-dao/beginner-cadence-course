@@ -1,12 +1,12 @@
 # WELCOME EVERYBODY!
 
-<img src="./files/welcome.jpeg" alt="drawing" width="300"/>
+<img src="./images/welcome.jpeg" alt="drawing" width="500"/>
 
 If you're seeing this message, you have arrived at the very first part of the Zero to Hero course. WELCOME! My name is Jacob Tucker, and I will give a brief introduction of the course and what you can expect.
 
 ## "What will this course look like?"
 
-<img src="./files/course.png" alt="drawing" width="300"/>
+<img src="./images/course.png" alt="drawing" width="500"/>
 
 The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
 
@@ -31,7 +31,7 @@ If you are a beginner programmer or you would like to get some prior experience 
 
 ## "What are quests?"
 
-<img src="./files/quests.png" alt="drawing" width="200"/>
+<img src="./images/quests.png" alt="drawing" width="300"/>
 
 Quests are completely optional. However, if you'd like a certificate of completion, you must complete them.
 
