@@ -1,6 +1,22 @@
 # WELCOME EVERYBODY!
 
+<img src="./files/welcome.jpeg" alt="drawing" width="300"/>
+
 If you're seeing this message, you have arrived at the very first part of the Zero to Hero course. WELCOME! My name is Jacob Tucker, and I will give a brief introduction of the course and what you can expect.
+
+## "What will this course look like?"
+
+<img src="./files/course.png" alt="drawing" width="300"/>
+
+The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
+
+Here's an overview of what this will look like:
+- Lessons split into days
+- Written & video content associated with each day. The videos will be from my [YouTube Channel](https://www.youtube.com/channel/UCf6DzMRwj7SJ3nPrZqd5hHw).
+- Quests to complete (if you would like to. This is not necessary)
+- A completion certificate if you have completed all the quests. This will be proof that you have significant Cadence knowledge, and you will be able to show it to whoever you like as proof of expertise. Or just for fun! :D
+
+I would like to be very clear that how you learn from this course is completely up to you. If you'd like to just watch the videos, you can do that. If you only want to read the text, you can do that. If you want to skip right to the quests, you can do that. Note that you will only recieve the certificate of completion if you submit all the quests.
 
 ## "What do I need ahead of time?"
 
@@ -13,19 +29,9 @@ If you are a beginner programmer or you would like to get some prior experience 
 
 *I will introduce you to all the tools and programming concepts necessary, even if you are not a developer.*
 
-## "What will this course look like?"
-
-The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
-
-Here's an overview of what this will look like:
-- Lessons split into days
-- Written & video content associated with each day. The videos will be from my [YouTube Channel](https://www.youtube.com/channel/UCf6DzMRwj7SJ3nPrZqd5hHw).
-- Quests to complete (if you would like to. This is not necessary)
-- A completion certificate if you have completed all the quests. This will be proof that you have significant Cadence knowledge, and you will be able to show it to whoever you like as proof of expertise. Or just for fun! :D
-
-I would like to be very clear that how you learn from this course is completely up to you. If you'd like to just watch the videos, you can do that. If you only want to read the text, you can do that. If you want to skip right to the quests, you can do that. Note that you will only recieve the certificate of completion if you submit all the quests.
-
 ## "What are quests?"
+
+<img src="./files/quests.png" alt="drawing" width="200"/>
 
 Quests are completely optional. However, if you'd like a certificate of completion, you must complete them.
 

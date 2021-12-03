@@ -10,9 +10,15 @@ If you'd like to learn with a video, you can do that from the link below.
 
 ## The Flow Blockchain
 
+
+<img src="../../files/flowb.png" alt="drawing" width="400"/>
+
 The Flow Blockchain is the best. Boom! I said it.
 
 ### Little History Lesson
+
+
+<img src="../../files/cryptokitty.png" alt="drawing" width="200"/>
 
 The Flow Blockchain is relatively new. I would say it did not become well known until the Summer of 2020 when the Flow team started to show it to the world and people became interested. Dapper Labs, the company that owns Flow, had originally created the famous [CryptoKitties DApp](https://www.cryptokitties.co/) which grew to insane levels of popularity during previous years. In fact, I would argue CryptoKitties was one of the first "blockchainy" things that the world actually adopted, which was a huge deal for the industry. 
 
@@ -26,6 +32,9 @@ After Dapper Labs had immense success with CryptoKitties, which was on Ethereum,
 - There have been many successful DApps on Flow, including [NBATopShot](https://nbatopshot.com/), which was (and still is) a massive success.
 
 ## Cadence
+
+
+<img src="../../files/cadence.png" alt="drawing" width="400"/>
 
 Cadence is the Smart Contract programming language for the Flow Blockchain. That is, the code you will be writing to make Smart Contracts in this course will be in Cadence.
 
