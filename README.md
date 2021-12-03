@@ -47,6 +47,8 @@ If you are ready for me to see one of your quests to review it, please ping me i
 
 Whenever you want my friend! I will be publishing new content quite frequently, so make sure to stay up to date on all the stuffz :)
 
+You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-Hero/tree/main/chapter1/day1).
+
 ## Ending Remarks
 
 I am doing this course for the benefit of **YOU**! If you have any feedback, please let me know. You can message me on Twitter, on Discord, on YouTube, anything. I am not smarter than any of you. If you have suggestions, I am sure they are great and I'd love to hear them.

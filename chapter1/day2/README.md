@@ -1,4 +1,4 @@
-# Chapter 1 - Day 2
+# Chapter 1 - Day 2 - The Flow Blockchain & Cadence
 
 Yo yo yo! It's meeeeee! Jacob here. Hello. Now that we learned what the Blockchain is, Day 2 will cover why we have decided to learn the Flow Blockchain and how it compares to other Blockchains out there.
 
