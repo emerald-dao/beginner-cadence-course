@@ -10,7 +10,6 @@ If you'd like to learn with a video, you can do that from the link below.
 
 ## The Flow Blockchain
 
-
 <img src="../../images/flowb.png" alt="drawing" width="500"/>
 
 The Flow Blockchain is the best. Boom! I said it.
