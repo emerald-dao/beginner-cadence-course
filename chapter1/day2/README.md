@@ -57,7 +57,7 @@ That about wraps things up for today! In the next day, we will start getting int
 
 # Quests
 
-You only have 1 Quest for this day. Please feel free to answer in the language of your choice.
+Please feel free to answer in the language of your choice.
 
 1. What are the 5 Cadence Programming Language Pillars? 
 
