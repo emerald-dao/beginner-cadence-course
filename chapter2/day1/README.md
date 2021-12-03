@@ -6,10 +6,10 @@ Today, we will be learning the very basics of Cadence code by implementing our f
 
 ## Video
 
-If you'd like a video to watch, you can watch this video below from 00:00 - 07:23. Anything beyond 07:23 is not covered in this lesson.
+If you'd like some videos to watch, you can watch these two videos (they are very similar):
 
-https://www.youtube.com/watch?v=DSwNNOEdBXU
-
+1. https://www.youtube.com/watch?v=QbqNM4k76B0 (overview of smart contracts, accounts, and deploying our first contract)
+2. https://www.youtube.com/watch?v=DSwNNOEdBXU (explanation behind some basic syntax + deploying a contract) **NOTE**: watch this video from 00:00 - 07:23. Anything beyond 07:23 is not covered in this lesson.
 
 ## Our First Smart Contract
 
