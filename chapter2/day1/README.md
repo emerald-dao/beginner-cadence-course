@@ -103,6 +103,12 @@ If you click "Execute" on the right side, you will see in the terminal it prints
 
 If yours looks like that, you have executed your first script!
 
+## Concept Check
+
+Okay, so we just wrote some code. That was fast. But how does all of this relate back to what I was saying in Chapter 1, Day 1?
+
+Remember I said Smart Contracts are both programs and rulebooks. They allow us to do certain things, nothing more and nothing less. In this example, our Smart Contract let us initialize `greeting` and read `greeting`. Notice that it does NOT let us change `greeting` to be something else. If we had wanted to add that functionality, we would've had to do it ahead of time, before we deployed it. This is why it's so crucial that as a developer of a Smart Contract, you implement all the functionality you want a user to have before you the deploy the contract. Because after you deploy, there's nothing you can do. (Of course, on the Flow playground, we can deploy the contract again. But in the real world you cannot do this.)
+
 ## Conclusion
 
 Today, we learned how to deploy our first contract, declare a variable, write a function, and execute a script. Wow! That's a lot. But it wasn't too bad, right?
@@ -115,4 +121,6 @@ For todays quest, please load up a new Flow playground by going to https://play.
 
 2. Check that your variable `is` actually equals "the best" by executing a script to read that variable. Include a screenshot of the output.
 
-Please remember to store your answers in some way so I can review them if you submit them to me. Good luck!
+It's so awesome that I get to make these quests. I love this. 
+
+Anyways, please remember to store your answers in some way so I can review them if you submit them to me. Good luck!
