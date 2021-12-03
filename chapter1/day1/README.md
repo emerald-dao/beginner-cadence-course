@@ -1,4 +1,4 @@
-# Introduction - Day 1
+# Chapter 1 - Day 1
 
 Hello! Yes, it is me. Your favourite developer of all time, Jacob. You are currently viewing the first day of the entire course. Let's start this journey together.
 
@@ -60,17 +60,17 @@ Oh no, this sounds complicated. Nope! It's not. DApps are literally just normal 
 
 Also, we will be building these :)
 
-## Why do I care about all this man?
+## Why do I care about all this, man?
 
 Well, because that's what this course is all about, knucklehead! In this course, we will be making our own Smart Contracts, specifically on the Flow Blockchain. In addition, we will be making Decentralized Applications that *use* those Smart Contracts.
 
 ## Conclusion
 
-Jacob is the best. No, no. That's not the conclusion. The conclusion is that although all of this stuff sounds very complicated, it really isn't. And if you still don't understand ANY of this, that's totally okay. Sometimes it's better to jump into some examples to make things make more sense. We'll be doing that in Day 2.
+Jacob is the best. No, no. That's not the conclusion. The conclusion is that although all of this stuff sounds very complicated, it really isn't. And if you still don't understand ANY of this, that's totally okay. Sometimes it's better to jump into some examples to make things make more sense. We'll be doing that in the upcoming days.
 
 # Quests
 
-You are free to answer these questions in your own language of choice. English, French, etc.
+You are free to answer these questions in your own language of choice. And no, I don't mean computer programming language, haha.
 
 1. Explain what the Blockchain is in your own words. You can read this to help you, but you don't have to: https://www.investopedia.com/terms/b/blockchain.asp
 

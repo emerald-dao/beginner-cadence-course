@@ -15,7 +15,7 @@ If you are a beginner programmer or you would like to get some prior experience 
 
 ## "What will this course look like?"
 
-The lessons will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
+The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
 
 Here's an overview of what this will look like:
 - Lessons split into days
@@ -31,7 +31,11 @@ Quests are completely optional. However, if you'd like a certificate of completi
 
 There will be quests associated with each day. They will test your understanding of the concepts that are in that day's content. 
 
-When you finish a quest, you will submit it in the Emerald City DAO discord channel in the #quest-submissions channel. Once you do that, I will personally review your submissions, give you valuable insight on what you could improve, and mark it as complete.
+When you finish a quest, please put it somewhere so I can see it. You should keep all your quests together so that when you want me to review them, you can send me a link to all of your quests and tell me which day you'd like me to review.
+
+If you are ready for me to see one of your quests to review it, please ping me in the [Emerald City DAO Discord](https://discord.gg/R7EvUWGtqz). Once you do that, I will personally review your submissions, give you valuable insight on what you could improve, and mark it as complete.
+
+*Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! If you'd like to learn more about it or learn how to get involved, let me know.*
 
 ## "When can I start?"
 
