@@ -51,7 +51,7 @@ If you click "Execute," you should see "Hello, World!" in the console. Great! Wh
 
 Now, let's do an example of a transaction. On the left hand side, under "Transaction Templates," click on the "Transaction" tab. Go ahead and delete everything in that tab so it looks like this:
 
-<img src="../images/emptytx.png" alt="drawing" size="400" />
+<img src="../images/emptytx.PNG" alt="drawing" size="400" />
 
 Okay, cool. Now, we want to modify the data on the blockchain. In order to do that, let's set up our transaction. We can do that by putting this code into the page:
 
@@ -107,7 +107,7 @@ pub contract HelloWorld {
 
 Now that we've set up our contract, let's go back to our transaction. First, let's make sure to `import` our HelloWorld contract, like so: `import HelloWorld from 0x01`. Then, we must decide: where do we want to call `changeGreeting`? In the `prepare` phase, or the `execute` phase? The answer is the `execute` phase because we are not accessing any data in the account. We are just changing some data in the smart contract. 
 
-We can do that by adding this line in the `execute` phase: `HelloWorld.changeGreeting(newGreeting: newGreeting)`. You will notice we get an error that `newGreeting` isn't defined, which makes sense, because we aren't getting it from anywhere. So let's add a parameter called `myNewGreeting` to our transaction so we can pass in a value for a new greeting. We can do that like so:
+We can do that by adding this line in the `execute` phase: `HelloWorld.changeGreeting(newGreeting: myNewGreeting)`. You will notice we get an error that `myNewGreeting` isn't defined, which makes sense, because we aren't getting it from anywhere. So let's add a parameter called `myNewGreeting` to our transaction so we can pass in a value for a new greeting. We can do that like so:
 
 ```cadence
 import HelloWorld from 0x01
@@ -124,7 +124,7 @@ transaction(myNewGreeting: String) {
 
 Now, on the right side, you'll see a prompt pop up. We can type in our new greeting into the little box! Because the Flow playground is a little glitchy, you have to surround your new greeting with quotes, like this: "Goodbye, World!". So let's type that in like so:
 
-<img src="../images/txgoodbye.png" alt="drawing" size="400" />
+<img src="../images/txgoodbye.PNG" alt="drawing" size="400" />
 
 Notice also that we can "sign" this transaction from any account. Since it doesn't really matter (we aren't accessing data in an account), feel free to choose any account you wish.
 
