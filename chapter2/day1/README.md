@@ -76,6 +76,8 @@ To deploy this contract, click the green "Deploy" button. Your page should look 
 
 <img src="../images/helloworld.png" alt="drawing" size="400" />
 
+NOTE: If you're getting errors, try first refreshing the page. If you still see errors like: "GraphQL error", try switching your browser to Google Chrome.
+
 Awesome!!! You've deployed your first Smart Contract.
 
 ## Reading our Greeting
