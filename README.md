@@ -62,3 +62,5 @@ Feel free to reach out to me on any of these platforms:
 [YouTube](https://www.youtube.com/channel/UCf6DzMRwj7SJ3nPrZqd5hHw)
 
 Discord: tsnakejake#8364
+
+# NOTE: This course is still under development. More content to come! :D
