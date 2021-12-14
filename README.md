@@ -35,15 +35,17 @@ If you are a beginner programmer or you would like to get some prior experience 
 
 <img src="./images/quests.png" alt="drawing" width="300"/>
 
-Quests are completely optional. However, if you'd like a certificate of completion, you must complete them.
+You do not have to do quests to learn all the material. However, they will help your understanding, and if you'd like a certificate of completion, you must complete them.
 
 There will be quests associated with each day. They will test your understanding of the concepts that are in that day's content. 
 
-When you finish a quest, please put it somewhere so I can see it. You should keep all your quests together so that when you want me to review them, you can send me a link to all of your quests and tell me which day you'd like me to review.
+### How to Submit Quests
 
-If you are ready for me to see one of your quests to review it, please ping me in the [Emerald City DAO Discord](https://discord.gg/R7EvUWGtqz). Once you do that, I will personally review your submissions, give you valuable insight on what you could improve, and mark it as complete.
+When you finish a quest, please store all your quests together. Then, when you want me to review them, you can send me a link to all of your quests and tell me which day you'd like me to review.
 
-*Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! If you'd like to learn more about it or learn how to get involved, let me know.*
+If you are ready for me to see one of your quests to review it, please message me in the [Emerald City DAO Discord](https://discord.gg/R7EvUWGtqz) in any of the channels. Once you do that, I will personally review your submissions, give you valuable insight on what you could improve, and mark it as complete.
+
+*Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! We are dedicated to teaching people all about Flow and Cadence, as well as building the tooling for all DAOs on Flow. If you'd like to learn more about it or learn how to get involved, let me know.*
 
 ## "When can I start?"
 
