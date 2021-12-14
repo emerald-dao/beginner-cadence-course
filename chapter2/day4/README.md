@@ -173,4 +173,4 @@ Also notice the return type here: `Authentication.Profile`. That is because we a
 
 5. Add a script to read the Struct you defined.
 
-That's all! See you in the next chapter folks ;)
+That's all! See you tomorrow folks ;)
