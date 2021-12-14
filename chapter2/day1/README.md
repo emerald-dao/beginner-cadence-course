@@ -24,9 +24,15 @@ It should look like this:
 
 What we have done is clicked on the `Account` with address `0x01` and deleted the contract in its account. This brings up an important topic.
 
+### What's an address?
+
+An address is something that looks like `0x` and then a bunch of random numbers and letters. Here's an example address on Flow: `0xe5a8b7f23e8b548f`. On the Flow playground, you'll see much shorter addresses like `0x01`. That's just to make things simpler.
+
+But what actually IS an address? Well, you can think of them as a user. When I want to do something on the blockchain, I need to have an account. Every account has an address associated with it. So when you see something like `0xe5a8b7f23e8b548f`, that's really just a person's account that they use to store data, send transactions, etc.
+
 ### Where do smart contracts live?
 
-Smart Contracts are deployed to things called "Accounts." Accounts are owned by a user, and every account has an address associated with it that always begins with `0x`. In this case, since we are on the Flow playground, it has automatically given us 5 accounts, namely `0x01`, `0x02`, and so on.
+Smart Contracts are deployed accounts. As we mentioned above, accounts are owned by a user, and every account has an address associated with it that always begins with `0x`. In this case, since we are on the Flow playground, it has automatically given us 5 accounts, namely `0x01`, `0x02`, and so on. Thus, Smart Contracts live at an address. So when we deploy a contract named "Hello World" to account `0x01`, that is how we identity it. If we wanted to interact with it, we would have to know both the name of the contract and the address. We'll see this more in-depth when we import stuff later on.
 
 ### Back to our example...
 

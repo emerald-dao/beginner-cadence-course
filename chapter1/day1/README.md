@@ -67,7 +67,7 @@ Here is the normal workflow:
 
 <img src="../../images/dapps.jpeg" alt="drawing" width="300"/>
 
-Oh no, this sounds complicated. Nope! It's not. DApps are literally just normal applications (Javascript, Python, etc) that ALSO have Smart Contracts involved. That's it.
+Oh no, this sounds complicated. Nope! It's not. DApps are literally just normal applications (swift, Python, etc) that ALSO have Smart Contracts involved. That's it.
 
 Also, we will be building these :)
 
