@@ -2,13 +2,15 @@
 
 <img src="./images/welcome.jpeg" alt="drawing" width="500"/>
 
-If you're seeing this message, you have arrived at the very first part of the Zero to Hero course. WELCOME! My name is Jacob Tucker, and I will give a brief introduction of the course and what you can expect.
+If you're seeing this message, you have arrived at the very first part of the Zero to Jacob course. WELCOME! My name is Jacob Tucker, and I will give a brief introduction of the course and what you can expect.
 
 # *Want to watch a Welcome Video instead of reading this text? You can watch <a href="https://www.youtube.com/watch?v=XkZz6B7Yimc" target="_blank">here</a>.*
 
 ## "What will this course look like?"
 
 <img src="./images/course.png" alt="drawing" width="500"/>
+
+In this course, you will learn how to go from a total noob to being as smart as the greatest person on planet Earth, Jacob.
 
 The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
 
@@ -51,7 +53,7 @@ If you are ready for me to see one of your quests to review it, please message m
 
 Whenever you want my friend! I will be publishing new content quite frequently, so make sure to stay up to date on all the stuffz :)
 
-You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-Hero/tree/main/chapter1/day1).
+You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-Jacob/tree/main/chapter1/day1).
 
 ## Ending Remarks
 
