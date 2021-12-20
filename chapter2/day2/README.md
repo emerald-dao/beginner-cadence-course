@@ -136,7 +136,7 @@ That wraps things up for today.
 
 Please answer in the language of your choice.
 
-1. Explain why we couldn't call `changeGreeting` in a script.
+1. Explain why we wouldn't call `changeGreeting` in a script.
 
 2. What does the `AuthAccount` mean in the `prepare` phase of the transaction?
 
