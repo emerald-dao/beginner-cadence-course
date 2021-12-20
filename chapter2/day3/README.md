@@ -72,6 +72,7 @@ Removes an element at the given index (index starts from 0, meaning the first el
 ex.
 ```swift
 var people: [String] = ["Jacob", "Alice", "Damian"]
+people.remove(1)
 log(people) // ["Jacob", "Damian"]
 ```
 
