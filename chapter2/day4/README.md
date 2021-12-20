@@ -165,7 +165,7 @@ Also notice the return type here: `Authentication.Profile`. That is because we a
 
 1. Deploy a new contract that has a Struct of your choosing inside of it (must be different than `Profile`).
 
-2. Create a dictionary or array or the Struct you defined.
+2. Create a dictionary or array that contains the Struct you defined.
 
 3. Create a function to add to that array/dictionary.
 
