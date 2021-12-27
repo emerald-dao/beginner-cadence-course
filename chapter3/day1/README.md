@@ -8,7 +8,7 @@ Uh oh. We're on the most important topic in all of Cadence: Resources. Seriously
 
 ## Resources
 
-<img src="../images/resources.jpeg" alt="drawing" size="400" />
+<img src="../images/resources.jpeg" alt="drawing" size="200" />
 
 Resources are probably the most crucial element of Cadence, and the reason Cadence is so unique. By the way they look, **a Resource is a more secure Struct**. That's the simple way to put it. But more importantly, because of their securities, they are used in many interesting ways we will explore.
 
