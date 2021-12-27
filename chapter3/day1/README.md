@@ -2,9 +2,13 @@
 
 Uh oh. We're on the most important topic in all of Cadence: Resources. Seriously, this is the most important thing you'll learn from me. Let's get into it!
 
+## Video
+
+1. You can watch this video from 00:00 - 08:00 (we will cover the rest later): https://www.youtube.com/watch?v=SGa2mnDFafc
+
 ## Resources
 
-<img src="../images/resources.jpeg" />
+<img src="../images/resources.jpeg" alt="drawing" size="400" />
 
 Resources are probably the most crucial element of Cadence, and the reason Cadence is so unique. By the way they look, **a Resource is a more secure Struct**. That's the simple way to put it. But more importantly, because of their securities, they are used in many interesting ways we will explore.
 
