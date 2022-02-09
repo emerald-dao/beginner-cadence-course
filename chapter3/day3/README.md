@@ -56,11 +56,11 @@ import Test from 0x01
 
 pub fun main(): String {
   let ref = Test.getRef(key: "Hello!")
-  return ref.language
+  return ref.language // returns "English"
 }
 ```
 
-This will return "English". Notice we didn't have to move the resource anywhere in order to do this! That's the beauty of references. 
+Notice we didn't have to move the resource anywhere in order to do this! That's the beauty of references. 
 
 ## Conclusion
 
