@@ -66,7 +66,7 @@ Notice we didn't have to move the resource anywhere in order to do this! That's 
 
 References aren't so bad right? The main two points are:
 1. You can use references to get information without moving resources around.
-2. You MUST "type case" a reference when getting it, or you'll get an error.
+2. You MUST "type cast" a reference when getting it, or you'll receive an error.
 
 References are not going to go away, though. They will be EXTREMELY important when we talk about account storage in the next chapter.
 
