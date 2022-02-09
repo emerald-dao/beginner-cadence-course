@@ -185,6 +185,8 @@ After looking at our access modifiers, we must make an extremely important disti
 
 We learned a LOT about access modifiers today. In order to test your understanding, we're going to do a lot of busy work in the quests for today. I honestly believe you will learn the most from doing the quests themselves.
 
+See you in Chapter 4, folks! <3
+
 ## Quests
 
 For today's quest, you will be looking at a contract and a script. You will be looking at 4 variables (a, b, c, d) and 3 functions (publicFunc, contractFunc, privateFunc) defined in `SomeContract`. In each AREA (1, 2, 3, and 4), I want you to do the following: for each variable (a, b, c, and d), tell me in which areas they can be read (read scope) and which areas they can be modified (write scope). For each function (publicFunc, contractFunc, and privateFunc), simply tell me where they can be called.
