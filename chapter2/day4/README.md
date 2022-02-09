@@ -84,7 +84,7 @@ I threw a lot at you here. But you actually know all of it now! We can break it 
 2. We defined a dictionary named `profiles` that maps an `Address` Type to a `Profile` Type
 3. We defined a new Struct called `Profile` that contains 4 arguments
 4. We defined a new function named `addProfile` that takes in 4 arguments and creates a new `Profile` with them. It then creates a new mapping from `account` -> the `Profile` associated with that account
-5. Initializes `profiles` to an empty array when the contract is deployed
+5. Initializes `profiles` to an empty dictionary when the contract is deployed
 
 If you can understand these things, you've made significant progress. If you're struggling with this a bit, no worries! I would maybe review some of the concepts from the past few days. And remember, you don't have to know what `pub` means yet.
 
