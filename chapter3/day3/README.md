@@ -47,7 +47,7 @@ In the above example, you can see that `getRef` returns a `&Greeting` type, whic
 
 Notice that if we had forgotten the `as &Greeting`, Cadence would yell at us and say "expected casting expression." This is because in Cadence, **you have to type cast when getting a reference**.
 
-Now, you might be wondering "doesn't a dictionary return an optional? Why aren't we unwrapping it with a `!` symbol?" The truth is, we don't have to. If there is no value at the `key`, it will fail anyways. So we can ignore that for now, although we'll talk a lot more about this later.
+Now, you might be wondering "doesn't a dictionary return an optional? Why aren't we unwrapping `&self.dictionaryOfGreetings[key]` with a `!` symbol?" The truth is, we don't have to. If there is no value at the `key`, the optional will fail to type case to a `&Greeting` type. So we can ignore the optional case for now, although we'll talk a lot more about this later.
 
 Now that we can get a reference, we can get the reference in a transaction or script like so:
 
