@@ -18,7 +18,7 @@ You can see this being done in the `prepare` portion of the transaction, and tha
 
 ## What lives in an account?
 
-<img src="../images/accountstorage.PNG" />
+<img src="../images/accountstorage1.PNG" />
 
 As you read above, on Flow, accounts actually store their own data. What this means is, if I have an `NFT` resource, I can actually store that in my own account. But where?
 
@@ -180,7 +180,7 @@ transaction() {
 
 Let's take a look at this diagram again:
 
-<img src="../images/accountstorage.PNG" />
+<img src="../images/accountstorage1.PNG" />
 
 As of now, you should understand what `/storage/` is. In tomorrow's chapter, we'll talk about the `/public/` and `/private/` paths.
 
