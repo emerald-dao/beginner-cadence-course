@@ -29,7 +29,7 @@ In order to complete this course, I assuming you understand basic computer scien
 2. What is a function
 3. How to stay mentally stable when debugging code for 8 hours. Just kidding ;)
 
-If you are a beginner programmer or you would like to get some prior experience in before this course, I would suggest trying to learn the basics of swift to get some computer science programming fundamentals down. Knowing swift will be benefitial, however it is not necessary. Other than that, there are no prerequisite needed! 
+If you are a beginner programmer or you would like to get some prior experience in before this course, I would suggest trying to learn the basics of Javascript to get some computer science programming fundamentals down. Knowing Javascript will be benefitial, however it is not necessary. Other than that, there are no prerequisite needed! 
 
 *I will introduce you to all the tools and programming concepts necessary, even if you are not a developer.*
 
