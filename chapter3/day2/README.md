@@ -144,7 +144,7 @@ pub contract Test {
     }
 
     init() {
-        self.arrayOfGreetings <- {}
+        self.dictionaryOfGreetings <- {}
     }
 
 }
@@ -178,7 +178,7 @@ pub contract Test {
     }
 
     init() {
-        self.arrayOfGreetings <- {}
+        self.dictionaryOfGreetings <- {}
     }
 
 }
@@ -212,7 +212,7 @@ pub contract Test {
     }
 
     init() {
-        self.arrayOfGreetings <- {}
+        self.dictionaryOfGreetings <- {}
     }
 
 }
@@ -254,7 +254,7 @@ pub contract Test {
     }
 
     init() {
-        self.arrayOfGreetings <- {}
+        self.dictionaryOfGreetings <- {}
     }
 
 }
