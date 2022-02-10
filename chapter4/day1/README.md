@@ -194,4 +194,6 @@ As of now, you should understand what `/storage/` is. In tomorrow's chapter, we'
 
 4. Explain why we couldn't save something to our account storage inside of a script.
 
-5. Define a contract that returns a resource that has at least 1 field in it. Then, write a transaction that first saves it to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
+5. Explain why I couldn't save something to your account.
+
+6. Define a contract that returns a resource that has at least 1 field in it. Then, write a transaction that first saves it to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
