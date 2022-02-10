@@ -1,6 +1,6 @@
 # Chapter 3 Day 5 - Access Control
 
-SUUUUUUUUP! Today, we're learning about access control. This is the 2nd most important concept in Cadence, and what makes Cadence SO SPECIAL! Let's learn.
+SUUUUUUUUP! Today, we're learning about access control. Let's learn.
 
 ## Video
 
