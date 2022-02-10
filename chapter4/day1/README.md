@@ -136,7 +136,7 @@ In the example above, we use the `.load()` function to take data OUT of our acco
 
 You'll notice that we have to do this weird thing: `<@Stuff.Test>`. What is that? Well, when you're interacting with account storage, you have to specify the type you're looking at. Cadence has no idea that a `@Stuff.Test` is stored at that storage path. But as the coder, we know that is what's stored there, so we have to put `<@Stuff.Test>` to say "we expect a `@Stuff.Test` to come out of that storage path."
 
-`.load()` takes one parameters:
+`.load()` takes one parameter:
 1. a `from` parameter that is the path we should take it from (it must be a `/storage/` path)
 
 One more important thing is that when you `load` data from storage, it returns an optional. `testResource` actually has typed `@Stuff.Test?`. The reason for this is because Cadence has no idea that you are telling the truth and something actually lives there, or that it's even the right type. So if you were wrong, it will return `nil`. Let's look at an example:
@@ -176,6 +176,33 @@ transaction() {
 }
 ```
 
+## Borrow Function
+
+Previously, we saved and loaded from our account. But what if we just want to look at something in an account? That's where references and the `.borrow()` function comes in.
+
+```swift 
+import Stuff from 0x01
+transaction() {
+  prepare(signer: AuthAccount) {
+    // NOTICE: This gets a `&Stuff.Test`, not a `@Stuff.Test`
+    let testResource <- signer.borrow<&Stuff.Test>(from: /storage/MyTestResource)
+                          ?? panic("A `@Stuff.Test` resource does not live here.")
+    log(testResource.name) // "Jacob"
+  }
+
+  execute {
+
+  }
+}
+```
+
+You can see that we used the `.borrow()` function to get a reference to the resource in our storage, not the resource itself. That is why the type we use is `<&Stuff.Test>` instead of `<@Stuff.Test>`.
+
+`.borrow()` takes one parameter (same as `.load()`):
+1. a `from` parameter that is the path we should take it from (it must be a `/storage/` path)
+
+Also note that because we aren't using `.load()`, the resource is staying inside our account storage the whole time. Wow, references are awesome!
+
 ## Conclusion
 
 Let's take a look at this diagram again:
@@ -190,10 +217,14 @@ As of now, you should understand what `/storage/` is. In tomorrow's chapter, we'
 
 2. What is the difference between the `/storage/`, `/public/`, and `/private/` paths?
 
-3. What does `.save()` do? What does `.load()` do?
+3. What does `.save()` do? What does `.load()` do? What does `.borrow()` do?
 
 4. Explain why we couldn't save something to our account storage inside of a script.
 
 5. Explain why I couldn't save something to your account.
 
-6. Define a contract that returns a resource that has at least 1 field in it. Then, write a transaction that first saves it to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
+6. Define a contract that returns a resource that has at least 1 field in it. Then, write 2 transactions:
+
+    1) A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
+
+    2) A transaction that first saves the resource to account storage, then borrows a reference to it, and logs a field inside the resource.
