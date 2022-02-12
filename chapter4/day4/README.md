@@ -1,4 +1,4 @@
-# Chapter 4 Day 4 - Creating an NFT Contract: Transferring & Minting (Part 2/3)
+# Chapter 4 Day 4 - Creating an NFT Contract: Transferring, Minting, and Borrowing (Part 2/3)
 
 Let's keep building our NFT contract! :D
 
@@ -309,6 +309,230 @@ transaction() {
 ```
 
 The only problem here is that it's *usually* not good practice to require two signers in a transaction. This is because it's difficult to get multiple people to sign the same transaction in a reasonable time frame. We will go much more in-depth on this at a later point, but for now, we can leave it at that.
+
+## Borrowing
+
+Alright, last thing. Remember yesterday we said that it is weird that we can't read our NFT without literally withdrawing it from the Collection? Well, let's add a function inside the `Collection` resource that lets us borrow the NFT:
+
+```swift
+pub contract CryptoPoops {
+  pub var totalSupply: UInt64
+
+  pub resource NFT {
+    pub let id: UInt64
+
+    // Added some more metadata here so we can
+    // read from it
+    pub let name: String
+    pub let favouriteFood: String
+    pub let luckyNumber: Int
+
+    init(_name: String, _favouriteFood: String, _luckyNumber: Int) {
+      self.id = self.uuid
+
+      self.name = _name
+      self.favouriteFood = _favouriteFood
+      self.luckyNumber = _luckyNumber
+    }
+  }
+
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs(): [UInt64]
+  }
+
+  pub resource Collection: CollectionPublic {
+    pub var ownedNFTs: {UInt64: NFT}
+
+    pub fun deposit(token: @NFT) {
+      self.ownedNFTs[token.id] <- NFT
+    }
+
+    pub fun withdraw(withdrawID: UInt64): @NFT {
+      return self.ownedNFTs.remove(key: withdrawID) 
+              ?? panic("This NFT does not exist in this Collection.")
+    }
+
+    pub fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
+    }
+
+    // Added this function so now we can
+    // read our NFT
+    pub fun borrowNFT(id: UInt64): &NFT {
+      return &self.ownedNFTs[id] as &NFT
+    }
+
+    init() {
+      self.ownedNFTs <- {}
+    }
+  }
+
+  pub fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  pub resource Minter {
+
+    pub fun createNFT(): @NFT {
+      return <- create NFT()
+    }
+
+    // Updated the parameters here so we can pass in metadata for our NFT
+    pub fun createMinter(name: String, favouriteFood: String, luckyNumber: Int): @Minter {
+      return <- create Minter(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }
+
+  }
+
+  init() {
+    self.totalSupply = 0
+    self.account.save(<- create Minter(), /storage/Minter)
+  }
+}
+```
+
+Super simple right! We even added some extra fields (or "metadata") to our NFT so we can read info about it when we borrow it's reference from the Collection. In order to get the reference, we use a new `borrowNFT` function inside our `Collection` to return a reference to one of our NFTs. If we redeploy our contract and run a new transaction to mint an NFT:
+
+```swift
+import CryptoPoops from 0x01
+
+// name: "Jacob"
+// favouriteFood: "Chocolate chip pancakes"
+// luckyNumber: 13
+transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber: Int) {
+
+  prepare(signer: AuthAccount) {
+    // Get a reference to the `Minter`
+    let minter = signer.borrow<&CryptoPoops.Minter>(from: /storage/Minter)
+                    ?? panic("This signer is not the one who deployed the contract.")
+
+    // Get a reference to the `recipient`s public Collection
+    let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  ?? panic("The recipient does not have a Collection.")
+
+    // mint the NFT using the reference to the `Minter` and pass in the metadata
+    let nft <- minter.createNFT(name: name, favouriteFood: favouriteFood, luckyNumber: luckyNumber)
+
+    // deposit the NFT in the recipient's Collection
+    recipientsCollection.deposit(token: <- nft)
+  }
+
+}
+```
+
+Awesome! We minted an NFT into the recipient's account. Now let's go ahead and use our new `borrowNFT` function in a script to read the NFT's metadata that was deposited into the account:
+
+```swift
+import CryptoPoops from 0x01
+pub fun main(address: Address, id: id) {
+  let publicCollection = getAccount(address).getCapability(/public/MyCollection)
+              .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
+              ?? panic("The address does not have a Collection.")
+  
+  let nftRef: &CryptoPoops.NFT = publicCollection.borrowNFT(id: id) // ERROR: "Member of restricted type is not accessible: borrowNFT"
+  log(nftRef.name)
+  log(nftRef.favouriteFood)
+  log(nftRef.luckyNumber)
+}
+```
+
+WAIT! We get an error! Why is that? Ahh, it's because we forgot to add `borrowNFT` to the `CollectionPublic` interface inside our contract, so it's not accessible to the public! Let's go ahead and fix that:
+
+```swift
+pub contract CryptoPoops {
+  pub var totalSupply: UInt64
+
+  pub resource NFT {
+    pub let id: UInt64
+
+    pub let name: String
+    pub let favouriteFood: String
+    pub let luckyNumber: Int
+
+    init(_name: String, _favouriteFood: String, _luckyNumber: Int) {
+      self.id = self.uuid
+
+      self.name = _name
+      self.favouriteFood = _favouriteFood
+      self.luckyNumber = _luckyNumber
+    }
+  }
+
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs(): [UInt64]
+    // We added the borrowNFT function here
+    // so it's accessible to the public
+    pub fun borrowNFT(id: UInt64): &NFT
+  }
+
+  pub resource Collection: CollectionPublic {
+    pub var ownedNFTs: {UInt64: NFT}
+
+    pub fun deposit(token: @NFT) {
+      self.ownedNFTs[token.id] <- NFT
+    }
+
+    pub fun withdraw(withdrawID: UInt64): @NFT {
+      return self.ownedNFTs.remove(key: withdrawID) 
+              ?? panic("This NFT does not exist in this Collection.")
+    }
+
+    pub fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
+    }
+
+    pub fun borrowNFT(id: UInt64): &NFT {
+      return &self.ownedNFTs[id] as &NFT
+    }
+
+    init() {
+      self.ownedNFTs <- {}
+    }
+  }
+
+  pub fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  pub resource Minter {
+
+    pub fun createNFT(): @NFT {
+      return <- create NFT()
+    }
+
+    pub fun createMinter(name: String, favouriteFood: String, luckyNumber: Int): @Minter {
+      return <- create Minter(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }
+
+  }
+
+  init() {
+    self.totalSupply = 0
+    self.account.save(<- create Minter(), /storage/Minter)
+  }
+}
+```
+
+Now, we can retry our script (assuming you mint the NFT all over again):
+
+```swift
+import CryptoPoops from 0x01
+pub fun main(address: Address, id: id) {
+  let publicCollection = getAccount(address).getCapability(/public/MyCollection)
+              .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
+              ?? panic("The address does not have a Collection.")
+  
+  let nftRef: &CryptoPoops.NFT = publicCollection.borrowNFT(id: id)
+  log(nftRef.name) // "Jacob"
+  log(nftRef.favouriteFood) // "Chocolate chip pancakes"
+  log(nftRef.luckyNumber) // 13
+}
+```
+
+Yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay!!! We read our NFT metadata without having to withdraw it from the collection ;)
 
 ## Conclusion
 
