@@ -190,6 +190,8 @@ Let's look at an example transaction of a `Minter` minting someone an NFT.
 (Note: Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource)
 
 ```swift
+import CryptoPoops from 0x01
+
 transaction(recipient: Address) {
 
   // Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource
@@ -286,6 +288,8 @@ pub contract CryptoPoops {
 The only issue now is that in order to give someone else a `Minter`, we'd have to run a transaction that requires 2 signers: one to create the `Minter`, and one to store it:
 
 ```swift
+import CryptoPoops from 0x01
+
 transaction() {
 
   // Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource
