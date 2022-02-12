@@ -143,7 +143,7 @@ pub contract HelloWorld: IHelloWorld {
 }
 ```
 
-The reason we're getting an error is because our contract interface specifically says our `Greeting` resource must implement `IHelloWorld.IGreeting`, not any arbitary `IGreeting` that someone defines. So this is what the contract would actually look like:
+... we will get an error. The reason we're getting an error is because our contract interface specifically says our `Greeting` resource must implement `IHelloWorld.IGreeting`, not any arbitary `IGreeting` that someone defines. So this is what the contract would actually look like:
 
 ```swift
 import IHelloWorld from 0x01
@@ -169,6 +169,8 @@ pub contract HelloWorld: IHelloWorld {
 ```
 
 Now we're all good :)
+
+**Note that even if a contract interface defines a resource interface, the implementing contract does NOT have to implement the resource interface as well. That can stay in the contract interface, like we did above.**
 
 ## Contract Interfaces as "Standards"
 
