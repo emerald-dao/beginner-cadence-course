@@ -1,0 +1,320 @@
+# Chapter 4 Day 4 - Creating an NFT Contract: Transferring & Minting (Part 2)
+
+Let's keep building our NFT contract! :D
+
+## Video
+
+Today, we'll cover 20:35 - 31:20: https://www.youtube.com/watch?v=bQVXSpg6GE8
+
+## Recap so Far
+
+In the last day, we went over how to create NFTs and store them inside of a Collection. The reason we made a Collection was so we could have all of our NFTs stored in one place in our account storage.
+
+But we left ourselves with somewhat of a problem: should we *really* allow anybody to create an NFT? That seems a bit weird. What if we want to control who can mint an NFT? That's what we'll be talking about today. 
+
+## Transferring
+
+Before we get into controlling who can "mint" (or create) an NFT, let's talk about transferring. How can we transfer an NFT from one account to another?
+
+Well, if you recall, only the owner of a Collection can `withdraw` from their Collection. However, anyone can `deposit` into another persons Collection. This is perfect for us, because it means we will only need access to 1 AuthAccount: the peron who will be transferring (aka withdrawing) the NFT! Let's spin up a transaction to transfer an NFT:
+
+```swift
+import CryptoPoops from 0x01
+
+// `id` is the `id` of the NFT
+// `recipient` is the person receiving the NFT
+transaction(id: UInt64, recipient: Address) {
+
+  prepare(signer: AuthAccount) {
+    // get a reference to the signer's Collection
+    let signersCollection = signer.borrow<&CryptoPoops.Collection>(from: /storage/MyCollection)
+                            panic("Signer does not have a CryptoPoops Collection")
+
+    // Get a reference to the `recipient`s public Collection
+    let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  ?? panic("The recipient does not have a CryptoPoops Collection.")
+    
+    // withdraws the NFT with id == `id` and moves it into the `nft` variable
+    let nft <- signersCollection.withdraw(withdrawID: id)
+
+    // deposits the NFT into the recipient's Collection
+    recipientsCollection.deposit(token: <- nft)
+  }
+
+}
+```
+
+Not too bad right? We should understand all of this after learning yesterday's content. Here are the steps:
+1. We first get a reference to the signer's Collection. We do not use a capability because we need to borrow directly from storage since we need to be able to call `withdraw`
+2. We then get a *public* reference to the recipient's Collection. We get this through a public capability because we don't have access to their AuthAccount, but this is fine since we only need to `deposit`
+3. We `withdraw` the NFT with `id` out of the signer's Collection
+4. We `deposit` the NFT into the recipient's Collection
+
+## Minting
+
+Alright, so let's figure out how to prevent everyone from minting their own NFTs. The question now is, well, then WHO should have the ability to mint? 
+
+The beauty of Cadence is that we can decide for ourselves. Why don't we start by making a Resource that mints NFTs? Then, whoever owns the resource can have the ability to mint an NFT. Let's build on top of the contract we had previously:
+
+```swift
+pub contract CryptoPoops {
+  pub var totalSupply: UInt64
+
+  pub resource NFT {
+    pub let id: UInt64
+
+    init() {
+      self.id = self.uuid
+    }
+  }
+
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs(): [UInt64]
+  }
+
+  pub resource Collection: CollectionPublic {
+    pub var ownedNFTs: {UInt64: NFT}
+
+    pub fun deposit(token: @NFT) {
+      self.ownedNFTs[token.id] <- NFT
+    }
+
+    pub fun withdraw(withdrawID: UInt64): @NFT {
+      return self.ownedNFTs.remove(key: withdrawID) 
+              ?? panic("This NFT does not exist in this Collection.")
+    }
+
+    pub fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
+    }
+
+    init() {
+      self.ownedNFTs <- {}
+    }
+  }
+
+  pub fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  // New resource: Minter
+  // Allows anyone who holds it to
+  // mint NFTs
+  pub resource Minter {
+
+    // mints a new NFT resource
+    pub fun createNFT(): @NFT {
+      return <- create NFT()
+    }
+  }
+
+  init() {
+    self.totalSupply = 0
+  }
+}
+```
+
+Here are the things that were added:
+1. We created a new resource called `Minter`
+2. We moved the `createNFT` function into the `Minter` resource
+
+Now, anyone who holds the `Minter` resource is able to mint NFTs. Okay, that's cool and all, but who gets to have the minter now?
+
+The easiest solution is to give the `Minter` automatically to the account that is deploying the contract. We can do that by saving the `Minter` resource to the account storage of the contract deployer's account inside the `init` function:
+
+```swift
+pub contract CryptoPoops {
+  pub var totalSupply: UInt64
+
+  pub resource NFT {
+    pub let id: UInt64
+
+    init() {
+      self.id = self.uuid
+    }
+  }
+
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs(): [UInt64]
+  }
+
+  pub resource Collection: CollectionPublic {
+    pub var ownedNFTs: {UInt64: NFT}
+
+    pub fun deposit(token: @NFT) {
+      self.ownedNFTs[token.id] <- NFT
+    }
+
+    pub fun withdraw(withdrawID: UInt64): @NFT {
+      return self.ownedNFTs.remove(key: withdrawID) 
+              ?? panic("This NFT does not exist in this Collection.")
+    }
+
+    pub fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
+    }
+
+    init() {
+      self.ownedNFTs <- {}
+    }
+  }
+
+  pub fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  pub resource Minter {
+
+    pub fun createNFT(): @NFT {
+      return <- create NFT()
+    }
+
+  }
+
+  init() {
+    self.totalSupply = 0
+
+    // Save the `Minter` resource to account storage here
+    self.account.save(<- create Minter(), /storage/Minter)
+  }
+}
+```
+
+See what we did at the very end? We saved the `Minter` to account storage. Perfect! Now, only the account that deployed the contract has the ability to mint NFTs, and since there's no function to allow other users to get a `Minter`, it is completely safe! 
+
+Let's look at an example transaction of a `Minter` minting someone an NFT. 
+
+(Note: Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource)
+
+```swift
+transaction(recipient: Address) {
+
+  // Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource
+  prepare(signer: AuthAccount) {
+    // Get a reference to the `Minter`
+    let minter = signer.borrow<&CryptoPoops.Minter>(from: /storage/Minter)
+                    ?? panic("This signer is not the one who deployed the contract.")
+
+    // Get a reference to the `recipient`s public Collection
+    let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  ?? panic("The recipient does not have a Collection.")
+
+    // mint the NFT using the reference to the `Minter`
+    let nft <- minter.createNFT()
+
+    // deposit the NFT in the recipient's Collection
+    recipientsCollection.deposit(token: <- nft)
+  }
+
+}
+```
+
+Wooooooooohoooooooooooooo! We successfully implemented secure minting. This is a very important pattern to be aware of in Cadence: the ability to delegate some "Admin" functionality to a certain resource, like the `Minter` in this case. That "Admin" is most often given to the account storage of the account who deployed the contract.
+
+One last thing... what if we wanted to have multiple minters? That'd be a problem right now since the account who has the `Minter` would have to `load` the resource out of storage and give it to someone else! That's not good.
+
+What we can do is add a `createMinter` function *inside* of the `Minter` itself, so the `Minter` has the ability to give new `Minter`s to other people:
+
+```swift
+pub contract CryptoPoops {
+  pub var totalSupply: UInt64
+
+  pub resource NFT {
+    pub let id: UInt64
+
+    init() {
+      self.id = self.uuid
+    }
+  }
+
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs(): [UInt64]
+  }
+
+  pub resource Collection: CollectionPublic {
+    pub var ownedNFTs: {UInt64: NFT}
+
+    pub fun deposit(token: @NFT) {
+      self.ownedNFTs[token.id] <- NFT
+    }
+
+    pub fun withdraw(withdrawID: UInt64): @NFT {
+      return self.ownedNFTs.remove(key: withdrawID) 
+              ?? panic("This NFT does not exist in this Collection.")
+    }
+
+    pub fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
+    }
+
+    init() {
+      self.ownedNFTs <- {}
+    }
+  }
+
+  pub fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  pub resource Minter {
+
+    pub fun createNFT(): @NFT {
+      return <- create NFT()
+    }
+
+    // Added a new `createMinter` function here
+    // that creates a new `Minter` resource and
+    // returns it.
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
+    }
+
+  }
+
+  init() {
+    self.totalSupply = 0
+    self.account.save(<- create Minter(), /storage/Minter)
+  }
+}
+```
+
+The only issue now is that in order to give someone else a `Minter`, we'd have to run a transaction that requires 2 signers: one to create the `Minter`, and one to store it:
+
+```swift
+transaction() {
+
+  // Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource
+  prepare(creator: AuthAccount, recipient: AuthAccount) {
+    // Get a reference to the `Minter` from the `creator`
+    let minter = signer.borrow<&CryptoPoops.Minter>(from: /storage/Minter)
+                    ?? panic("This signer is not the one who deployed the contract.")
+
+    // create the new `Minter` resource
+    let newMinter <- minter.createMinter()
+
+    // the `recipient` save it to their account
+    recipient.save(<- newMinter, to: /storage/Minter)
+  }
+
+}
+```
+
+The only problem here is that it's *usually* not good practice to require two signers in a transaction. This is because it's difficult to get multiple people to sign the same transaction in a reasonable time frame. We will go much more in-depth on this at a later point, but for now, we can leave it at that.
+
+## Conclusion
+
+We have now written a full-fledged NFT smart contract. That is super cool. Tomorrow, we will go over how to make our NFT contract be "official" so that other applications know how to interact with it, and then we will be done. 
+
+## Quests
+
+Above, when I was talking about the difficulty of sending a transaction with 2 signers, I wrote this:
+```
+The only problem here is that it's *usually* not good practice to require two signers in a transaction. This is because it's difficult to get multiple people to sign the same transaction in a reasonable time frame. We will go much more in-depth on this at a later point, but for now, we can leave it at that.
+```
+
+Can you brainstorm any ways to distribute `Minter`s to other people WITHOUT having to have 2 signers, or in other words, 2 `AuthAccount`s? If you can't that is okay. But try your best to come up with something. We will learn this later down the road as well.

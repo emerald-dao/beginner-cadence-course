@@ -13,7 +13,7 @@ In the next few chapters, we'll be doing exactly what I do in this video. Today,
 
 ## NFT (NonFungibleToken) Example
 
-Let's spend today working through a NonFungibleToken example. This way you will review all the previous concepts you've learned so far, and implement your own NFT!
+Let's spend the next few days working through a NonFungibleToken example. We are going to create our very own NFT contract called CryptoPoops. This way you will review all the previous concepts you've learned so far, and implement your own NFT!
 
 Let's start by making a contract:
 
@@ -157,12 +157,12 @@ pub contract CryptoPoops {
     }
   }
 
-  init() {
-    self.totalSupply = 0
-  }
-
   pub fun createEmptyCollection(): @Collection {
     return <- create Collection()
+  }
+
+  init() {
+    self.totalSupply = 0
   }
 }
 ```
@@ -244,12 +244,12 @@ pub contract CryptoPoops {
     }
   }
 
-  init() {
-    self.totalSupply = 0
-  }
-
   pub fun createEmptyCollection(): @Collection {
     return <- create Collection()
+  }
+
+  init() {
+    self.totalSupply = 0
   }
 }
 ```
@@ -349,7 +349,9 @@ pub fun main(address: Address): [UInt64] {
 
 ## Conclusion
 
-Give yourself a round of applause. You implemented a functioning NFT contract! And even more important: You actually implemented a REAL CONTRACT. You're getting good, my friend! Heck, you may catch up to me soon. Just kidding, that's not possible. I'm so much better than you.
+Collections are not just for NFTs. You will see the concept of a Collection being used eeeeverrryyywhere in the Flow ecosystem. If you ever want users to store a resource, but they may have multiple of that resource, you will almost always use a Collection to wrap around them so you can store them all in one place. It's a very important concept to understand.
+
+And with that, give yourself a round of applause. You implemented a functioning NFT contract! And even more important: You actually implemented a REAL CONTRACT. You're getting good, my friend! Heck, you may catch up to me soon. Just kidding, that's not possible. I'm so much better than you.
 
 ## Quests
 
