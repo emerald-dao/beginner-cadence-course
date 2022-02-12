@@ -1,4 +1,4 @@
-# Chapter 4 Day 4 - Creating an NFT Contract: Transferring & Minting (Part 2)
+# Chapter 4 Day 4 - Creating an NFT Contract: Transferring & Minting (Part 2/3)
 
 Let's keep building our NFT contract! :D
 
@@ -308,7 +308,9 @@ The only problem here is that it's *usually* not good practice to require two si
 
 ## Conclusion
 
-We have now written a full-fledged NFT smart contract. That is super cool. Tomorrow, we will go over how to make our NFT contract be "official" so that other applications know how to interact with it, and then we will be done. 
+We have now written a full-fledged NFT smart contract. That is super cool. We have also completed Chapter 4. 
+
+In the next Chapter, we will start to learn how to make our contract more "official." That is, how to implement something called a contract interface so that other applications know our NFT smart contract *is* in fact an NFT smart contract.
 
 ## Quests
 

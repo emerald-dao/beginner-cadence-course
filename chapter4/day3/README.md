@@ -1,4 +1,4 @@
-# Chapter 4 Day 3 - Creating an NFT Contract: Collections (Part 1)
+# Chapter 4 Day 3 - Creating an NFT Contract: Collections (Part 1/3)
 
 You have learned a lot so far. Let's apply everything you've learned to make your own NFT contract.
 
