@@ -75,10 +75,10 @@ pub contract CryptoPoops {
   }
 
   pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: {UInt64: NFT}
+    pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- NFT
+      self.ownedNFTs[token.id] <- token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
@@ -92,6 +92,10 @@ pub contract CryptoPoops {
 
     init() {
       self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
     }
   }
 
@@ -142,10 +146,10 @@ pub contract CryptoPoops {
   }
 
   pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: {UInt64: NFT}
+    pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- NFT
+      self.ownedNFTs[token.id] <- token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
@@ -159,6 +163,10 @@ pub contract CryptoPoops {
 
     init() {
       self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
     }
   }
 
@@ -239,10 +247,10 @@ pub contract CryptoPoops {
   }
 
   pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: {UInt64: NFT}
+    pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- NFT
+      self.ownedNFTs[token.id] <- token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
@@ -256,6 +264,10 @@ pub contract CryptoPoops {
 
     init() {
       self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
     }
   }
 
@@ -342,10 +354,10 @@ pub contract CryptoPoops {
   }
 
   pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: {UInt64: NFT}
+    pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- NFT
+      self.ownedNFTs[token.id] <- token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
@@ -365,6 +377,10 @@ pub contract CryptoPoops {
 
     init() {
       self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
     }
   }
 
@@ -469,10 +485,10 @@ pub contract CryptoPoops {
   }
 
   pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: {UInt64: NFT}
+    pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- NFT
+      self.ownedNFTs[token.id] <- token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
@@ -490,6 +506,10 @@ pub contract CryptoPoops {
 
     init() {
       self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
     }
   }
 

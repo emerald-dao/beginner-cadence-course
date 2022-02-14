@@ -130,12 +130,12 @@ pub contract CryptoPoops {
     // Maps an `id` to the NFT with that `id`
     //
     // Example: 2353 => NFT with id 2353
-    pub var ownedNFTs: {UInt64: NFT}
+    pub var ownedNFTs: @{UInt64: NFT}
 
     // Allows us to deposit an NFT
     // to our Collection
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- NFT
+      self.ownedNFTs[token.id] <- token
     }
 
     // Allows us to withdraw an NFT
@@ -155,6 +155,10 @@ pub contract CryptoPoops {
     init() {
       self.ownedNFTs <- {}
     }
+
+    destroy() {
+      destroy self.ownedNFTs
+    }
   }
 
   pub fun createEmptyCollection(): @Collection {
@@ -171,7 +175,8 @@ Awesome. We've defined a `Collection` resource that does a few things:
 1. Stores a dictionary called `ownedNFTs` that maps an `id` to the `NFT` with that `id`.
 2. Defines a `deposit` function to be able to deposit `NFT`s.
 3. Defines a `withdraw` function to be able to withdraw `NFT`s.
-4. Defiens a `getIDs` function so we can get a list of all the NFT ids in our Collection.
+4. Defines a `getIDs` function so we can get a list of all the NFT ids in our Collection.
+5. Defines a `destroy` function. In Cadence, **whenever you have resources inside of resources, you MUST declare a `destroy` function that manually destroys those "nested" resources with the `destroy` keyword.**
 
 We also defined a `createEmptyCollection` function so we can save a `Collection` to our account storage so we can manage our NFTs better. Let's do that now:
 
@@ -224,10 +229,10 @@ pub contract CryptoPoops {
 
   // `Collection` implements `CollectionPublic` now
   pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: {UInt64: NFT}
+    pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- NFT
+      self.ownedNFTs[token.id] <- token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
@@ -241,6 +246,10 @@ pub contract CryptoPoops {
 
     init() {
       self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
     }
   }
 
@@ -355,7 +364,9 @@ And with that, give yourself a round of applause. You implemented a functioning 
 
 ## Quests
 
-Brainstorm some extra things we may want to add to this contract. Think about what might be problematic with this contract and how we could fix it.
+1. What do you have to do if you have resources "nested" inside of another resource? ("Nested resources")
+
+2. Brainstorm some extra things we may want to add to this contract. Think about what might be problematic with this contract and how we could fix it.
 
 Idea #1: Do we really want everyone to be able to mint an NFT? (insert thinking emoji here). 
 Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?
