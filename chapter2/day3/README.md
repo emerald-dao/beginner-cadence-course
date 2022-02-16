@@ -5,13 +5,13 @@ Whatsup Cadence noobs. Today, we will be learning some of the most important typ
 ## Video
 
 This is in order: 
-1. (Arrays & Dictionaries) Watch this video from 00:00-12:10. Do not watch passed 12:10, that will be covered tomorrow: https://www.youtube.com/watch?v=LAUN7hqlL0w
+1. (Arrays & Dictionaries in Cadence) Watch this video from 00:00-12:10. Do not watch passed 12:10, that will be covered tomorrow: https://www.youtube.com/watch?v=LAUN7hqlL0w
 
-2. (Optionals) Watch this video from 03:40-The End. You can watch the beginning, but it may be boring: https://www.youtube.com/watch?v=I9Z1z9BsZ0I
+2. (Optionals in Cadence) Watch this video: https://www.youtube.com/watch?v=I9Z1z9BsZ0I
 
 ## Types
 
-To start playing around with types, let's open up the Flow playground (play.onflow.org) and open up a Script. We're not going to write any smart contracts today :)
+To start playing around with types, let's open up the Flow playground (https://play.onflow.org) and open up a Script. We're not going to write any smart contracts today :)
 
 In Cadence, the code you write can often infer what type something is. For example, if you write:
 ```swift
@@ -54,7 +54,7 @@ The things we looked at above are all fixed arrays. We can also do some cool thi
 
 **append(_ element: Type)** 
 
-(note the argument label `element` is implicit, so you don't have to put it)
+(note the argument label `element` has a `_ ` in front of it, which means it is implicit, so you don't have to put the argument label when you call the function. So instead of `.append(element: value)`, you can just do `.append(value)`)
 
 Adds an element to the end of the array.
 
@@ -99,7 +99,7 @@ log(people.length) // 3
 
 ## Dictionaries
 
-Noice! That's arrays for ya. Time for dictionaries. Well, what is this thing?! A dictionary is something that maps a `key` to a `value`. Let's look at a simple example below.
+Nice! That's arrays for ya. Time for dictionaries. Well, what is this thing?! A dictionary is something that maps a `key` to a `value`. Let's look at a simple example below.
 
 ```swift
 var names: {String: String} = {"Jacob": "Tucker", "Bob": "Vance", "Ochako": "Unaraka"} // anyone watch The Office?
@@ -121,14 +121,14 @@ This is cool. But there's more. We will get into why dictionaries are more compl
 
 ### Helpful Dictionary Functions that I Use All the Time
 
-**insert(_ key: Type, value: Type)**
+**insert(key: Type, _ value: Type)**
 
-(note the `key` argument label is implicit, but the `value` is not)
+(note the `value` argument label is implicit, but the `key` is not)
 
 ex.
 ```swift
 var favouriteNums: {String: Int} = {"Jacob": 13, "Bob": 0, "Ochako": 1000100103}
-favouriteNums.insert("Justin Bieber", 1)
+favouriteNums.insert(key: "Justin Bieber", 1)
 log(favouriteNums) // {"Jacob": 13, "Bob": 0, "Ochako": 1000100103, "Justin Bieber": 1}
 ```
 
@@ -139,7 +139,7 @@ Removes the `key` and the value associated with it, and returns that value.
 ex.
 ```swift
 var favouriteNums: {String: Int} = {"Jacob": 13, "Bob": 0, "Ochako": 1000100103}
-let removedNumber = favouriteNums.remove("Jacob")
+let removedNumber = favouriteNums.remove(key: "Jacob")
 log(favouriteNums) // {"Bob": 0, "Ochako": 1000100103}
 log(removedNumber) // 13
 ```
@@ -166,14 +166,14 @@ log(favouriteNums.values) // [13, 0, 1000100103]
 
 ## Optionals
 
-Okay, so now we're on optionals. Shit. Optionals are SO important, but can be tricky. You will probably encounter optionals in everything you do in Cadence. Most of the time, it will be because of dictionaries.
+Okay, so now we're on optionals. Crap. Optionals are SO important, but can be tricky. You will probably encounter optionals in everything you do in Cadence. Most of the time, it will be because of dictionaries.
 
 An `optional type` in Cadence is represented with a `?`. It means: "It is either the type it's saying, or `nil`". Jacob, what the heck did you just say? Let's take a look:
 
 ```swift
 var name: String? = "Jacob"
 ```
-Notice the `?` after the `String`. That means: "the variable name is either a `String`, or it is `nil`." Obviously, we know it's a `String` because it's equal to "Jacob". But we can also have something like this:
+Notice the `?` after the `String`. That means: "the variable `name` is either a `String`, or it is `nil`." Obviously, we know it's a `String` because it's equal to "Jacob". But we can also have something like this:
 ```swift
 var name: String? = nil
 ```
@@ -212,11 +212,11 @@ It will print 2 as we've shown above. So it doesn't *look* weird. But it actuall
 ```swift
 pub fun main(): Int {
     let thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
-    return thing["Bonjour"]
+    return thing["Bonjour"] // ERROR: "Mismatched types. expected `Int`, got `Int?`"
 }
 ```
 
-This will give us an ERROR! The error says: "Mismatched types. expected `Int`, got `Int?`. Well, we know what `Int?` means now! It means it is an optional, so it may be `Int` or it may be `nil`. In order to fix this error, we have to use the force-unwrap operator `!`, like so:
+This will give us an ERROR! The error says: "Mismatched types. expected `Int`, got `Int?`". Well, we know what `Int?` means now! It means it is an optional, so it may be `Int` or it may be `nil`. In order to fix this error, we have to use the force-unwrap operator `!`, like so:
 
 ```swift
 pub fun main(): Int {

@@ -24,7 +24,7 @@ As you can see, scripts also do not cost any money (phew!). Transactions on the 
 
 During the last day, we actually implemented our first script on the Flow playground. Let's revisit that example:
 
-Load up the flow playground (play.onflow.org), copy this contract into the `0x01` account, and click "Deploy":
+Load up the flow playground (https://play.onflow.org), copy this contract into the `0x01` account, and click "Deploy":
 ```swift
 pub contract HelloWorld {
 
@@ -107,7 +107,7 @@ pub contract HelloWorld {
 
 Now that we've set up our contract, let's go back to our transaction. First, let's make sure to `import` our HelloWorld contract, like so: `import HelloWorld from 0x01`. Then, we must decide: where do we want to call `changeGreeting`? In the `prepare` phase, or the `execute` phase? The answer is the `execute` phase because we are not accessing any data in the account. We are just changing some data in the smart contract. 
 
-We can do that by adding this line in the `execute` phase: `HelloWorld.changeGreeting(newGreeting: myNewGreeting)`. You will notice we get an error that `myNewGreeting` isn't defined, which makes sense, because we aren't getting it from anywhere. So let's add a parameter called `myNewGreeting` to our transaction so we can pass in a value for a new greeting. We can do that like so:
+We can do that by adding this line in the `execute` phase: `HelloWorld.changeGreeting(newGreeting: myNewGreeting)`. When you call a function in Cadence, you pass in parameters by doing `(argumentLabel: value`), where `argumentLabel` is the name of the argument and `value` is the actual value. You will notice we get an error that `myNewGreeting` isn't defined, which makes sense, because we aren't getting it from anywhere. So let's add a parameter called `myNewGreeting` to our transaction so we can pass in a value for a new greeting. We can do that like so:
 
 ```swift
 import HelloWorld from 0x01
