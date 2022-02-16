@@ -45,9 +45,9 @@ There will be quests associated with each day. They will test your understanding
 
 When you finish a quest, please store all your quests together. Then, when you want me to review them, you can send me a link to all of your quests and tell me which day you'd like me to review.
 
-If you are ready for me to see one of your quests to review it, please message me in the [Emerald City DAO Discord](https://discord.gg/R7EvUWGtqz) in any of the channels. Once you do that, I will personally review your submissions, give you valuable insight on what you could improve, and mark it as complete.
+If you are ready for me to see one of your quests to review it, please message in the [Emerald City DAO Discord](https://discord.gg/z6zgjr7HEm) (the #quest-submissions channel). Once you do that, I will personally review your submissions, give you valuable insight on what you could improve, and mark it as complete.
 
-*Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! We are dedicated to teaching people all about Flow and Cadence, as well as building the tooling for all DAOs on Flow. If you'd like to learn more about it or learn how to get involved, let me know.*
+*Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! We are dedicated to teaching people all about Flow and Cadence, as well as building the tooling for all DAOs on Flow. If you'd like to learn more about it or learn how to get involved, please join our [Discord](https://discord.gg/emeraldcity).*
 
 ## "When can I start?"
 
@@ -57,7 +57,7 @@ You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-
 
 ## Ending Remarks
 
-I am doing this course for the benefit of **YOU**! If you have any feedback, please let me know. You can message me on Twitter, on Discord, on YouTube, anything. I am not smarter than any of you. If you have suggestions, I am sure they are great and I'd love to hear them.
+If you have any feedback, please let me know. You can message me on Twitter, on Discord, on YouTube, anything. I am not smarter than any of you. If you have suggestions, I am sure they are great and I'd love to hear them.
 
 Feel free to reach out to me on any of these platforms:
 
