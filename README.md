@@ -4,7 +4,7 @@
 
 If you're seeing this message, you have arrived at the very first part of the Zero to Jacob course. WELCOME! My name is Jacob Tucker, and I will give a brief introduction of the course and what you can expect.
 
-# *Want to watch a Welcome Video instead of reading this text? You can watch <a href="https://www.youtube.com/watch?v=XkZz6B7Yimc" target="_blank">here</a>.*
+# *Want to watch a Welcome Video instead of reading this text? You can watch <a href="https://www.youtube.com/watch?v=JBtmLjZBR6M" target="_blank">here</a>.*
 
 ## "What will this course look like?"
 
