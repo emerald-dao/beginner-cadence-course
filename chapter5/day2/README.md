@@ -80,13 +80,13 @@ pub contract interface IHelloWorld {
 ```
 
 We still didn't implement the function, but we enforced a restriction: the account that implements this contract interface MUST do the following:
-1. Define a `greeting` String
+1. Define a `greeting` string
 2. Define a `changeGreeting` function
-3. Furthermore, becaue of the post condition, they must update the `greeting` appropriately to be the `newGreeting` passed in.
+3. Furthermore, because of the post condition, they must update the `greeting` appropriately to be the `newGreeting` passed in.
 
 This is a great way for us to make sure people are following our rules.
 
-### Resource interfaces in Contract Interfaces
+### Resource Interfaces in Contract Interfaces
 
 Let's get fancy, shall we? Let's add a resource and a resource interface to our contract interface:
 
@@ -101,7 +101,7 @@ pub contract interface IHelloWorld {
   }
 
   pub resource interface IGreeting {
-    pub var favoriteFood: String
+    pub var favouriteFood: String
   }
 
   pub resource Greeting: IGreeting {
@@ -110,7 +110,7 @@ pub contract interface IHelloWorld {
 }
 ```
 
-Lookey here! We have defined a resource named `Greeting` and a resource interface named `IGreeting` inside our contract interface. What this is saying is: "Whatever contract implements this contract interface, it MUST have a `Greeting` resource that specifically implements `IHelloWorld.IGreeting`. 
+Lookey here! We have defined a resource named `Greeting` and a resource interface named `IGreeting` inside our contract interface. What this is saying is: "Whatever contract implements this contract interface, it MUST have a `Greeting` resource that specifically implements `IHelloWorld.IGreeting`."
 
 This is very important to understand. If we define our own contract that defines it's own `IGreeting`, like so:
 
@@ -170,13 +170,15 @@ pub contract HelloWorld: IHelloWorld {
 
 Now we're all good :)
 
-**Note that even if a contract interface defines a resource interface, the implementing contract does NOT have to implement the resource interface as well. That can stay in the contract interface, like we did above.**
+**Note: Even if a contract interface defines a resource interface, the implementing contract does NOT have to implement the resource interface as well. That can stay in the contract interface, like we did above.**
 
 ## Contract Interfaces as "Standards"
 
+<img src="../images/nftpicforcourse.png" />
+
 Contract interfaces allow you to specify some requirements on an implementing contract, and additionally, create "standards" on what certain contracts look like. 
 
-Wouldn't it be helpful if we could rationalize that a contract was a "NFT Contract" without actually reading it's code? Well, it already exists! The NonFungibleToken contract interface (otherwise known as the NonFungibleToken standard) is a contract interface that defines what NFT Contracts must have to be deemed "NFT Contracts." This is helpful so clients like a Marketplace DApp can understand what they're looking at, and most importantly, **not have to implement different functionality for every NFT contract.**
+Wouldn't it be helpful if we could rationalize that a contract was an "NFT Contract" without actually reading it's code? Well, it already exists! The NonFungibleToken contract interface (otherwise known as the NonFungibleToken standard) is a contract interface that defines what NFT Contracts must have to be deemed "NFT Contracts." This is helpful so clients like a Marketplace DApp can understand what they're looking at, and most importantly, **not have to implement different functionality for every NFT contract.**
 
 Standardizing is incredibly benefitial so that a client using multiple contracts can have a singular way of interacting with all of those contracts. For example, all NFT contracts have a resource called Collection that has a `deposit` and `withdraw` function. This way, even if the client DApp is interacting with 100 NFT contracts, it only has to import the NonFungibleToken standard to call those functions, since it's all under one generic type. 
 
@@ -190,12 +192,13 @@ Coincidentally, contract interfaces are (in my opinion) the most heavily debated
 
 ## Quests
 
-1. Explain why standards can be benefitial to the Flow ecosystem
+1. Explain why standards can be benefitial to the Flow ecosystem.
 
 2. What is YOUR favourite food?
 
 3. Please fix this code (Hint: There are two things wrong):
 
+The contract interface:
 ```swift
 pub contract interface ITest {
   pub var number: Int
@@ -219,6 +222,7 @@ pub contract interface ITest {
 }
 ```
 
+The implementing contract:
 ```swift
 pub contract Test {
   pub var number: Int

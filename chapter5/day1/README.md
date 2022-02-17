@@ -10,7 +10,7 @@ Events: https://www.youtube.com/watch?v=xRHG6Kgkxpg
 
 ## Pre/Post Conditions
 
-So far, we have only learned of 1 way to abort a program if something isn't correct: the `panic` keyword. `panic` is a keyword that completely reverts what happened in the code it's running if it's called, and it sends a message along with it. Here's an example:
+So far, we have only learned of 1 way to abort a program if something isn't correct: the `panic` keyword. `panic` is a keyword that completely reverts what happened in the code if it's called, and it sends a message along with it. Here's an example:
 
 ```swift
 pub fun main(): String {
@@ -24,7 +24,7 @@ pub fun main(): String {
 }
 ```
 
-This is kind of a silly example, but you get the point. It will never `return` because it will always panic.
+This is kind of a silly example, but you get the point. It will never return because it will always panic.
 
 Often times, we want to handle errors in a clearer way, and also implement a concept called "fail fast." On the blockchain, operations are very expensive. That is why transactions cost expensive fees. "Fail fast" is a way of programming so that your code fails as soon as possible if something is wrong, so that you don't waste further execution time for no reason.
 
@@ -45,7 +45,7 @@ pub contract Test {
 
 In the example above, we define a "pre-condition" on the function `logName`. It says "if the length of the name is not greater than 0, `panic` with this message: 'This name is too short.'"
 
-Pre-conditions and post-conditions **must** be defined as the first thing of a function, you can't put them in the middle or at the end. In order for a pre/post-condition to pass, the code written must be `true`, or else it will `panic` with the string after.
+Pre-conditions and post-conditions **must** be defined as the first thing of a function, you can't put them in the middle or at the end. In order for a pre/post-condition to pass, the condition must be `true`, or else it will `panic` with the string after.
 
 Post-conditions are the same thing, except they are checked at the end of a function (they still have to be defined at the start. I know, it's confusing, but you'll get used to it):
 
@@ -104,7 +104,7 @@ pub contract Test {
 
     pub fun updateNumber() {
       post {
-        self.number == 5: "Will always panic!" // when this panics after the function is run, `self.number` gets reset back to 0
+        self.number == 1000: "Will always panic!" // when this panics after the function is run, `self.number` gets reset back to 0
       }
       self.number = self.number + 1
     }
@@ -161,7 +161,7 @@ That's all for today! I hope you enjoyed the shorter lesson.
 
 1. Describe what an event is, and why it might be useful to a client.
 
-2. Define a contract with an event in it, and emit the event somewhere else in the contract indicating that it happened.
+2. Deploy a contract with an event in it, and emit the event somewhere else in the contract indicating that it happened.
 
 3. Using the contract in step 2), add some pre conditions and post conditions to your contract to get used to writing them out.
 

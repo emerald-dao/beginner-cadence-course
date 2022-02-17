@@ -1,6 +1,6 @@
 # Chapter 5 Day 3 - Creating an NFT Contract: Implementing the NonFungibleToken Standard (Part 3/3)
 
-Let's finish our CryptoPoops NFT Contract from Chapter 4 using our new knowledge of the NonFungibleToken standards.
+Let's finish our CryptoPoops NFT Contract from Chapter 4 using our new knowledge of the NonFungibleToken standard.
 
 We will spend this entire day just reforming our NFT Contract to fit the standard, found here: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc
 
@@ -89,6 +89,7 @@ pub contract interface NonFungibleToken {
 }
 ```
 
+<img src="../images/homealone.jpg" />
 Wow. I'm scared.
 
 The good news is that we have actually implemented most of it. Believe it or not, I am such a good teacher that I had us implement 75% of this contract without you even knowing it. Damn, I'm good! Let's look at the contract we wrote so far:
@@ -123,12 +124,13 @@ pub contract CryptoPoops {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -154,24 +156,24 @@ pub contract CryptoPoops {
 
   pub resource Minter {
 
-    pub fun createNFT(): @NFT {
-      return <- create NFT()
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
     }
 
-    pub fun createMinter(name: String, favouriteFood: String, luckyNumber: Int): @Minter {
-      return <- create Minter(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
     }
 
   }
 
   init() {
     self.totalSupply = 0
-    self.account.save(<- create Minter(), /storage/Minter)
+    self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
 ```
 
-Not bad, right!? I think we're kicking butt. Remember, in order to implement a contract interface, we have to use the `: {contract interface}`syntax, so let's do that here...
+Not bad, right!? I think we're kicking butt. Remember, in order to implement a contract interface, we have to use the `: {contract interface}` syntax, so let's do that here...
 
 ```swift
 import NonFungibleToken from 0x02
@@ -268,10 +270,11 @@ pub resource interface CollectionPublic {
 }
 ```
 
-It seems like a lot of code, right? The good news is that, if you remember from the last day, we don't have to re-implement resource interfaces inside our own contract that uses the standard. These interfaces are only used so that our `Collection` resource can implement them.
+It seems like a lot of code, right? The good news is that, if you remember from the last day, we don't have to re-implement resource interfaces inside our own contract that uses the standard. These interfaces are only defined so that our `Collection` resource can implement them.
 
 Before we make our `Collection` implement these resource interfaces, I will explain what they do:
 
+### Provider
 First is the `Provider`. It makes sure that anything that implements it has a `withdraw` function that takes in a `withdrawID` and returns an `@NFT`. **IMPORTANT: Note the type of the return value: `@NFT`.** What NFT resource is that talking about? Is it talking about the `NFT` type inside our `CryptoPoops` contract? No! It's referring to the type inside the `NonFungibleToken` contract interface. Thus, when we implement these functions themselves, we have to make sure we put `@NonFungibleToken.NFT`, and not just `@NFT`. We talked about this in the last chapter as well.
 
 So let's implement the `Provider` now on our Collection:
@@ -288,9 +291,12 @@ pub contract CryptoPoops: NonFungibleToken {
     // Notice that the return type is now `@NonFungibleToken.NFT`, 
     // NOT just `@NFT`
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
+
+    // ...other stuff...
 
     init() {
       self.ownedNFTs <- {}
@@ -305,6 +311,7 @@ pub contract CryptoPoops: NonFungibleToken {
 }
 ```
 
+### Receiver
 Cool! What about the `Receiver` contract interface? It says anything that implements it needs to have a `deposit` function that takes in a `token` parameter that is of `@NonFungibleToken.NFT` type. Let's add `NonFungibleToken.Receiver` to our Collection below:
 
 ```swift
@@ -317,15 +324,18 @@ pub contract CryptoPoops: NonFungibleToken {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     // Notice that the `token` parameter type is now 
     // `@NonFungibleToken.NFT`, NOT just `@NFT`
     pub fun deposit(token: @NonFungibleToken.NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
+
+    // ...other stuff...
 
     init() {
       self.ownedNFTs <- {}
@@ -357,21 +367,23 @@ pub contract CryptoPoops: NonFungibleToken {
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-      let token <- self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
             ?? panic("This NFT does not exist in this Collection.")
 
       // 1. emit the `Withdraw` event
-      emit Withdraw(id: token.id, from: self.owner?.address)
+      emit Withdraw(id: nft.id, from: self.owner?.address)
 
-      return <- token
+      return <- nft
     }
 
     pub fun deposit(token: @NonFungibleToken.NFT) {
       // 2. emit the `Deposit` event
       emit Deposit(id: token.id, to: self.owner?.address)
 
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
+
+    // ...other stuff...
 
     init() {
       self.ownedNFTs <- {}
@@ -388,7 +400,9 @@ pub contract CryptoPoops: NonFungibleToken {
 
 Amazing. There's one question you may have:
 
-**What is `self.owner?.address`** - `self.owner` is a piece of code you can use inside any resource that an account is holding. Since a Collection resource will live inside an account's storage, we can use `self.owner` to get the current account that is holding that specific Collection inside their storage. This is super helpful for identifying who is doing an action, especially in the case where we want to communicate who we're depositing to and withdrawing from.
+**What is `self.owner?.address`?**
+
+ `self.owner` is a piece of code you can use inside any resource that an account is holding. Since a Collection resource will live inside an account's storage, we can use `self.owner` to get the current account that is holding that specific Collection inside their storage. This is super helpful for identifying who is doing an action, especially in the case where we want to communicate who we're depositing to and withdrawing from. `self.owner?.address` is merely the address of the owner.
 
 Next, think about what the `@NonFungibleToken.NFT` type is. It's a more generic type than just `@NFT`. Technically, literally any NFT on Flow all fit the `@NonFungibleToken.NFT` type. This has pros and cons, but one definite con is that now, anyone can deposit their own NFT type into our Collection. For example, if my friend defines a contract called `BoredApes`, they can technically deposit that into our Collection since it has an `@NonFungibleToken.NFT` type. Thus, we have to add something called a "force cast" to our `deposit` function:
 
@@ -401,10 +415,10 @@ pub contract CryptoPoops: NonFungibleToken {
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-      let token <- self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
             ?? panic("This NFT does not exist in this Collection.")
-      emit Withdraw(id: token.id, from: self.owner?.address)
-      return <- token
+      emit Withdraw(id: nft.id, from: self.owner?.address)
+      return <- nft
     }
 
     pub fun deposit(token: @NonFungibleToken.NFT) {
@@ -414,8 +428,10 @@ pub contract CryptoPoops: NonFungibleToken {
       // `nft` variable. If it's not, panic."
       let nft <- token as! @NFT
       emit Deposit(id: nft.id, to: self.owner?.address)
-      self.ownedNFTs[nft.id] <- nft
+      self.ownedNFTs[nft.id] <-! nft
     }
+
+    // ...other stuff...
 
     init() {
       self.ownedNFTs <- {}
@@ -430,8 +446,10 @@ pub contract CryptoPoops: NonFungibleToken {
 }
 ```
 
-You'll see we use the "force cast" operator `as!`. In the code above, `@NonFungibleToken.NFT` is a more generic type than `@NFT`. **So, we have to use `as!`, which basically "downcasts" our generic type (`@NonFungibleToken.NFT`) to be a more specific type `@NFT`.** In this case, `let nft <- token as! @NFT` says: "if `token` is an `@NFT` type, "downcast" it and move it to the `nft` variable. If it's not, panic." Now we can be sure that we can only deposit CryptoPoops into our Collection.
+You'll see we use the "force cast" operator `as!`. In the code above, `@NonFungibleToken.NFT` is a more generic type than `@NFT`. **So, we have to use `as!`, which basically "downcasts" our generic type (`@NonFungibleToken.NFT`) to be a more specific type (`@NFT`).** In this case, `let nft <- token as! @NFT` says: "if `token` is an `@NFT` type, "downcast" it and move it to the `nft` variable. If it's not, panic." Now we can be sure that we can only deposit CryptoPoops into our Collection.
 
+
+### CollectionPublic
 The last resource interface we need to implement is `CollectionPublic`, which looks like this:
 
 ```swift
@@ -454,16 +472,16 @@ pub contract CryptoPoops: NonFungibleToken {
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-      let token <- self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
             ?? panic("This NFT does not exist in this Collection.")
-      emit Withdraw(id: token.id, from: self.owner?.address)
-      return <- token
+      emit Withdraw(id: nft.id, from: self.owner?.address)
+      return <- nft
     }
 
     pub fun deposit(token: @NonFungibleToken.NFT) {
       let nft <- token as! @NFT
       emit Deposit(id: nft.id, to: self.owner?.address)
-      self.ownedNFTs[nft.id] <- nft
+      self.ownedNFTs[nft.id] <-! nft
     }
 
     // Added this function. We already did this before.
@@ -525,6 +543,39 @@ pub contract CryptoPoops: NonFungibleToken {
 }
 ```
 
+Now that we have correctly implemented the standard, lets add back our minting functionality as well:
+
+```swift
+import NonFungibleToken from 0x02
+pub contract CryptoPoops: NonFungibleToken {
+  
+  // ...other stuff...
+
+   // Define a Minter resource
+   // so we can manage how
+   // NFTs are created
+   pub resource Minter {
+
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }
+
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
+    }
+
+  }
+
+  init() {
+    self.totalSupply = 0
+    emit ContractInitialized()
+
+    // Save the minter to account storage:
+    self.account.save(<- create Minter(), to: /storage/Minter)
+  }
+}
+```
+
 AAAAAAND WE'RE DONE!!!!!!!!!!!!!!!! Let's look at the whole contract now:
 
 ```swift
@@ -556,16 +607,16 @@ pub contract CryptoPoops: NonFungibleToken {
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-      let token <- self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
             ?? panic("This NFT does not exist in this Collection.")
-      emit Withdraw(id: token.id, from: self.owner?.address)
-      return <- token
+      emit Withdraw(id: nft.id, from: self.owner?.address)
+      return <- nft
     }
 
     pub fun deposit(token: @NonFungibleToken.NFT) {
       let nft <- token as! @NFT
       emit Deposit(id: nft.id, to: self.owner?.address)
-      self.ownedNFTs[nft.id] <- nft
+      self.ownedNFTs[nft.id] <-! nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -589,9 +640,22 @@ pub contract CryptoPoops: NonFungibleToken {
     return <- create Collection()
   }
 
+  pub resource Minter {
+
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }
+
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
+    }
+
+  }
+
   init() {
     self.totalSupply = 0
     emit ContractInitialized()
+    self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
 ```
@@ -611,7 +675,9 @@ pub fun borrowAuthNFT(id: UInt64): &NFT {
 }
 ```
 
-See what we did? We got an authorized reference to the `&NonFungibleToken.NFT` type by putting `auth` in front of it, and then "downcasted" the type using `as!` to an `&NFT` type. If it wasn't an `&NFT` type, it would panic, but we know it will always work since in our deposit function we make sure we're storing `@NFT` types.
+See what we did? We got an authorized reference to the `&NonFungibleToken.NFT` type by putting `auth` in front of it, and then "downcasted" the type using `as!` to an `&NFT` type. When using references, if you want to downcast, you **must** have an `auth` reference. 
+
+If `ref` wasn't an `&NFT` type, it would panic, but we know it will always work since in our deposit function we make sure we're storing `@NFT` types.
 
 Yaaaaay! Now we can read our NFTs metadata with the `borrowAuthNFT` function. But there's one more problem: `borrowAuthNFT` isn't accessible to the public, because it's not inside `NonFungibleToken.CollectionPublic`. You will solve this problem in your quests.
 
@@ -625,9 +691,9 @@ Additionally, you have officially completed the first main section of the Flow-Z
 
 1. What does "force casting" with `as!` do? Why is it useful in our Collection?
 
-2. What does `auth` do?
+2. What does `auth` do? When do we use it?
 
-3. This last quest will be your most diffcult yet. Take this contract:
+3. This last quest will be your most difficult yet. Take this contract:
 
 ```swift
 import NonFungibleToken from 0x02
@@ -658,16 +724,16 @@ pub contract CryptoPoops: NonFungibleToken {
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-      let token <- self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
             ?? panic("This NFT does not exist in this Collection.")
-      emit Withdraw(id: token.id, from: self.owner?.address)
-      return <- token
+      emit Withdraw(id: nft.id, from: self.owner?.address)
+      return <- nft
     }
 
     pub fun deposit(token: @NonFungibleToken.NFT) {
       let nft <- token as! @NFT
       emit Deposit(id: nft.id, to: self.owner?.address)
-      self.ownedNFTs[nft.id] <- nft
+      self.ownedNFTs[nft.id] <-! nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -691,11 +757,26 @@ pub contract CryptoPoops: NonFungibleToken {
     return <- create Collection()
   }
 
+  pub resource Minter {
+
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }
+
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
+    }
+
+  }
+
   init() {
     self.totalSupply = 0
     emit ContractInitialized()
+    self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
 ```
 
 and add a function called `borrowAuthNFT` just like we did in the section called "The Problem" above. Then, find a way to make it publically accessible to other people so they can read our NFT's metadata. Then, run a script to display the NFTs metadata for a certain `id`.
+
+You will have to write all the transactions to set up the accounts, mint the NFTs, and then the scripts to read the NFT's metadata. We have done most of this in the chapters up to this point, so you can look for help there :)
