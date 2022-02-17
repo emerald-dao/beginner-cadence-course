@@ -1,6 +1,6 @@
 # Chapter 3 Day 2 - Resources in Dictionaries & Arrays
 
-Hellooooooo peoples. Today we will be taking our understanding of Resources and applying it to dictionaries, something we covered in Chapter 2. On their own they may be somewhat easy to handle, but put together and it gets a bit complicated. 
+Hellooooooo peoples. Today we will be taking our understanding of Resources and applying it to arrays and dictionaries, something we covered in Chapter 2. On their own they may be somewhat easy to handle, but you put them together and it gets a bit complicated. 
 
 ## Video
 
@@ -59,6 +59,7 @@ pub contract Test {
 Notice the type of `arrayOfGreetings`: `@[Greeting]`. We learned yesterday that resources always have the symbol `@` in front of it. This also applies to array types that have resources inside of them, you must tell Cadence it is an array of resources by putting the `@` in front of it. And you must make sure the `@` is outside the brackets, not inside. 
 
 `[@Greeting]` - this is wrong
+
 `@[Greeting]` - this is correct
 
 Also notice that inside the `init` function, we initialize it with the `<-` operator, not `=`. Once again, when dealing with resources (whether they are in arrays, dictionaries, or on their own), we must use `<-`.
@@ -186,7 +187,7 @@ pub contract Test {
 
 In the `addGreeting` function, we first get the `key` by accessing the `message` inside our `greeting`. We then add to the dictionary by "force moving" the `greeting` into the `dictionaryOfGreetings` dictionary at the specific `key`.
 
-The force-move operator `<-!` basically means: "If there is already a value at the destination, panic and abort the program." In simpler terms, this means "if a resource is already mapped to that key, just undo everything and quit." However, if nothing is mapped to that key, it will move the resource to that location correctly.
+The force-move operator `<-!` basically means: "If there is already a value at the destination, panic and abort the program. Otherwise, put it there."
 
 #### #2 - Complicated, but Handle Duplicates
 

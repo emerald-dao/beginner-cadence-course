@@ -28,7 +28,7 @@ pub contract Test {
         }
     }
 
-    pub fun getRef(key: String): &Greeting {
+    pub fun getReference(key: String): &Greeting {
         return &self.dictionaryOfGreetings[key] as &Greeting
     }
 
@@ -41,13 +41,13 @@ pub contract Test {
 }
 ```
 
-In the above example, you can see that `getRef` returns a `&Greeting` type, which simply means "A reference to the `Greeting` type." Inside the function, a few things are happening:
+In the above example, you can see that `getReference` returns a `&Greeting` type, which simply means "A reference to the `@Greeting` type." Inside the function, a few things are happening:
 1. We first get a reference of the value at `key` by doing `&self.dictionaryOfGreetings[key]`. 
 2. We "type cast" the reference by doing `as &Greeting`
 
-Notice that if we had forgotten the `as &Greeting`, Cadence would yell at us and say "expected casting expression." This is because in Cadence, **you have to type cast when getting a reference**.
+Notice that if we had forgotten the `as &Greeting`, Cadence would yell at us and say "expected casting expression." This is because in Cadence, **you have to type cast when getting a reference**. Type casting is when you tell Cadence the type you're getting the reference as, which is what `as &Greeting` is doing. It's saying "get this reference that is a &Greeting reference." If it's not, we will abort the program.
 
-Now, you might be wondering "doesn't a dictionary return an optional? Why aren't we unwrapping `&self.dictionaryOfGreetings[key]` with a `!` symbol?" The truth is, we don't have to. If there is no value at the `key`, the optional will fail to type case to a `&Greeting` type. So we can ignore the optional case for now, although we'll talk a lot more about this later.
+Now, you might be wondering "doesn't a dictionary return an optional? Why aren't we unwrapping `&self.dictionaryOfGreetings[key]` with a `!` symbol?" The truth is, we don't have to. If there is no value at the `key`, the optional will fail to type case to a `&Greeting` type. So we can ignore the optional case for now.
 
 Now that we can get a reference, we can get the reference in a transaction or script like so:
 
@@ -55,7 +55,7 @@ Now that we can get a reference, we can get the reference in a transaction or sc
 import Test from 0x01
 
 pub fun main(): String {
-  let ref = Test.getRef(key: "Hello!")
+  let ref = Test.getReference(key: "Hello!")
   return ref.language // returns "English"
 }
 ```

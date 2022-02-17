@@ -18,7 +18,7 @@ Let's look at some code to figure out what I mean.
 
 ## Using Interfaces as Requirements
 
-In this lesson, I will only be using resource interfaces, however, **structs interfaces are exactly the same thing.** Just keep that in mind.
+In this lesson, I will only be using resource interfaces, however, **struct interfaces are exactly the same thing, just for structs. Lol.** Just keep that in mind.
 
 In Cadence, resource/struct interfaces are essentially "requirements," or ways for you to expose data from a resource/struct. On their own, interfaces don't do anything. They just sit there. But when they're *applied* to a resource/struct, that's when they do something.
 
@@ -149,6 +149,8 @@ So, why does the `log` in `yesInterface` fail? Well, it's because `ITest` does N
 
 ## Complex Example
 
+Here's a more complex example that also includes functions:
+
 ```swift
 pub contract Stuff {
 
@@ -238,13 +240,13 @@ Notice that when I added the function to `ITest`, I only put the function defini
 
 ## Conclusion
 
-Great job in getting through todays content. Resource interfaces will be extremely important when we start talking about account storage in chapter 4.
+Great job in getting through today's content. Resource interfaces will be extremely important when we start talking about account storage in Chapter 4.
 
 ## Quests
 
-1. Explain, in your own words, the 2 things resource interfaces can be used for (we went over both in todays content)
+1. Explain, in your own words, the 2 things resource interfaces can be used for (we went over both in today's content)
 
-2. Define your own contract. Make your own resource interface and a resource that implements the interface. Create 2 functions. In the 1st function, show an example of not restricting the type of the resource and accessing its content. In the 2nd function, show an example of restricting the type of the resource and NOt being able to access its content.
+2. Define your own contract. Make your own resource interface and a resource that implements the interface. Create 2 functions. In the 1st function, show an example of not restricting the type of the resource and accessing its content. In the 2nd function, show an example of restricting the type of the resource and NOT being able to access its content.
 
 3. How would we fix this code? 
 

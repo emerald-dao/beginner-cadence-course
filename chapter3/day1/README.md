@@ -22,7 +22,7 @@ pub resource Greeting {
 }
 ```
 
-Doesn't this look very similar to a Struct? That's because, by the way it's initialized in code, it is basically the same thing. Here, the resource `Greeting` is a container that stores a message, which is a `String` type. But there are many, many differences behind the scenes.
+Doesn't this look very similar to a Struct? In code, they do actually look pretty similar. Here, the resource `Greeting` is a container that stores a message, which is a `String` type. But there are many, many differences behind the scenes.
 
 ### Resources vs. Structs
 
@@ -56,7 +56,7 @@ There are so many important things happening here, so let's look at them in step
 
 1. We initialize a resource type called `Greeting` that contains a `message` field. You know this already.
 2. We define a function named `createGreeting` that returns a `Greeting` resource. Note that resources in Cadence use the `@` symbol in front of their type to say, "this is a resource."
-3. We create a new `Greeting` type with the `create` keyword and assign it to `myGreeting` using the `<-` "move" operator. In Cadence, you cannot simply use the `=` put a resource somewhere. You MUST use the `<-` move operator to explicity "move" the resource around.
+3. We create a new `Greeting` type with the `create` keyword and assign it to `myGreeting` using the `<-` "move" operator. In Cadence, you cannot simply use the `=` to put a resource somewhere. You MUST use the `<-` "move operator" to explicity "move" the resource around.
 4. We return the new `Greeting` by moving the resource again to the return value.
 
 Okay, this is cool. But what if we *want* to destroy a resource? Well, we can do that pretty easily:
@@ -130,7 +130,7 @@ pub contract Test {
 
 So, why is this useful? Isn't this just super fricken annoying? No, haha. This is super useful actually. Let's say we want to give someone an NFT worth billions of dollars. Don't we want to make sure we don't lose that NFT? Like *really sure*? We can do this in Cadence because it's *so so so so so* hard to lose our Resource unless we LITERALLY tell it to destroy. This plays into the overall theme in Cadence: **Cadence makes it very hard for the developer to mess up. Which is good.**
 
-Here's a summary of the difference between them:
+Here's a summary of the differences between them:
 - Structs are containers of data. That's it.
 - Resources are extremely secure, hard to lose, impossible to copy, well kept-track-of containers of data that cannot be lost.
 
@@ -138,7 +138,7 @@ Here's a summary of the difference between them:
 
 Here are a few notes to learn for when you're actually coding:
 
-- You can only make a new resource with the `create` keyword. The `create` keyword can only ever be used inside the contract. This means you, as the developer, can control when they are made. This is not true for structs.
+- You can only make a new resource with the `create` keyword. The `create` keyword can only ever be used inside the contract. This means you, as the developer, can control when they are made. This is not true for structs, since structs can be created outside the contract.
 - You have to use the `@` symbol in front of a resource's type, like so: `@Greeting`.
 - You use the `<-` symbol to move a resource around.
 - You use the `destroy` keyword to, well, destroy a resource.

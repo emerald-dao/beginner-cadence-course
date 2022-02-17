@@ -17,7 +17,7 @@ Previously, in all of our lessons, we declared all of our variables and function
 pub let x: Bool
 
 pub fun jacobIsAwesome(): Bool {
-  return true
+  return true // obviously
 }
 ```
 
@@ -42,7 +42,7 @@ This means we can access our thing from **anywhere**. Inside the contract, in tr
 This means we can only access our thing from where it is defined and inside of that.
 
 Ex. 
-```cadence
+```swift
 pub contract Stuff {
 
   pub struct TestStruct {
@@ -67,7 +67,7 @@ pub contract Stuff {
 This means we can access our thing anywhere inside the contract that it is defined.
 
 Ex. 
-```cadence
+```swift
 pub contract TestContract {
 
   // The "containing contract" for 'x' is here...
@@ -107,9 +107,9 @@ Ex.
 pub(set) var x: String
 ```
 
-Write Scope - **All**
+Write Scope - **All Scope**
 
-Read Scope - **All**
+Read Scope - **All Scope**
 
 ### pub/access(all)
 
@@ -126,7 +126,7 @@ access(all) fun testFuncTwo() {}
 
 Write Scope - Current & Inner
 
-Read Scope - **All**
+Read Scope - **All Scope**
 
 ### access(account)
 
@@ -179,7 +179,7 @@ Read Scope - Current & Inner
 
 <img src="../images/pleasenote.jpeg" />
 
-After looking at our access modifiers, we must make an extremely important distinction: **Even though some access modifiers like `priv` make fields unreadable in your Cadence code, this does not mean people cannot read this info. *Everything on the blockchain is public*, regardless of its read scope.** Access modifiers simply let you determine what is readable/writeable in the context of your Cadence code. Never store private information on the blockchain!
+After looking at our access modifiers, we must make an extremely important distinction: **Even though some access modifiers like `priv` make fields unreadable in your Cadence code, this does not mean people cannot read this info by looking at the blockchain. *Everything on the blockchain is public*, regardless of its read scope.** Access modifiers simply let you determine what is readable/writeable in the context of your Cadence code. Never store private information on the blockchain!
 
 ## Conclusion
 
@@ -266,7 +266,7 @@ access(all) contract SomeContract {
 
 This is a script that imports the contract above:
 ```swift
-import SomeContract from ...
+import SomeContract from 0x01
 
 pub fun main() {
   /**************/
