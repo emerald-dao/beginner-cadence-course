@@ -6,14 +6,14 @@ In yesterday's chapter, we talked about the `/storage/` path of an account's sto
 
 ## Video
 
-You can watch this video from 14:45 to the end (we watched the first half in the last chapter): https://www.youtube.com/watch?v=01zvWVoDKmU
+You can watch this video from 14:45 to the end (we watched the first half in the last day): https://www.youtube.com/watch?v=01zvWVoDKmU
 
 ## Review from Yesterday
 
 <img src="../images/accountstorage1.PNG" />
 
 Quick review:
-1. `/storage/` is only accessible to the account owner. We use `.save()` and `.load()` functions to interact with it.
+1. `/storage/` is only accessible to the account owner. We use `.save()`, `.load()` and `.borrow()` functions to interact with it.
 2. `/public/` is available to everyone.
 3. `/private/` is available to the account owner and people who the owner gives access to.
 
@@ -91,7 +91,7 @@ The cool part is that you can make your `/public/` or `/private/` capabilities *
 
 ## `PublicAccount` vs. `AuthAccount`
 
-We already learned that an `AuthAccount` allows you to do anything you want with an account. On the other hand, `PublicAccount` allows anyone to read from it. You can get a `PublicAccount` type by using the `getAccount` function like so:
+We already learned that an `AuthAccount` allows you to do anything you want with an account. On the other hand, `PublicAccount` allows anyone to read from it, but only the things that the account owner exposes. You can get a `PublicAccount` type by using the `getAccount` function like so:
 
 ```swift
 let account: PublicAccount = getAccount(0x1)
@@ -164,7 +164,7 @@ pub fun main(address: Address) {
 
   let testResource: &Stuff.Test = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
 
-  return testResource.changeName(newName: "Sarah") // THIS IS A SECURITY PROBLEM!!!!!!!!!
+  testResource.changeName(newName: "Sarah") // THIS IS A SECURITY PROBLEM!!!!!!!!!
 }
 ```
 
@@ -209,6 +209,9 @@ Awesome! Now `Test` implements a resource interface named `ITest` that only has 
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
+    // Save the resource to account storage
+    signer.save(<- Stuff.createTest(), to: /storage/MyTestResource)
+
     // See what I did here? I only linked `&Stuff.Test{Stuff.ITest}`, NOT `&Stuff.Test`.
     // Now the public only has access to the things in `Stuff.ITest`.
     signer.link<&Stuff.Test{Stuff.ITest}>(/public/MyTestResource, target: /storage/MyTestResource)
@@ -232,11 +235,13 @@ pub fun main(address: Address) {
   // specify the right type when you got the capability."
   let testResource: &Stuff.Test = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
 
-  return testResource.changeName(newName: "Sarah")
+  testResource.changeName(newName: "Sarah")
 }
 ```
 
 Now, we get an error! Haha, get recked hacker! You can't borrow the capability because you tried to borrow a capability to `&Stuff.Test`, and I didn't make that available to you. I only made `&Stuff.Test{Stuff.ITest}` available. ;)
+
+What if we try this?
 
 ```swift
 import Stuff from 0x01
@@ -248,11 +253,11 @@ pub fun main(address: Address) {
   let testResource: &Stuff.Test{Stuff.ITest} = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
 
   // ERROR: "Member of restricted type is not accessible: changeName"
-  return testResource.changeName(newName: "Sarah")
+  testResource.changeName(newName: "Sarah")
 }
 ```
 
-And again! Get recked scammer. You can't call `changeName` because it's not in `&Stuff.Test{Stuff.ITest}`.
+And again! Get recked scammer. Even though you borrowed the right type, you can't call `changeName` because it's not accessible through the `&Stuff.Test{Stuff.ITest}` type.
 
 But, this will work:
 
@@ -273,13 +278,15 @@ Yaaaaaaay! Exactly like we wanted :)
 
 ## Conclusion
 
-Holy cow. That was a lot. The good news? You have learned most of Cadence. And even better, you have learned all the complicated stuff. I am so, so proud of you.
+Holy cow. That was a lot. The good news? You have learned an insane amount about Cadence so far. And even better, you have learned all the complicated stuff. I am so, so proud of you.
 
 I also intentionally didn't go into depth on `/private/`. This is because, in practice, you will rarely ever use `/private/`, and I didn't want to shove too much info into your head. 
 
 And, well... I'm hungry. So I'm going to eat food. Maybe I'll add it to this chapter later ;)
 
 ## Quests
+
+Please answer in the language of your choice.
 
 1. What does `.link()` do?
 

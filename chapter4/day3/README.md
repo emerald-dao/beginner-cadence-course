@@ -71,7 +71,7 @@ pub fun main(address: Address): UInt64 {
               ?? panic("An NFT does not exist here.")
   
   return nft.id // 3525 (some random number, because it's the `uuid` of 
-                // the resource. This will be different for you.)
+                // the resource. This will probably be different for you.)
 }
 ```
 
@@ -108,6 +108,8 @@ This works, but it's not great. If we wanted to have a ton of NFTs, we would hav
 
 The second problem is that nobody can give us NFTs. Since only the account owner can store an NFT in their account storage directly, no one can mint us an NFT. That's not good either.
 
+### Collections
+
 The way to fix both of these problems is to create a "Collection," or a container that wraps all of our NFTs into one. Then, we can store the Collection at 1 storage path, and also allow others to "deposit" into that Collection.
 
 ```swift
@@ -135,7 +137,7 @@ pub contract CryptoPoops {
     // Allows us to deposit an NFT
     // to our Collection
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     // Allows us to withdraw an NFT
@@ -143,8 +145,9 @@ pub contract CryptoPoops {
     //
     // If the NFT does not exist, it panics
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     // Returns an array of all the NFT ids in our Collection
@@ -232,12 +235,13 @@ pub contract CryptoPoops {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -279,7 +283,8 @@ transaction() {
 }
 ```
 
-Now this... this puts a smile on my face. Let's experiment with depositing and withdrawing an NFT to from our account.
+<img src="../images/thanos.png" />
+Now this... does put a smile on my face. Let's experiment with depositing and withdrawing an NFT to from our account.
 
 ```swift
 import CryptoPoops from 0x01
@@ -356,11 +361,13 @@ pub fun main(address: Address): [UInt64] {
 }
 ```
 
+Boom. Done.
+
 ## Conclusion
 
 Collections are not just for NFTs. You will see the concept of a Collection being used eeeeverrryyywhere in the Flow ecosystem. If you ever want users to store a resource, but they may have multiple of that resource, you will almost always use a Collection to wrap around them so you can store them all in one place. It's a very important concept to understand.
 
-And with that, give yourself a round of applause. You implemented a functioning NFT contract! And even more important: You actually implemented a REAL CONTRACT. You're getting good, my friend! Heck, you may catch up to me soon. Just kidding, that's not possible. I'm so much better than you.
+And with that, give yourself a round of applause. You implemented a functioning NFT contract! You're getting good, my friend! Heck, you may catch up to me soon. Just kidding, that's not possible. I'm so much better than you.
 
 ## Quests
 
@@ -369,4 +376,5 @@ And with that, give yourself a round of applause. You implemented a functioning 
 2. Brainstorm some extra things we may want to add to this contract. Think about what might be problematic with this contract and how we could fix it.
 
 Idea #1: Do we really want everyone to be able to mint an NFT? (insert thinking emoji here). 
+
 Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?

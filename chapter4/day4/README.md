@@ -18,6 +18,8 @@ Before we get into controlling who can "mint" (or create) an NFT, let's talk abo
 
 Well, if you recall, only the owner of a Collection can `withdraw` from their Collection. However, anyone can `deposit` into another persons Collection. This is perfect for us, because it means we will only need access to 1 AuthAccount: the peron who will be transferring (aka withdrawing) the NFT! Let's spin up a transaction to transfer an NFT:
 
+*Note: This is assuming you've already set up both accounts with a Collection.*
+
 ```swift
 import CryptoPoops from 0x01
 
@@ -28,7 +30,7 @@ transaction(id: UInt64, recipient: Address) {
   prepare(signer: AuthAccount) {
     // get a reference to the signer's Collection
     let signersCollection = signer.borrow<&CryptoPoops.Collection>(from: /storage/MyCollection)
-                            panic("Signer does not have a CryptoPoops Collection")
+                            ?? panic("Signer does not have a CryptoPoops Collection")
 
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
@@ -46,10 +48,10 @@ transaction(id: UInt64, recipient: Address) {
 ```
 
 Not too bad right? We should understand all of this after learning yesterday's content. Here are the steps:
-1. We first get a reference to the signer's Collection. We do not use a capability because we need to borrow directly from storage since we need to be able to call `withdraw`
-2. We then get a *public* reference to the recipient's Collection. We get this through a public capability because we don't have access to their AuthAccount, but this is fine since we only need to `deposit`
-3. We `withdraw` the NFT with `id` out of the signer's Collection
-4. We `deposit` the NFT into the recipient's Collection
+1. We first get a reference to the signer's Collection. We do not use a capability because we need to borrow directly from storage since we need to be able to call `withdraw`.
+2. We then get a *public* reference to the recipient's Collection. We get this through a public capability because we don't have access to their AuthAccount, but this is fine since we only need to `deposit`.
+3. We `withdraw` the NFT with `id` out of the signer's Collection.
+4. We `deposit` the NFT into the recipient's Collection.
 
 ## Minting
 
@@ -78,12 +80,13 @@ pub contract CryptoPoops {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -149,12 +152,13 @@ pub contract CryptoPoops {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -186,16 +190,18 @@ pub contract CryptoPoops {
     self.totalSupply = 0
 
     // Save the `Minter` resource to account storage here
-    self.account.save(<- create Minter(), /storage/Minter)
+    self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
 ```
+
+When you're deploying the contract, inside the `init` function, you actually have access to the deploying account's `AuthAccount`! So we can save stuff to account storage there.
 
 See what we did at the very end? We saved the `Minter` to account storage. Perfect! Now, only the account that deployed the contract has the ability to mint NFTs, and since there's no function to allow other users to get a `Minter`, it is completely safe! 
 
 Let's look at an example transaction of a `Minter` minting someone an NFT. 
 
-(Note: Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource)
+*Note: Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource*
 
 ```swift
 import CryptoPoops from 0x01
@@ -250,12 +256,13 @@ pub contract CryptoPoops {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -292,7 +299,7 @@ pub contract CryptoPoops {
 
   init() {
     self.totalSupply = 0
-    self.account.save(<- create Minter(), /storage/Minter)
+    self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
 ```
@@ -357,12 +364,13 @@ pub contract CryptoPoops {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -390,25 +398,25 @@ pub contract CryptoPoops {
 
   pub resource Minter {
 
-    pub fun createNFT(): @NFT {
-      return <- create NFT()
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
     }
 
     // Updated the parameters here so we can pass in metadata for our NFT
-    pub fun createMinter(name: String, favouriteFood: String, luckyNumber: Int): @Minter {
-      return <- create Minter(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
     }
 
   }
 
   init() {
     self.totalSupply = 0
-    self.account.save(<- create Minter(), /storage/Minter)
+    self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
 ```
 
-Super simple right! We even added some extra fields (or "metadata") to our NFT so we can read info about it when we borrow it's reference from the Collection. In order to get the reference, we use a new `borrowNFT` function inside our `Collection` to return a reference to one of our NFTs. If we redeploy our contract and run a new transaction to mint an NFT:
+Super simple right! We even added some extra fields (or "metadata") to our NFT so we can read info about it when we borrow it's reference from the Collection. In order to get the reference, we use a new `borrowNFT` function inside our `Collection` to return a reference to one of our NFTs that is stored inside our `ownedNFTs` dictionary. If we redeploy our contract, setup our accounts and run a new transaction to mint an NFT:
 
 ```swift
 import CryptoPoops from 0x01
@@ -488,12 +496,13 @@ pub contract CryptoPoops {
     pub var ownedNFTs: @{UInt64: NFT}
 
     pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <- token
+      self.ownedNFTs[token.id] <-! token
     }
 
     pub fun withdraw(withdrawID: UInt64): @NFT {
-      return self.ownedNFTs.remove(key: withdrawID) 
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
               ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
     }
 
     pub fun getIDs(): [UInt64] {
@@ -519,19 +528,19 @@ pub contract CryptoPoops {
 
   pub resource Minter {
 
-    pub fun createNFT(): @NFT {
-      return <- create NFT()
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
     }
 
-    pub fun createMinter(name: String, favouriteFood: String, luckyNumber: Int): @Minter {
-      return <- create Minter(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
     }
 
   }
 
   init() {
     self.totalSupply = 0
-    self.account.save(<- create Minter(), /storage/Minter)
+    self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
 ```
@@ -558,11 +567,12 @@ Yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay!!! We read our NFT metadata without having 
 
 We have now written a full-fledged NFT smart contract. That is super cool. We have also completed Chapter 4. 
 
-In the next Chapter, we will start to learn how to make our contract more "official." That is, how to implement something called a contract interface so that other applications know our NFT smart contract *is* in fact an NFT smart contract.
+In the next Chapter, we finish this contract and we will start to learn how to make our contract more "official." That is, how to implement something called a contract interface so that other applications know our NFT smart contract *is* in fact an NFT smart contract.
 
 ## Quests
 
 Above, when I was talking about the difficulty of sending a transaction with 2 signers, I wrote this:
+
 ```
 The only problem here is that it's *usually* not good practice to require two signers in a transaction. This is because it's difficult to get multiple people to sign the same transaction in a reasonable time frame. We will go much more in-depth on this at a later point, but for now, we can leave it at that.
 ```

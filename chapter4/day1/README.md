@@ -12,10 +12,14 @@ We will cover the rest tomorrow.
 
 If you remember back to Chapter 2 Day 1 when we learned about transactions, I also talked about accounts on flow and how they can store data. I'm going to copy and paste that below because it's helpful to review:
 
+```
 On Flow, accounts can store their own data. What does this mean? Well, if I own an NFT on Flow, that NFT gets stored in my account. This is *very different* than other blockchains like Ethereum. On Ethereum, your NFT gets stored in the smart contract. On Flow, we actually allow accounts to store their own data themselves, which is super cool. But how do we access the data in their account? We can do that with the `AuthAccount` type. Every time a user (like you and me) sends a transaction, you have to pay for the transaction, and then you "sign" it. All that means is you clicked a button saying "hey, I want to approve this transaction." When you sign it, the transaction takes in your `AuthAccount` and can access the data in your account. 
+```
 
+```
 You can see this being done in the `prepare` portion of the transaction, and that's the whole point of the `prepare` phase: to access the information/data in your account. On the other hand, the `execute` phase can't do that. But it can call functions and do stuff to change the data on the blockchain. NOTE: In reality, you never *actually* need the `execute` phase. You could technically do everything in the `prepare` phase, but the code is less clear that way. It's better to separate the logic.
-
+```
+ 
 ## What lives in an account?
 
 <img src="../images/accountstorage1.PNG" />
@@ -23,13 +27,13 @@ You can see this being done in the `prepare` portion of the transaction, and tha
 As you read above, on Flow, accounts actually store their own data. What this means is, if I have an `NFT` resource, I can actually store that in my own account. But where?
 
 Using the above diagram (I'm so proud of it), let's talk about what lives in an account:
-1. Contract Code - contract get deployed to an account, and live inside the account
+1. Contract Code - contract get deployed to an account, and live inside the account. Multiple contracts can live inside an account.
 2. Account Storage - all your data gets stored inside account storage
 
 ## Account Storage
 
 Well, what is account storage then? You can think of account storage as a "container" of data that lives at a specific path: `/storage/`. In a Flow account, there are 3 paths to get to certain data:
-1. `/storage/` - only the account owner can access this (thank god, or someone could steal all of your data)
+1. `/storage/` - only the account owner can access this (thank goodness, or someone could steal all of your data). ALL of your data lives here.
 2. `/public/` - available to everybody
 3. `/private/` - only available to the account owner and the people that the account owner gives access to
 
@@ -139,7 +143,7 @@ You'll notice that we have to do this weird thing: `<@Stuff.Test>`. What is that
 `.load()` takes one parameter:
 1. a `from` parameter that is the path we should take it from (it must be a `/storage/` path)
 
-One more important thing is that when you `load` data from storage, it returns an optional. `testResource` actually has typed `@Stuff.Test?`. The reason for this is because Cadence has no idea that you are telling the truth and something actually lives there, or that it's even the right type. So if you were wrong, it will return `nil`. Let's look at an example:
+One more important thing is that when you `load` data from storage, it returns an optional. `testResource` actually has type `@Stuff.Test?`. The reason for this is because Cadence has no idea that you are telling the truth and something actually lives there, or that it's even the right type. So if you were wrong, it will return `nil`. Let's look at an example:
 
 ```swift
 import Stuff from 0x01
@@ -199,7 +203,7 @@ transaction() {
 You can see that we used the `.borrow()` function to get a reference to the resource in our storage, not the resource itself. That is why the type we use is `<&Stuff.Test>` instead of `<@Stuff.Test>`.
 
 `.borrow()` takes one parameter (same as `.load()`):
-1. a `from` parameter that is the path we should take it from (it must be a `/storage/` path)
+1. a `from` parameter that is the path we should take it from
 
 Also note that because we aren't using `.load()`, the resource is staying inside our account storage the whole time. Wow, references are awesome!
 
