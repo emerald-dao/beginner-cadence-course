@@ -26,7 +26,9 @@ I would like to be very clear that how you learn from this course is completely 
 
 Nothing.
 
-In order to complete this course, you need to know absolutely nothing about coding. I included Chapter 1.5 that teaches you the basics of computer programming. If you have coded before, you can skip Chapter 1.5.
+In order to complete this course, you need to know absolutely nothing about coding. I included Chapter 1.5 that teaches you the basics of computer programming. 
+
+I believe the Web3 space is innovative in that we are seeing a combination of interests between artists, developers, content creators, etc. In light of this, I wanted to make the course accessible to anyone, so we don't require computer science fundamentals as a prerequisite.
 
 **Although Chapter 1.5 is a great introduction to programming, if you have never written code before, you may also want to do some outside learning before this course, because it can get complicated very quick. It is impossible to learn how to Code by watching tutorials/reading articles. You must mess up on your own to make true progress.**
 
