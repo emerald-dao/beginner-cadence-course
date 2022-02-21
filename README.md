@@ -10,7 +10,7 @@ If you're seeing this message, you have arrived at the very first part of the Ze
 
 <img src="./images/course.png" alt="drawing" width="500"/>
 
-In this course, you will learn how to go from a total noob to being as smart as the greatest person on planet Earth, Jacob.
+In this course, you will learn how to go from 0 computer science programming skills to being as smart as the greatest person on planet Earth, Jacob.
 
 The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
 
@@ -24,12 +24,13 @@ I would like to be very clear that how you learn from this course is completely 
 
 ## "What do I need ahead of time?"
 
-In order to complete this course, I assuming you understand basic computer science concepts. Stuff like:
-1. What is a variable
-2. What is a function
-3. How to stay mentally stable when debugging code for 8 hours. Just kidding ;)
+Nothing.
 
-If you are a beginner programmer or you would like to get some prior experience in before this course, I would suggest trying to learn the basics of Javascript to get some computer science programming fundamentals down. Knowing Javascript will be benefitial, however it is not necessary. Other than that, there are no prerequisite needed! 
+In order to complete this course, you need to know absolutely nothing about coding. I included Chapter 1.5 that teaches you the basics of computer programming. If you have coded before, you can skip Chapter 1.5.
+
+**Although Chapter 1.5 is a great introduction to programming, if you have never written code before, you may also want to do some outside learning before this course, because it can get complicated very quick. It is impossible to learn how to Code by watching tutorials/reading articles. You must mess up on your own to make true progress.**
+
+If you would to learn a similar language to Cadence to get a good grasp of how to program, I would suggest trying to learn the basics of Javascript to get some programming fundamentals down. Knowing Javascript will be benefitial, however it is not necessary. 
 
 *I will introduce you to all the tools and programming concepts necessary, even if you are not a developer.*
 
