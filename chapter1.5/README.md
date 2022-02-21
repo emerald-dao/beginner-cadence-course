@@ -1,6 +1,6 @@
 # Chapter 1.5 - Basic Computer Programming Concepts
 
-This chapter will cover the very basics of computer programming. If you have ever coded before, this will be very boring for you, so please skip this chapter if you want to.
+This chapter will cover the very basics of computer programming. ***If you have ever coded before, this will be very boring for you, so please skip this chapter if you want to.***
 
 <img src="./images/programmingdiagram.png" />
 
