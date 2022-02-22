@@ -1,0 +1,5 @@
+#1 Deploy a contract to account 0x03 called "JacobTucker". Inside that contract, declare a constant variable named is, and make it have type String. Initialize it to "the best" when your contract gets deployed.
+> See https://play.onflow.org/9ea5c2fe-2402-4ed6-8ceb-796b44f6152e?type=account&id=b6837df6-ee62-4d08-9775-c26716d60347&storage=none
+
+#2 Check that your variable is actually equals "the best" by executing a script to read that variable. Include a screenshot of the output.
+> ![image](https://user-images.githubusercontent.com/76749/155153905-18dfff46-6452-4f59-bf07-5aab86e3bde2.png)
