@@ -1,0 +1,9 @@
+#1 Explain what the Blockchain is in your own words. You can read this to help you, but you don't have to: https://www.investopedia.com/terms/b/blockchain.asp
+> The blockchain is a decentralized database that secures and records immutable transactions of assets with the help of smart contracts.
+
+#2 Explain what a Smart Contract is. You can read this to help you, but you don't have to: https://www.ibm.com/topics/smart-contracts
+> A smart contract is a programmed agreement deployed on the blockchain. A smart contract on the blockchain has its own address, is immutable, and can be triggered in response to valid inputs.
+
+#3 Explain the difference between a script and a transaction.
+> A transaction comes with fee and triggers functions within a smart contract. Once this happens, the transaction is secured and recorded by the blockchain.
+> A script is always free. It's used to view the data on the blockchain.
