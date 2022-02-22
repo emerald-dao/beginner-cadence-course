@@ -1,5 +1,5 @@
 1. Explain why we wouldn't call `changeGreeting` in a script.
-> The `changeGreeting` function modifies data, you cannot do that with a Script. Scripts can only view the data on the blockchain.  
+> The `changeGreeting` function that we wrote modifies data, you cannot do that with a Script. Scripts can only view the data on the blockchain.  
 
 2. What does the `AuthAccount` mean in the `prepare` phase of the transaction?
 >
