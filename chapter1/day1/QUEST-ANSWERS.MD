@@ -6,4 +6,5 @@
 
 #3 Explain the difference between a script and a transaction.
 > A transaction comes with fee and triggers functions within a smart contract. Once this happens, the transaction is secured and recorded by the blockchain.
+> 
 > A script is always free. It's used to view the data on the blockchain.
