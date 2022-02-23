@@ -56,7 +56,7 @@ If you are ready for me to see one of your quests to review it, please message i
 
 Whenever you want my friend! I will be publishing new content quite frequently, so make sure to stay up to date on all the stuffz :)
 
-You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-Jacob/tree/main/chapter1/day1).
+You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-Jacob/tree/main/chapter1.0/day1).
 
 ## Ending Remarks
 
