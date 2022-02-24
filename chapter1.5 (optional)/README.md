@@ -123,7 +123,7 @@ We can change our code up a bit to log a LOT of different numbers to the console
 <img src="./images/newresult.png" />
 
 In this example, we defined 3 different variables:
-`x`, `y,` and `z`, all of which hold a different number. For each of them, we pass them into `myFunction` so that it logs to the console. Woohoo!!
+`x`, `y`, and `z`, all of which hold a different number. For each of them, we pass them into `myFunction` so that it logs to the console. Woohoo!!
 
 ## "Why do we write functions?"
 
@@ -150,7 +150,7 @@ In this example, we define a function called `combine`, which does the following
 
 What's the purpose of this? Well, now that we wrote the `combine` function, we don't have to update our `newMessage` a ton of times and continuously combine the two pieces of text. Now, we can call `combine` to do that for us!
 
-It may not look really benefitial to make a function right now, but if we needed to do this `log` a LOT, you would save tons of time coding by making a function.
+It may not look really benefitial to make a function right now, but if we had more complex code that was repeated a lot, you would save tons of time coding by making a function.
 
 ## Functions and Return Values
 
