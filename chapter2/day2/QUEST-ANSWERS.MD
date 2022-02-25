@@ -5,8 +5,8 @@
 > The `AuthAccount` type is needed to access the data in your account
 
 3. What is the difference between the `prepare` phase and the `execute` phase in the transaction?
-> In the `prepare` phase calls functions that access the information/data in your account
-> In the `execute` phase calls functions that change the information/data on the blockchain
+> The `prepare` phase of the transaction calls functions that access information/data in your account  
+> The `execute` phase of the transaction calls functions that change information/data on the blockchain
 
 4. This is the hardest quest so far, so if it takes you some time, do not worry! I can help you in the Discord if you have questions.
 
