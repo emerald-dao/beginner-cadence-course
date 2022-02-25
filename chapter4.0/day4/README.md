@@ -314,7 +314,7 @@ transaction() {
   // Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource
   prepare(creator: AuthAccount, recipient: AuthAccount) {
     // Get a reference to the `Minter` from the `creator`
-    let minter = signer.borrow<&CryptoPoops.Minter>(from: /storage/Minter)
+    let minter = creator.borrow<&CryptoPoops.Minter>(from: /storage/Minter)
                     ?? panic("This signer is not the one who deployed the contract.")
 
     // create the new `Minter` resource
