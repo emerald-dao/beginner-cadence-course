@@ -7,8 +7,9 @@
 > https://play.onflow.org/93d9c08f-6778-42d1-bd48-8408c6d523b9?type=script&id=ac9df7cc-231f-4dac-825f-4535135bce35&storage=none
 
 #3 Explain what the force unwrap operator ! does, with an example different from the one I showed you (you can just change the type).
-> See Script -> Quest 3 simple/dict  
-> https://play.onflow.org/93d9c08f-6778-42d1-bd48-8408c6d523b9?type=script&id=86676fb1-db7b-42a9-82f3-44ec0ec8a5ad&storage=none
+> See Scripts & comments -> Quest 3 simple/dict  
+> https://play.onflow.org/93d9c08f-6778-42d1-bd48-8408c6d523b9?type=script&id=86676fb1-db7b-42a9-82f3-44ec0ec8a5ad&storage=none  
+> https://play.onflow.org/93d9c08f-6778-42d1-bd48-8408c6d523b9?type=script&id=cd55be4f-805f-4539-ad3a-61890646f26f&storage=none  
 
 #4 Using this picture below, explain...
 <img src="https://github.com/Keukendeur/Flow-Zero-to-Jacob/blob/main/chapter2/images/wrongcode.png" alt="drawing" size="200" />
