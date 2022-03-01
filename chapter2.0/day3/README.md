@@ -76,14 +76,14 @@ log(people.contains("Jacob")) // true
 log(people.contains("Poop")) // false
 ```
 
-**remove(index: Int)** 
+**remove(at: Int)** 
 
 Removes an element at the given index (index starts from 0, meaning the first element has index 0)
 
 ex.
 ```swift
 var people: [String] = ["Jacob", "Alice", "Damian"]
-people.remove(1)
+people.remove(at: 1)
 log(people) // ["Jacob", "Damian"]
 ```
 
