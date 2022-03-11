@@ -16,7 +16,7 @@ But we left ourselves with somewhat of a problem: should we *really* allow anybo
 
 Before we get into controlling who can "mint" (or create) an NFT, let's talk about transferring. How can we transfer an NFT from one account to another?
 
-Well, if you recall, only the owner of a Collection can `withdraw` from their Collection. However, anyone can `deposit` into another persons Collection. This is perfect for us, because it means we will only need access to 1 AuthAccount: the peron who will be transferring (aka withdrawing) the NFT! Let's spin up a transaction to transfer an NFT:
+Well, if you recall, only the owner of a Collection can `withdraw` from their Collection. However, anyone can `deposit` into another persons Collection. This is perfect for us, because it means we will only need access to 1 AuthAccount: the person who will be transferring (aka withdrawing) the NFT! Let's spin up a transaction to transfer an NFT:
 
 *Note: This is assuming you've already set up both accounts with a Collection.*
 
