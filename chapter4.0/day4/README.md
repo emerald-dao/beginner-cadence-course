@@ -16,7 +16,7 @@ But we left ourselves with somewhat of a problem: should we *really* allow anybo
 
 Before we get into controlling who can "mint" (or create) an NFT, let's talk about transferring. How can we transfer an NFT from one account to another?
 
-Well, if you recall, only the owner of a Collection can `withdraw` from their Collection. However, anyone can `deposit` into another persons Collection. This is perfect for us, because it means we will only need access to 1 AuthAccount: the peron who will be transferring (aka withdrawing) the NFT! Let's spin up a transaction to transfer an NFT:
+Well, if you recall, only the owner of a Collection can `withdraw` from their Collection. However, anyone can `deposit` into another persons Collection. This is perfect for us, because it means we will only need access to 1 AuthAccount: the person who will be transferring (aka withdrawing) the NFT! Let's spin up a transaction to transfer an NFT:
 
 *Note: This is assuming you've already set up both accounts with a Collection.*
 
@@ -230,104 +230,6 @@ transaction(recipient: Address) {
 ```
 
 Wooooooooohoooooooooooooo! We successfully implemented secure minting. This is a very important pattern to be aware of in Cadence: the ability to delegate some "Admin" functionality to a certain resource, like the `Minter` in this case. That "Admin" is most often given to the account storage of the account who deployed the contract.
-
-One last thing... what if we wanted to have multiple minters? That'd be a problem right now since the account who has the `Minter` would have to `load` the resource out of storage and give it to someone else! That's not good.
-
-What we can do is add a `createMinter` function *inside* of the `Minter` itself, so the `Minter` has the ability to give new `Minter`s to other people:
-
-```swift
-pub contract CryptoPoops {
-  pub var totalSupply: UInt64
-
-  pub resource NFT {
-    pub let id: UInt64
-
-    init() {
-      self.id = self.uuid
-    }
-  }
-
-  pub resource interface CollectionPublic {
-    pub fun deposit(token: @NFT)
-    pub fun getIDs(): [UInt64]
-  }
-
-  pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: @{UInt64: NFT}
-
-    pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <-! token
-    }
-
-    pub fun withdraw(withdrawID: UInt64): @NFT {
-      let nft <- self.ownedNFTs.remove(key: withdrawID) 
-              ?? panic("This NFT does not exist in this Collection.")
-      return <- nft
-    }
-
-    pub fun getIDs(): [UInt64] {
-      return self.ownedNFTs.keys
-    }
-
-    init() {
-      self.ownedNFTs <- {}
-    }
-
-    destroy() {
-      destroy self.ownedNFTs
-    }
-  }
-
-  pub fun createEmptyCollection(): @Collection {
-    return <- create Collection()
-  }
-
-  pub resource Minter {
-
-    pub fun createNFT(): @NFT {
-      return <- create NFT()
-    }
-
-    // Added a new `createMinter` function here
-    // that creates a new `Minter` resource and
-    // returns it.
-    pub fun createMinter(): @Minter {
-      return <- create Minter()
-    }
-
-  }
-
-  init() {
-    self.totalSupply = 0
-    self.account.save(<- create Minter(), to: /storage/Minter)
-  }
-}
-```
-
-The only issue now is that in order to give someone else a `Minter`, we'd have to run a transaction that requires 2 signers: one to create the `Minter`, and one to store it:
-
-```swift
-import CryptoPoops from 0x01
-
-transaction() {
-
-  // Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource
-  prepare(creator: AuthAccount, recipient: AuthAccount) {
-    // Get a reference to the `Minter` from the `creator`
-    let minter = signer.borrow<&CryptoPoops.Minter>(from: /storage/Minter)
-                    ?? panic("This signer is not the one who deployed the contract.")
-
-    // create the new `Minter` resource
-    let newMinter <- minter.createMinter()
-
-    // the `recipient` save it to their account
-    recipient.save(<- newMinter, to: /storage/Minter)
-  }
-
-}
-```
-
-The only problem here is that it's *usually* not good practice to require two signers in a transaction. This is because it's difficult to get multiple people to sign the same transaction in a reasonable time frame. We will go much more in-depth on this at a later point, but for now, we can leave it at that.
 
 ## Borrowing
 

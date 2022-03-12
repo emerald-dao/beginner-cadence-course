@@ -68,6 +68,8 @@ Also notice that inside the `init` function, we initialize it with the `<-` oper
 
 Sweet! We made our own array of resources. Let's look at how to add a resource to an array.
 
+*NOTE: Today, we will be passing resources around as arguments to our functions. This means we are not worrying about how the resources were created, we're just using sample functions to show you how to add to arrays and dictionaries.*
+
 ```swift
 pub contract Test {
 

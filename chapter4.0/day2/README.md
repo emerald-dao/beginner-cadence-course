@@ -158,13 +158,20 @@ In this example, I added a `changeName` function that allows you to change the n
 
 ```swift
 import Stuff from 0x01
-pub fun main(address: Address) {
-  let publicCapability: Capability<&Stuff.Test> =
-    getAccount(address).getCapability<&Stuff.Test>(/public/MyTestResource)
+transaction(address: Address) {
 
-  let testResource: &Stuff.Test = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+  prepare(signer: AuthAccount) {
 
-  testResource.changeName(newName: "Sarah") // THIS IS A SECURITY PROBLEM!!!!!!!!!
+  }
+
+  execute {
+    let publicCapability: Capability<&Stuff.Test> =
+      getAccount(address).getCapability<&Stuff.Test>(/public/MyTestResource)
+
+    let testResource: &Stuff.Test = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+
+    testResource.changeName(newName: "Sarah") // THIS IS A SECURITY PROBLEM!!!!!!!!!
+  }
 }
 ```
 
@@ -227,15 +234,21 @@ So, what happens if we try to access the entire reference now in a script, like 
 
 ```swift
 import Stuff from 0x01
-pub fun main(address: Address) {
-  let publicCapability: Capability<&Stuff.Test> =
-    getAccount(address).getCapability<&Stuff.Test>(/public/MyTestResource)
+transaction(address: Address) {
+  prepare(signer: AuthAccount) {
 
-  // ERROR: "The capability doesn't exist or you did not 
-  // specify the right type when you got the capability."
-  let testResource: &Stuff.Test = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+  }
 
-  testResource.changeName(newName: "Sarah")
+  execute {
+    let publicCapability: Capability<&Stuff.Test> =
+      getAccount(address).getCapability<&Stuff.Test>(/public/MyTestResource)
+
+    // ERROR: "The capability doesn't exist or you did not 
+    // specify the right type when you got the capability."
+    let testResource: &Stuff.Test = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+
+    testResource.changeName(newName: "Sarah")
+  }
 }
 ```
 
@@ -245,15 +258,22 @@ What if we try this?
 
 ```swift
 import Stuff from 0x01
-pub fun main(address: Address) {
-  let publicCapability: Capability<&Stuff.Test{Stuff.ITest}> =
-    getAccount(address).getCapability<&Stuff.Test{Stuff.ITest}>(/public/MyTestResource)
+transaction(address: Address) {
 
-  // This works...
-  let testResource: &Stuff.Test{Stuff.ITest} = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+  prepare(signer: AuthAccount) {
 
-  // ERROR: "Member of restricted type is not accessible: changeName"
-  testResource.changeName(newName: "Sarah")
+  }
+
+  execute {
+    let publicCapability: Capability<&Stuff.Test{Stuff.ITest}> =
+      getAccount(address).getCapability<&Stuff.Test{Stuff.ITest}>(/public/MyTestResource)
+
+    // This works...
+    let testResource: &Stuff.Test{Stuff.ITest} = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
+
+    // ERROR: "Member of restricted type is not accessible: changeName"
+    testResource.changeName(newName: "Sarah")
+  }
 }
 ```
 
