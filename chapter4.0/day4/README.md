@@ -473,10 +473,89 @@ In the next Chapter, we finish this contract and we will start to learn how to m
 
 ## Quests
 
-Above, when I was talking about the difficulty of sending a transaction with 2 signers, I wrote this:
+Because we had a LOT to talk about during this Chapter, I want you to do the following:
 
-```
-The only problem here is that it's *usually* not good practice to require two signers in a transaction. This is because it's difficult to get multiple people to sign the same transaction in a reasonable time frame. We will go much more in-depth on this at a later point, but for now, we can leave it at that.
-```
+Take our NFT contract so far and add comments to every single resource or function explaining what it's doing in your own words. Something like this:
 
-Can you brainstorm any ways to distribute `Minter`s to other people WITHOUT having to have 2 signers, or in other words, 2 `AuthAccount`s? If you can't that is okay. But try your best to come up with something. We will learn this later down the road as well.
+
+```swift
+pub contract CryptoPoops {
+  pub var totalSupply: UInt64
+
+  // This is an NFT resource that contains a name,
+  // favouriteFood, and luckyNumber
+  pub resource NFT {
+    pub let id: UInt64
+
+    pub let name: String
+    pub let favouriteFood: String
+    pub let luckyNumber: Int
+
+    init(_name: String, _favouriteFood: String, _luckyNumber: Int) {
+      self.id = self.uuid
+
+      self.name = _name
+      self.favouriteFood = _favouriteFood
+      self.luckyNumber = _luckyNumber
+    }
+  }
+
+  // This is a resource interface that allows us too... you get the point.
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs(): [UInt64]
+    pub fun borrowNFT(id: UInt64): &NFT
+  }
+
+  pub resource Collection: CollectionPublic {
+    pub var ownedNFTs: @{UInt64: NFT}
+
+    pub fun deposit(token: @NFT) {
+      self.ownedNFTs[token.id] <-! token
+    }
+
+    pub fun withdraw(withdrawID: UInt64): @NFT {
+      let nft <- self.ownedNFTs.remove(key: withdrawID) 
+              ?? panic("This NFT does not exist in this Collection.")
+      return <- nft
+    }
+
+    pub fun getIDs(): [UInt64] {
+      return self.ownedNFTs.keys
+    }
+
+    pub fun borrowNFT(id: UInt64): &NFT {
+      return &self.ownedNFTs[id] as &NFT
+    }
+
+    init() {
+      self.ownedNFTs <- {}
+    }
+
+    destroy() {
+      destroy self.ownedNFTs
+    }
+  }
+
+  pub fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  pub resource Minter {
+
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }
+
+    pub fun createMinter(): @Minter {
+      return <- create Minter()
+    }
+
+  }
+
+  init() {
+    self.totalSupply = 0
+    self.account.save(<- create Minter(), to: /storage/Minter)
+  }
+}
+```
