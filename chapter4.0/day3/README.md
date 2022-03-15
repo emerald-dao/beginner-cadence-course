@@ -327,7 +327,9 @@ transaction(recipient: Address) {
 }
 ```
 
-Niiiiiice. We deposited to someone elses account, which is fully possible because they linked `&CryptoPoops.Collection{CryptoPoops.CollectionPublic}` to the public. What happens if we try to withdraw from someone's Collection?
+Niiiiiice. We deposited to someone elses account, which is fully possible because they linked `&CryptoPoops.Collection{CryptoPoops.CollectionPublic}` to the public. And this is fine. Who cares if we give someone a free NFT? That's awesome! 
+
+Now, what happens if we try to withdraw from someone's Collection?
 
 ```swift
 import CryptoPoops from 0x01
@@ -371,9 +373,11 @@ And with that, give yourself a round of applause. You implemented a functioning 
 
 ## Quests
 
-1. What do you have to do if you have resources "nested" inside of another resource? ("Nested resources")
+1. Why did we add a Collection to this contract? List the two main reasons.
 
-2. Brainstorm some extra things we may want to add to this contract. Think about what might be problematic with this contract and how we could fix it.
+2. What do you have to do if you have resources "nested" inside of another resource? ("Nested resources")
+
+3. Brainstorm some extra things we may want to add to this contract. Think about what might be problematic with this contract and how we could fix it.
 
 Idea #1: Do we really want everyone to be able to mint an NFT? (insert thinking emoji here). 
 

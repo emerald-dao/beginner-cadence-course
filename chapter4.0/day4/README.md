@@ -61,46 +61,8 @@ The beauty of Cadence is that we can decide for ourselves. Why don't we start by
 
 ```swift
 pub contract CryptoPoops {
-  pub var totalSupply: UInt64
-
-  pub resource NFT {
-    pub let id: UInt64
-
-    init() {
-      self.id = self.uuid
-    }
-  }
-
-  pub resource interface CollectionPublic {
-    pub fun deposit(token: @NFT)
-    pub fun getIDs(): [UInt64]
-  }
-
-  pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: @{UInt64: NFT}
-
-    pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <-! token
-    }
-
-    pub fun withdraw(withdrawID: UInt64): @NFT {
-      let nft <- self.ownedNFTs.remove(key: withdrawID) 
-              ?? panic("This NFT does not exist in this Collection.")
-      return <- nft
-    }
-
-    pub fun getIDs(): [UInt64] {
-      return self.ownedNFTs.keys
-    }
-
-    init() {
-      self.ownedNFTs <- {}
-    }
-
-    destroy() {
-      destroy self.ownedNFTs
-    }
-  }
+  
+  // ... other stuff here ...
 
   pub fun createEmptyCollection(): @Collection {
     return <- create Collection()
@@ -133,46 +95,8 @@ The easiest solution is to give the `Minter` automatically to the account that i
 
 ```swift
 pub contract CryptoPoops {
-  pub var totalSupply: UInt64
-
-  pub resource NFT {
-    pub let id: UInt64
-
-    init() {
-      self.id = self.uuid
-    }
-  }
-
-  pub resource interface CollectionPublic {
-    pub fun deposit(token: @NFT)
-    pub fun getIDs(): [UInt64]
-  }
-
-  pub resource Collection: CollectionPublic {
-    pub var ownedNFTs: @{UInt64: NFT}
-
-    pub fun deposit(token: @NFT) {
-      self.ownedNFTs[token.id] <-! token
-    }
-
-    pub fun withdraw(withdrawID: UInt64): @NFT {
-      let nft <- self.ownedNFTs.remove(key: withdrawID) 
-              ?? panic("This NFT does not exist in this Collection.")
-      return <- nft
-    }
-
-    pub fun getIDs(): [UInt64] {
-      return self.ownedNFTs.keys
-    }
-
-    init() {
-      self.ownedNFTs <- {}
-    }
-
-    destroy() {
-      destroy self.ownedNFTs
-    }
-  }
+  
+  // ... other stuff here ...
 
   pub fun createEmptyCollection(): @Collection {
     return <- create Collection()
@@ -294,22 +218,7 @@ pub contract CryptoPoops {
     }
   }
 
-  pub fun createEmptyCollection(): @Collection {
-    return <- create Collection()
-  }
-
-  pub resource Minter {
-
-    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
-      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
-    }
-
-    // Updated the parameters here so we can pass in metadata for our NFT
-    pub fun createMinter(): @Minter {
-      return <- create Minter()
-    }
-
-  }
+  // ... other stuff here ...
 
   init() {
     self.totalSupply = 0
@@ -368,8 +277,58 @@ WAIT! We get an error! Why is that? Ahh, it's because we forgot to add `borrowNF
 
 ```swift
 pub contract CryptoPoops {
+  
+  // ... other stuff here ...
+
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs(): [UInt64]
+    // We added the borrowNFT function here
+    // so it's accessible to the public
+    pub fun borrowNFT(id: UInt64): &NFT
+  }
+
+  // ... other stuff here ...
+}
+```
+
+Now, we can retry our script (assuming you mint the NFT all over again):
+
+```swift
+import CryptoPoops from 0x01
+pub fun main(address: Address, id: id) {
+  let publicCollection = getAccount(address).getCapability(/public/MyCollection)
+              .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
+              ?? panic("The address does not have a Collection.")
+  
+  let nftRef: &CryptoPoops.NFT = publicCollection.borrowNFT(id: id)
+  log(nftRef.name) // "Jacob"
+  log(nftRef.favouriteFood) // "Chocolate chip pancakes"
+  log(nftRef.luckyNumber) // 13
+}
+```
+
+Yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay!!! We read our NFT metadata without having to withdraw it from the collection ;)
+
+## Conclusion
+
+We have now written a full-fledged NFT smart contract. That is super cool. We have also completed Chapter 4. 
+
+In the next Chapter, we finish this contract and we will start to learn how to make our contract more "official." That is, how to implement something called a contract interface so that other applications know our NFT smart contract *is* in fact an NFT smart contract.
+
+## Quests
+
+Because we had a LOT to talk about during this Chapter, I want you to do the following:
+
+Take our NFT contract so far and add comments to every single resource or function explaining what it's doing in your own words. Something like this:
+
+
+```swift
+pub contract CryptoPoops {
   pub var totalSupply: UInt64
 
+  // This is an NFT resource that contains a name,
+  // favouriteFood, and luckyNumber
   pub resource NFT {
     pub let id: UInt64
 
@@ -386,11 +345,10 @@ pub contract CryptoPoops {
     }
   }
 
+  // This is a resource interface that allows us to... you get the point.
   pub resource interface CollectionPublic {
     pub fun deposit(token: @NFT)
     pub fun getIDs(): [UInt64]
-    // We added the borrowNFT function here
-    // so it's accessible to the public
     pub fun borrowNFT(id: UInt64): &NFT
   }
 
@@ -446,37 +404,3 @@ pub contract CryptoPoops {
   }
 }
 ```
-
-Now, we can retry our script (assuming you mint the NFT all over again):
-
-```swift
-import CryptoPoops from 0x01
-pub fun main(address: Address, id: id) {
-  let publicCollection = getAccount(address).getCapability(/public/MyCollection)
-              .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
-              ?? panic("The address does not have a Collection.")
-  
-  let nftRef: &CryptoPoops.NFT = publicCollection.borrowNFT(id: id)
-  log(nftRef.name) // "Jacob"
-  log(nftRef.favouriteFood) // "Chocolate chip pancakes"
-  log(nftRef.luckyNumber) // 13
-}
-```
-
-Yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay!!! We read our NFT metadata without having to withdraw it from the collection ;)
-
-## Conclusion
-
-We have now written a full-fledged NFT smart contract. That is super cool. We have also completed Chapter 4. 
-
-In the next Chapter, we finish this contract and we will start to learn how to make our contract more "official." That is, how to implement something called a contract interface so that other applications know our NFT smart contract *is* in fact an NFT smart contract.
-
-## Quests
-
-Above, when I was talking about the difficulty of sending a transaction with 2 signers, I wrote this:
-
-```
-The only problem here is that it's *usually* not good practice to require two signers in a transaction. This is because it's difficult to get multiple people to sign the same transaction in a reasonable time frame. We will go much more in-depth on this at a later point, but for now, we can leave it at that.
-```
-
-Can you brainstorm any ways to distribute `Minter`s to other people WITHOUT having to have 2 signers, or in other words, 2 `AuthAccount`s? If you can't that is okay. But try your best to come up with something. We will learn this later down the road as well.
