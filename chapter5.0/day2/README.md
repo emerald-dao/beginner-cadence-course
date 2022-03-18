@@ -180,7 +180,7 @@ Contract interfaces allow you to specify some requirements on an implementing co
 
 Wouldn't it be helpful if we could rationalize that a contract was an "NFT Contract" without actually reading it's code? Well, it already exists! The NonFungibleToken contract interface (otherwise known as the NonFungibleToken standard) is a contract interface that defines what NFT Contracts must have to be deemed "NFT Contracts." This is helpful so clients like a Marketplace DApp can understand what they're looking at, and most importantly, **not have to implement different functionality for every NFT contract.**
 
-Standardizing is incredibly benefitial so that a client using multiple contracts can have a singular way of interacting with all of those contracts. For example, all NFT contracts have a resource called Collection that has a `deposit` and `withdraw` function. This way, even if the client DApp is interacting with 100 NFT contracts, it only has to import the NonFungibleToken standard to call those functions, since it's all under one generic type. 
+Standardizing is incredibly beneficial so that a client using multiple contracts can have a singular way of interacting with all of those contracts. For example, all NFT contracts have a resource called Collection that has a `deposit` and `withdraw` function. This way, even if the client DApp is interacting with 100 NFT contracts, it only has to import the NonFungibleToken standard to call those functions, since it's all under one generic type. 
 
 You can read more about it here: https://github.com/onflow/flow-nft
 
@@ -192,7 +192,7 @@ Coincidentally, contract interfaces are (in my opinion) the most heavily debated
 
 ## Quests
 
-1. Explain why standards can be benefitial to the Flow ecosystem.
+1. Explain why standards can be beneficial to the Flow ecosystem.
 
 2. What is YOUR favourite food?
 
