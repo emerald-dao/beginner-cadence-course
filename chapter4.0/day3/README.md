@@ -292,7 +292,8 @@ transaction() {
   prepare(signer: AuthAccount) {
     // Get a reference to our `CryptoPoops.Collection`
     let collection = signer.borrow<&CryptoPoops.Collection>(from: /storage/MyCollection)
-    
+                        ?? panic("The recipient does not have a Collection.")
+                                  
     // deposits an `NFT` to our Collection
     collection.deposit(token: <- CryptoPoops.createNFT())
 
@@ -317,7 +318,7 @@ transaction(recipient: Address) {
   prepare(otherPerson: AuthAccount) {
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a Collection.")
     
     // deposits an `NFT` to our Collection
@@ -338,7 +339,7 @@ transaction(recipient: Address, withdrawID: UInt64) {
   prepare(otherPerson: AuthAccount) {
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a Collection.")
     
     // ERROR: "Member of restricted type is not accessible: withdraw"
