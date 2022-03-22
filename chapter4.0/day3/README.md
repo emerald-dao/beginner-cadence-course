@@ -61,7 +61,7 @@ transaction() {
 }
 ```
 
-Nice! You should understand this now because of the last chapter. We first save the NFT to account storage, and then link a reference to it to the public so we can read its `id` field. Well, let's do that!
+Nice! You should understand this now because of the last chapter. We first save the NFT to account storage, and then link a reference to it to the public so we can read its `id` field with a script. Well, let's do that!
 
 ```swift
 import CryptoPoops from 0x01
@@ -284,7 +284,7 @@ transaction() {
 ```
 
 <img src="../images/thanos.png" />
-Now this... does put a smile on my face. Let's experiment with depositing and withdrawing an NFT to from our account.
+Now this... does put a smile on my face. Let's experiment by depositing an NFT to our account and withdrawing it.
 
 ```swift
 import CryptoPoops from 0x01
@@ -292,6 +292,7 @@ transaction() {
   prepare(signer: AuthAccount) {
     // Get a reference to our `CryptoPoops.Collection`
     let collection = signer.borrow<&CryptoPoops.Collection>(from: /storage/MyCollection)
+                      ?? panic("The recipient does not have a Collection.")
     
     // deposits an `NFT` to our Collection
     collection.deposit(token: <- CryptoPoops.createNFT())
@@ -299,7 +300,7 @@ transaction() {
     log(collection.getIDs()) // [2353]
 
     // withdraw the `NFT` from our Collection
-    let nft <- collection.withdraw(withdrawID: 2353)
+    let nft <- collection.withdraw(withdrawID: 2353) // We get this number from the ids array above
   
     log(collection.getIDs()) // []
 
@@ -317,7 +318,7 @@ transaction(recipient: Address) {
   prepare(otherPerson: AuthAccount) {
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a Collection.")
     
     // deposits an `NFT` to our Collection
@@ -338,7 +339,7 @@ transaction(recipient: Address, withdrawID: UInt64) {
   prepare(otherPerson: AuthAccount) {
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a Collection.")
     
     // ERROR: "Member of restricted type is not accessible: withdraw"
@@ -379,6 +380,6 @@ And with that, give yourself a round of applause. You implemented a functioning 
 
 3. Brainstorm some extra things we may want to add to this contract. Think about what might be problematic with this contract and how we could fix it.
 
-Idea #1: Do we really want everyone to be able to mint an NFT? (insert thinking emoji here). 
+    - Idea #1: Do we really want everyone to be able to mint an NFT? 🤔. 
 
-Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?
+    - Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?
