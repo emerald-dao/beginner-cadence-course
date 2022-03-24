@@ -28,8 +28,6 @@ Nothing.
 
 In order to complete this course, you need to know absolutely nothing about coding. I included Chapter 1.5 that teaches you the basics of computer programming. 
 
-I believe the Web3 space is innovative in that we are seeing a combination of interests between artists, developers, content creators, etc. In light of this, I wanted to make the course accessible to anyone, so we don't require computer science fundamentals as a prerequisite.
-
 **Although Chapter 1.5 is a great introduction to programming, if you have never written code before, you may also want to do some outside learning before this course, because it can get complicated very quick. It is impossible to learn how to Code by watching tutorials/reading articles. You must mess up on your own to make true progress.**
 
 If you would to learn a similar language to Cadence to get a good grasp of how to program, I would suggest trying to learn the basics of Javascript to get some programming fundamentals down. Knowing Javascript will be benefitial, however it is not necessary. 
@@ -54,9 +52,13 @@ If you are ready for me to see one of your quests to review it, please message i
 
 ## "When can I start?"
 
-Whenever you want my friend! I will be publishing new content quite frequently, so make sure to stay up to date on all the stuffz :)
+Whenever you want my friend! :)
 
 You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-Jacob/tree/main/chapter1.0/day1).
+
+## <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>
+
+This course is being used inside of <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>, which is a series of educational resources & bootcamps created by your *best* friends at Emerald City. If you're interested in more educational content or getting involved in the broader Emerald City community, come join our <a href="https://discord.gg/emeraldcity" target="_blank">Discord</a> :)
 
 ## Ending Remarks
 
