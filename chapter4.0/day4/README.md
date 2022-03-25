@@ -252,7 +252,7 @@ transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber
 
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()Mint NFT
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a Collection.")
 
     // mint the NFT using the reference to the `Minter` and pass in the metadata
