@@ -34,7 +34,7 @@ transaction(id: UInt64, recipient: Address) {
 
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a CryptoPoops Collection.")
     
     // withdraws the NFT with id == `id` and moves it into the `nft` variable
@@ -140,7 +140,7 @@ transaction(recipient: Address) {
 
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a Collection.")
 
     // mint the NFT using the reference to the `Minter`
@@ -203,8 +203,7 @@ pub contract CryptoPoops {
       return self.ownedNFTs.keys
     }
 
-    // Added this function so now we can
-    // read our NFT
+    // Added this function so now we can read our NFT
     pub fun borrowNFT(id: UInt64): &NFT {
       return &self.ownedNFTs[id] as &NFT
     }
@@ -218,7 +217,16 @@ pub contract CryptoPoops {
     }
   }
 
-  // ... other stuff here ...
+  pub fun createEmptyCollection(): @Collection {
+    return <- create Collection()
+  }
+
+  // Added Metadata to the Minter
+  pub resource Minter {
+    pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
+      return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
+    }    
+  }
 
   init() {
     self.totalSupply = 0
@@ -244,7 +252,7 @@ transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber
 
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()Mint NFT
                                   ?? panic("The recipient does not have a Collection.")
 
     // mint the NFT using the reference to the `Minter` and pass in the metadata
@@ -296,7 +304,7 @@ Now, we can retry our script (assuming you mint the NFT all over again):
 
 ```swift
 import CryptoPoops from 0x01
-pub fun main(address: Address, id: id) {
+pub fun main(address: Address, id: UInt64) {
   let publicCollection = getAccount(address).getCapability(/public/MyCollection)
               .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
               ?? panic("The address does not have a Collection.")

@@ -110,7 +110,7 @@ The second problem is that nobody can give us NFTs. Since only the account owner
 
 ### Collections
 
-The way to fix both of these problems is to create a "Collection," or a container that wraps all of our NFTs into one. Then, we can store the Collection at 1 storage path, and also allow others to "deposit" into that Collection.
+The way to fix both of these problems is to create a "Collection", or a container that wraps all of our NFTs into one. Then, we can store the Collection at 1 storage path, and also allow others to "deposit" into that Collection.
 
 ```swift
 pub contract CryptoPoops {
