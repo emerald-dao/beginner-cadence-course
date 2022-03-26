@@ -19,7 +19,7 @@ Quick review:
 
 For today's chapter, we will be using yesterday's contract code:
 
-```swift
+```javascript
 pub contract Stuff {
 
   pub resource Test {
@@ -37,7 +37,7 @@ pub contract Stuff {
 ```
 
 And don't forget that we saved the resource to our storage like this:
-```swift
+```javascript
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -59,7 +59,7 @@ Okay, we're ready to go.
 
 Previously, when we saved something to account storage, only the account owner could access it. That is because it was saved to the `/storage/` path. But what if we want other people to read the `name` field from my resource? Well, you may have guessed it. Let's make our resource publically accessible!
 
-```swift 
+```javascript 
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -93,7 +93,7 @@ The cool part is that you can make your `/public/` or `/private/` capabilities *
 
 We already learned that an `AuthAccount` allows you to do anything you want with an account. On the other hand, `PublicAccount` allows anyone to read from it, but only the things that the account owner exposes. You can get a `PublicAccount` type by using the `getAccount` function like so:
 
-```swift
+```javascript
 let account: PublicAccount = getAccount(0x1)
 // `account` now holds the PublicAccount of address 0x1
 ```
@@ -104,7 +104,7 @@ The reason I'm telling you this is because the only way to get a capability from
 
 Okay, so we linked our resource to the public. Let's read from it in a script now, and apply some of what we've learned!
 
-```swift
+```javascript
 import Stuff from 0x01
 pub fun main(address: Address): String {
   // gets the public capability that is pointing to a `&Stuff.Test` type
@@ -132,7 +132,7 @@ Alright! Awesomeness. We've made it here at least, i'm proud of you. The next to
 
 Let's define another contract:
 
-```swift
+```javascript
 pub contract Stuff {
 
   pub resource Test {
@@ -156,7 +156,7 @@ pub contract Stuff {
 
 In this example, I added a `changeName` function that allows you to change the name in the resource. But what if we don't want the public to be able to do this? Right now we have a problem:
 
-```swift
+```javascript
 import Stuff from 0x01
 transaction(address: Address) {
 
@@ -183,7 +183,7 @@ The way to solve this is to:
 
 Let's add a resource interface to our contract:
 
-```swift
+```javascript
 pub contract Stuff {
 
   pub resource interface ITest {
@@ -212,7 +212,7 @@ pub contract Stuff {
 
 Awesome! Now `Test` implements a resource interface named `ITest` that only has the `name` in it. Now we can link our resource to the public by doing this:
 
-```swift 
+```javascript 
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -232,7 +232,7 @@ transaction() {
 
 So, what happens if we try to access the entire reference now in a script, like we did before?
 
-```swift
+```javascript
 import Stuff from 0x01
 transaction(address: Address) {
   prepare(signer: AuthAccount) {
@@ -256,7 +256,7 @@ Now, we get an error! Haha, get recked hacker! You can't borrow the capability b
 
 What if we try this?
 
-```swift
+```javascript
 import Stuff from 0x01
 transaction(address: Address) {
 
@@ -281,7 +281,7 @@ And again! Get recked scammer. Even though you borrowed the right type, you can'
 
 But, this will work:
 
-```swift
+```javascript
 import Stuff from 0x01
 pub fun main(address: Address): String {
   let publicCapability: Capability<&Stuff.Test{Stuff.ITest}> =

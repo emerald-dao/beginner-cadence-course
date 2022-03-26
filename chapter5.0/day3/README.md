@@ -12,7 +12,7 @@ Today, we'll cover 31:20 - The End: https://www.youtube.com/watch?v=bQVXSpg6GE8
 
 There's a LOT in the NonFungibleToken standard. Let's take a peak at it:
 
-```swift
+```javascript
 /**
 ## The Flow Non-Fungible Token standard
 */
@@ -94,7 +94,7 @@ Wow. I'm scared.
 
 The good news is that we have actually implemented most of it. Believe it or not, I am such a good teacher that I had us implement 75% of this contract without you even knowing it. Damn, I'm good! Let's look at the contract we wrote so far:
 
-```swift
+```javascript
 pub contract CryptoPoops {
   pub var totalSupply: UInt64
 
@@ -175,7 +175,7 @@ pub contract CryptoPoops {
 
 Not bad, right!? I think we're kicking butt. Remember, in order to implement a contract interface, we have to use the `: {contract interface}` syntax, so let's do that here...
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -188,7 +188,7 @@ Remember from last chapter that a contract interface specifies some things we ne
 
 The first things you see in the `NonFungibleToken` contract interface are these things:
 
-```swift
+```javascript
 pub var totalSupply: UInt64
 
 pub event ContractInitialized()
@@ -200,7 +200,7 @@ pub event Deposit(id: UInt64, to: Address?)
 
 We already have `totalSupply`, but we need to put the events in our `CryptoPoops` contract or it will complain that they are missing. Let's do that below:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64
@@ -215,7 +215,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 Sweet! The next thing the NonFungibleToken standard says we have to do is have an `NFT` resource with an `id` field and it also has to implement `NonFungibleToken.INFT`. Well, we already do the first two things, but it does not implement the `NonFungibleToken.INFT` resource interface like it does in the standard. So let's add that to our contract as well.
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64
@@ -250,7 +250,7 @@ Amazing. We're about halfway done.
 
 The next thing you'll see inside the standard is these three resource interfaces:
 
-```swift
+```javascript
 pub resource interface Provider {
     pub fun withdraw(withdrawID: UInt64): @NFT {
         post {
@@ -279,7 +279,7 @@ First is the `Provider`. It makes sure that anything that implements it has a `w
 
 So let's implement the `Provider` now on our Collection:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -314,7 +314,7 @@ pub contract CryptoPoops: NonFungibleToken {
 ### Receiver
 Cool! What about the `Receiver` contract interface? It says anything that implements it needs to have a `deposit` function that takes in a `token` parameter that is of `@NonFungibleToken.NFT` type. Let's add `NonFungibleToken.Receiver` to our Collection below:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -357,7 +357,7 @@ Sweet. Our `withdraw` function and `deposit` functions are now working with the 
 
 Let's make these three changes below:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -406,7 +406,7 @@ Amazing. There's one question you may have:
 
 Next, think about what the `@NonFungibleToken.NFT` type is. It's a more generic type than just `@NFT`. Technically, literally any NFT on Flow all fit the `@NonFungibleToken.NFT` type. This has pros and cons, but one definite con is that now, anyone can deposit their own NFT type into our Collection. For example, if my friend defines a contract called `BoredApes`, they can technically deposit that into our Collection since it has an `@NonFungibleToken.NFT` type. Thus, we have to add something called a "force cast" to our `deposit` function:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -452,7 +452,7 @@ You'll see we use the "force cast" operator `as!`. In the code above, `@NonFungi
 ### CollectionPublic
 The last resource interface we need to implement is `CollectionPublic`, which looks like this:
 
-```swift
+```javascript
 pub resource interface CollectionPublic {
     pub fun deposit(token: @NFT)
     pub fun getIDs(): [UInt64]
@@ -462,7 +462,7 @@ pub resource interface CollectionPublic {
 
 Well, we already have `deposit`, but we need `getIDs` and `borrowNFT`. Let's add the `NonFungibleToken.CollectionPublic` to our Collection below:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -513,7 +513,7 @@ Cool! We added both `getIDs` (which didn't change from what we had previously), 
 
 Booooooooooyah! We are SO CLOSE to being done. The last thing the standard wants us to implement is the `createEmptyCollection` function, which we already have! Let's add it below:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -531,7 +531,7 @@ Of course, we have to make the return type `@NonFungibleToken.Collection` as wel
 
 Lastly, we want to use the `ContractInitialized` event inside the contract's `init`:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -545,7 +545,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 Now that we have correctly implemented the standard, lets add back our minting functionality as well:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   
@@ -578,7 +578,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 AAAAAAND WE'RE DONE!!!!!!!!!!!!!!!! Let's look at the whole contract now:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64
@@ -668,7 +668,7 @@ The whole point of `borrowNFT` is to allow us to read the NFT's metadata. But wh
 
 To fix that, we need to use something called an `auth` reference. If you remember the "force cast" operator `as!` above, it "downcasts" a generic type to a more specific type, and if it doesn't work, it panics. With references, in order to "downcast" you need an "authorized reference" that is marked with the `auth` keyword. We can do that like so:
 
-```swift
+```javascript
 pub fun borrowAuthNFT(id: UInt64): &NFT {
   let ref = &self.ownedNFTs[id] as auth &NonFungibleToken.NFT
   return ref as! &NFT
@@ -695,7 +695,7 @@ Additionally, you have officially completed the first main section of the Flow-Z
 
 3. This last quest will be your most difficult yet. Take this contract:
 
-```swift
+```javascript
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64

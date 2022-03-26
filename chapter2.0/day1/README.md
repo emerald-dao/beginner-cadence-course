@@ -39,7 +39,7 @@ Smart Contracts are deployed accounts. As we mentioned above, accounts are owned
 In this case, we will be deploying our Smart Contract to account `0x01`. This means account `0x01` is the **owner** of this Smart Contract. In the real world, you would deploy your Smart Contract to **your** account, but because this is a fake-simulation world, we can choose any account we want, so we chose `0x01`.
 
 Let's make our contract now. In the empty space, type the following:
-```swift
+```javascript
 pub contract HelloWorld {
 
     init() {
@@ -55,7 +55,7 @@ The `init()` function is a function that every single contract MUST have. It is 
 Okay, boom! This is your first Smart Contract, although it doesn't do anything ;( Let's make it store a `greeting` variable so we can store some data in this contract.
 
 Modify your contract code so it looks like this:
-```swift
+```javascript
 pub contract HelloWorld {
 
     pub let greeting: String
@@ -92,7 +92,7 @@ Let's make sure that our `greeting` variable actually got set to "Hello, World!"
 
 On the left hand side, under "Script Templates", click on the tab that says "Script" and delete everything inside of it. Next, write the following code:
 
-```swift
+```javascript
 import HelloWorld from 0x01
 
 pub fun main(): String {

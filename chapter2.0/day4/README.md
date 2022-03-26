@@ -10,7 +10,7 @@ Hello idiots. Today is your day to learn Structs! The good news is structs are p
 
 What are structs? Structs are containers of other types. Let's look at an example:
 
-```swift
+```javascript
 pub struct Profile {
     pub let firstName: String
     pub let lastName: String
@@ -46,7 +46,7 @@ Notice also that Structs have the `init()` function that gets called when the St
 
 Let's start off by deploying a new Smart Contract to account `0x01`:
 
-```swift
+```javascript
 pub contract Authentication {
 
     pub var profiles: {Address: Profile}
@@ -94,7 +94,7 @@ Now that we've defined a new Struct, let's see why it can be helpful.
 
 Let's open a new transaction and copy and paste this boilerplate transaction code:
 
-```swift
+```javascript
 import Authentication from 0x01
 
 transaction() {
@@ -109,7 +109,7 @@ transaction() {
 
 Cool! Now, we want to add a new profile to the `profiles` dictionary in the `Authentication` contract. How can we do this? Well, let's call the `addProfile` function with all the arguments we need like so: `Authentication.addProfile(firstName: firstName, lastName: lastName, birthday: birthday, account: account)`. But wait, we need to get these arguments from somewhere first! We can do that by passing them into the transaction as arguments, like so:
 
-```swift
+```javascript
 import Authentication from 0x01
 
 transaction(firstName: String, lastName: String, birthday: String, account: Address) {
@@ -131,7 +131,7 @@ Bam! Let's run this transaction with any account and pass in some example data l
 
 To read our new Profile, let's open up a Script and copy and paste the boilerplate script code:
 
-```swift
+```javascript
 import Authentication from 0x01
 
 pub fun main() {
@@ -141,7 +141,7 @@ pub fun main() {
 
 Now, let's try to read our Profile. We can do this by passing in an `Address` that represents an account, since we mapped accounts -> profiles in our `profiles` dictionary in the contract. We can then return the `Profile` type we get from that dictionary, like so:
 
-```swift
+```javascript
 import Authentication from 0x01
 
 pub fun main(account: Address): Authentication.Profile {
@@ -151,7 +151,7 @@ pub fun main(account: Address): Authentication.Profile {
 
 Aha! WAIT A MINUTE JACOB! There's an error: "mismatched types. expected `Authentication.Profile`, got `Authentication.Profile?`" Well, we know how to fix that from yesterday's content. We have to add the force-unwrap operator, like so: 
 
-```swift
+```javascript
 import Authentication from 0x01
 
 pub fun main(account: Address): Authentication.Profile {

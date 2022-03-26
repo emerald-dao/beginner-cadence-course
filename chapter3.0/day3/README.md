@@ -16,7 +16,7 @@ In Cadence, references are *almost always* used on Structs or Resources. It does
 
 References always use the `&` symbol in front of them. Let's look at an example:
 
-```swift
+```javascript
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -51,7 +51,7 @@ Now, you might be wondering "doesn't a dictionary return an optional? Why aren't
 
 Now that we can get a reference, we can get the reference in a transaction or script like so:
 
-```swift
+```javascript
 import Test from 0x01
 
 pub fun main(): String {

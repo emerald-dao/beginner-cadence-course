@@ -25,7 +25,7 @@ As you can see, scripts also do not cost any money (phew!). Transactions on the 
 During the last day, we actually implemented our first script on the Flow playground. Let's revisit that example:
 
 Load up the flow playground (https://play.onflow.org), copy this contract into the `0x01` account, and click "Deploy":
-```swift
+```javascript
 pub contract HelloWorld {
 
     pub let greeting: String
@@ -37,7 +37,7 @@ pub contract HelloWorld {
 ```
 
 Then, go to the Script tab on the left hand side and bring back our script from yesterday:
-```swift
+```javascript
 import HelloWorld from 0x01
 
 pub fun main(): String {
@@ -55,7 +55,7 @@ Now, let's do an example of a transaction. On the left hand side, under "Transac
 
 Okay, cool. Now, we want to modify the data on the blockchain. In order to do that, let's set up our transaction. We can do that by putting this code into the page:
 
-```swift
+```javascript
 transaction() {
     prepare(signer: AuthAccount) {}
 
@@ -77,7 +77,7 @@ Alright, so we want to change our `greeting` field to be something other than "H
 
 Go back to account `0x01` and add this function inside the contract:
 
-```swift
+```javascript
 pub fun changeGreeting(newGreeting: String) {
     self.greeting = newGreeting
 }
@@ -90,7 +90,7 @@ In order to keep things simple, we are using `pub` as our access modifier. `pub`
 
 But wait! There's an error in the contract. It says "cannot assign to constant member: `greeting`." Why is it saying that? Remember, we made our greeting be `let`. `let` means it's a constant, so if we want to change our `greeting`, we must change it to `var`. Make sure to hit "Deploy" again. Your code should now look like this:
 
-```swift
+```javascript
 pub contract HelloWorld {
 
     pub var greeting: String
@@ -109,7 +109,7 @@ Now that we've set up our contract, let's go back to our transaction. First, let
 
 We can do that by adding this line in the `execute` phase: `HelloWorld.changeGreeting(newGreeting: myNewGreeting)`. When you call a function in Cadence, you pass in parameters by doing `(argumentLabel: value`), where `argumentLabel` is the name of the argument and `value` is the actual value. You will notice we get an error that `myNewGreeting` isn't defined, which makes sense, because we aren't getting it from anywhere. So let's add a parameter called `myNewGreeting` to our transaction so we can pass in a value for a new greeting. We can do that like so:
 
-```swift
+```javascript
 import HelloWorld from 0x01
 
 transaction(myNewGreeting: String) {

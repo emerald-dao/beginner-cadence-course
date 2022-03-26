@@ -20,7 +20,7 @@ Well, if you recall, only the owner of a Collection can `withdraw` from their Co
 
 *Note: This is assuming you've already set up both accounts with a Collection.*
 
-```swift
+```javascript
 import CryptoPoops from 0x01
 
 // `id` is the `id` of the NFT
@@ -59,7 +59,7 @@ Alright, so let's figure out how to prevent everyone from minting their own NFTs
 
 The beauty of Cadence is that we can decide for ourselves. Why don't we start by making a Resource that mints NFTs? Then, whoever owns the resource can have the ability to mint an NFT. Let's build on top of the contract we had previously:
 
-```swift
+```javascript
 pub contract CryptoPoops {
   
   // ... other stuff here ...
@@ -93,7 +93,7 @@ Now, anyone who holds the `Minter` resource is able to mint NFTs. Okay, that's c
 
 The easiest solution is to give the `Minter` automatically to the account that is deploying the contract. We can do that by saving the `Minter` resource to the account storage of the contract deployer's account inside the `init` function:
 
-```swift
+```javascript
 pub contract CryptoPoops {
   
   // ... other stuff here ...
@@ -127,7 +127,7 @@ Let's look at an example transaction of a `Minter` minting someone an NFT.
 
 *Note: Let's assume the `signer` was the one who deployed the contract, since only they have the `Minter` resource*
 
-```swift
+```javascript
 import CryptoPoops from 0x01
 
 transaction(recipient: Address) {
@@ -159,7 +159,7 @@ Wooooooooohoooooooooooooo! We successfully implemented secure minting. This is a
 
 Alright, last thing. Remember yesterday we said that it is weird that we can't read our NFT without literally withdrawing it from the Collection? Well, let's add a function inside the `Collection` resource that lets us borrow the NFT:
 
-```swift
+```javascript
 pub contract CryptoPoops {
   pub var totalSupply: UInt64
 
@@ -229,7 +229,7 @@ pub contract CryptoPoops {
 
 Super simple right! We even added some extra fields (or "metadata") to our NFT so we can read info about it when we borrow it's reference from the Collection. In order to get the reference, we use a new `borrowNFT` function inside our `Collection` to return a reference to one of our NFTs that is stored inside our `ownedNFTs` dictionary. If we redeploy our contract, setup our accounts and run a new transaction to mint an NFT:
 
-```swift
+```javascript
 import CryptoPoops from 0x01
 
 // name: "Jacob"
@@ -259,7 +259,7 @@ transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber
 
 Awesome! We minted an NFT into the recipient's account. Now let's go ahead and use our new `borrowNFT` function in a script to read the NFT's metadata that was deposited into the account:
 
-```swift
+```javascript
 import CryptoPoops from 0x01
 pub fun main(address: Address, id: id) {
   let publicCollection = getAccount(address).getCapability(/public/MyCollection)
@@ -275,7 +275,7 @@ pub fun main(address: Address, id: id) {
 
 WAIT! We get an error! Why is that? Ahh, it's because we forgot to add `borrowNFT` to the `CollectionPublic` interface inside our contract, so it's not accessible to the public! Let's go ahead and fix that:
 
-```swift
+```javascript
 pub contract CryptoPoops {
   
   // ... other stuff here ...
@@ -294,7 +294,7 @@ pub contract CryptoPoops {
 
 Now, we can retry our script (assuming you mint the NFT all over again):
 
-```swift
+```javascript
 import CryptoPoops from 0x01
 pub fun main(address: Address, id: id) {
   let publicCollection = getAccount(address).getCapability(/public/MyCollection)
@@ -323,7 +323,7 @@ Because we had a LOT to talk about during this Chapter, I want you to do the fol
 Take our NFT contract so far and add comments to every single resource or function explaining what it's doing in your own words. Something like this:
 
 
-```swift
+```javascript
 pub contract CryptoPoops {
   pub var totalSupply: UInt64
 

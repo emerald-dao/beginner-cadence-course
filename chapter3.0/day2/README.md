@@ -22,7 +22,7 @@ That is all. Today, we will be talking about 1.
 
 It's always better to learn by examples, so let's open up a Flow playground and deploy the contract we used in Chapter 3 Day 1:
 
-```swift
+```javascript
 pub contract Test {
 
     pub resource Greeting {
@@ -37,7 +37,7 @@ pub contract Test {
 
 So far we just have 1 resource with the type `@Greeting`. Cool! Now let's try and have a state variable that stores a list of Greetings in an array.
 
-```swift
+```javascript
 pub contract Test {
 
     pub var arrayOfGreetings: @[Greeting]
@@ -70,7 +70,7 @@ Sweet! We made our own array of resources. Let's look at how to add a resource t
 
 *NOTE: Today, we will be passing resources around as arguments to our functions. This means we are not worrying about how the resources were created, we're just using sample functions to show you how to add to arrays and dictionaries.*
 
-```swift
+```javascript
 pub contract Test {
 
     pub var arrayOfGreetings: @[Greeting]
@@ -99,7 +99,7 @@ In this example, we added a new function `addGreeting` that takes in a `@Greetin
 
 Alright, we added to the array. Now how do we remove a resource from it? 
 
-```swift
+```javascript
 pub contract Test {
 
     pub var arrayOfGreetings: @[Greeting]
@@ -134,7 +134,7 @@ Resources in dictionaries is a bit more complicated. One of the reasons for this
 
 Let's use a similar contract for this example:
 
-```swift
+```javascript
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -163,7 +163,7 @@ There are 2 different ways to add a resource to a dictionary. Let's look at both
 
 The easiest way to add a resource to a dictionary is by using the "force-move" operator `<-!`, like so:
 
-```swift
+```javascript
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -195,7 +195,7 @@ The force-move operator `<-!` basically means: "If there is already a value at t
 
 The second way to move a resource into a dictionary is by using the double move syntax, like so:
 
-```swift
+```javascript
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -232,7 +232,7 @@ In essence, this way is more annoying and looks weird, but it **allows you to ha
 
 Here's how you would remove a resource from a dictionary:
 
-```swift
+```javascript
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -265,7 +265,7 @@ pub contract Test {
 
 Remember in the 'Removing from an Array' section, all we had to do was call the `remove` function. In dictionaries, accessing an element return an optional, so we have to "unwrap" it somehow. If we had just written this...
 
-```swift
+```javascript
 pub fun removeGreeting(key: String): @Greeting {
     let greeting <- self.dictionaryOfGreetings.remove(key: key)
     return <- greeting
@@ -274,7 +274,7 @@ pub fun removeGreeting(key: String): @Greeting {
 
 we would get an error: "Mismatched types. Expected `Test.Greeting`, got `Test.Greeting?`" To fix it, we can either use `panic`, or the force-unwrap operator `!`, like so:
 
-```swift
+```javascript
 pub fun removeGreeting(key: String): @Greeting {
     let greeting <- self.dictionaryOfGreetings.remove(key: key) ?? panic("Could not find the greeting!")
     // OR...

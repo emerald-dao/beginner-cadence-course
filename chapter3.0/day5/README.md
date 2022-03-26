@@ -13,7 +13,7 @@ Access Control is an extremely powerful feature in Cadence, and makes it very sp
 Access Control describes the way in which we can use things called "Access Modifiers" to increase the security of our smart contracts. 
 
 Previously, in all of our lessons, we declared all of our variables and functions using the `pub` keyword, like so:
-```swift
+```javascript
 pub let x: Bool
 
 pub fun jacobIsAwesome(): Bool {
@@ -42,7 +42,7 @@ This means we can access our thing from **anywhere**. Inside the contract, in tr
 This means we can only access our thing from where it is defined and inside of that.
 
 Ex. 
-```swift
+```javascript
 pub contract Stuff {
 
   pub struct TestStruct {
@@ -67,7 +67,7 @@ pub contract Stuff {
 This means we can access our thing anywhere inside the contract that it is defined.
 
 Ex. 
-```swift
+```javascript
 pub contract TestContract {
 
   // The "containing contract" for 'x' is here...
@@ -103,7 +103,7 @@ Now it is easier to understand what it's saying. Let's walk through all of the a
 `pub(set)` only applies to variables, constants, and fields. Functions **cannot** be publically settable. It is also the most dangerous and easily accessible modifier.
 
 Ex.
-```swift
+```javascript
 pub(set) var x: String
 ```
 
@@ -116,7 +116,7 @@ Read Scope - **All Scope**
 `pub` is the same thing as `access(all)`. This is the next layer down from pub(set).
 
 Ex.
-```swift
+```javascript
 pub var x: String
 access(all) var y: String
 
@@ -133,7 +133,7 @@ Read Scope - **All Scope**
 `access(account)` is a little more restrictive than `pub` due to its read scope.
 
 Ex.
-```swift
+```javascript
 access(account) var x: String
 
 access(account) fun testFunc() {}
@@ -148,7 +148,7 @@ Read Scope - All Contracts in the Account
 `access(contract)` is a little more restrictive than `access(account)` due to its read scope.
 
 Ex.
-```swift
+```javascript
 access(contract) var x: String
 
 access(contract) fun testFunc() {}
@@ -163,7 +163,7 @@ Read Scope - Containing Contract
 `priv` is the same thing as `access(self)`. This is the most restrictive (and safe) access modifier.
 
 Ex.
-```swift
+```javascript
 priv var x: String
 access(self) var y: String
 
@@ -191,7 +191,7 @@ See you in Chapter 4, folks! <3
 
 For today's quest, you will be looking at a contract and a script. You will be looking at 4 variables (a, b, c, d) and 3 functions (publicFunc, contractFunc, privateFunc) defined in `SomeContract`. In each AREA (1, 2, 3, and 4), I want you to do the following: for each variable (a, b, c, and d), tell me in which areas they can be read (read scope) and which areas they can be modified (write scope). For each function (publicFunc, contractFunc, and privateFunc), simply tell me where they can be called.
 
-```swift
+```javascript
 access(all) contract SomeContract {
     pub var testStruct: SomeStruct
 
@@ -265,7 +265,7 @@ access(all) contract SomeContract {
 ```
 
 This is a script that imports the contract above:
-```swift
+```javascript
 import SomeContract from 0x01
 
 pub fun main() {

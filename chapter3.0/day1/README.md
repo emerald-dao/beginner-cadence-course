@@ -13,7 +13,7 @@ Uh oh. We're on the most important topic in all of Cadence: Resources. Seriously
 Resources are probably the most crucial element of Cadence, and the reason Cadence is so unique. By the way they look, **a Resource is a more secure Struct**. That's the simple way to put it. But more importantly, because of their securities, they are used in many interesting ways we will explore.
 
 It's always helpful to look at code, so let's do that first:
-```swift
+```javascript
 pub resource Greeting {
     pub let message: String
     init() {
@@ -35,7 +35,7 @@ In Cadence, structs are merely containers of data. You can copy them, overwrite 
 5. Resources are much harder to deal with
 
 Let's look at some code below to figure out resources:
-```swift
+```javascript
 pub contract Test {
 
     pub resource Greeting {
@@ -61,7 +61,7 @@ There are so many important things happening here, so let's look at them in step
 
 Okay, this is cool. But what if we *want* to destroy a resource? Well, we can do that pretty easily:
 
-```swift
+```javascript
 pub contract Test {
 
     pub resource Greeting {
@@ -81,7 +81,7 @@ pub contract Test {
 ```
 
 You can already see resources are very different from structs. We have to be much more communicative with how we handle resources. Let's look at some things we can't do with resources:
-```swift
+```javascript
 pub contract Test {
 
     pub resource Greeting {
@@ -161,7 +161,7 @@ As always, feel free to answer in the language of your choice.
 
 5. What is the type of the resource below?
 
-```swift
+```javascript
 pub resource Jacob {
 
 }
@@ -169,7 +169,7 @@ pub resource Jacob {
 
 6. Let's play the "I Spy" game from when we were kids. I Spy 4 things wrong with this code. Please fix them.
 
-```swift
+```javascript
 pub contract Test {
 
     // Hint: There's nothing wrong here ;)

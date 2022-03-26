@@ -24,7 +24,7 @@ In Cadence, resource/struct interfaces are essentially "requirements," or ways f
 
 Resource interfaces are defined with the `resource interface` keyword (for structs it is `struct interface`):
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -46,7 +46,7 @@ Personally, I always name interfaces with an "I" in front, because it helps me d
 
 In the above example, `ITest` doesn't actually do anything. It's just sitting there. Let's add some stuff to it.
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -62,7 +62,7 @@ pub contract Stuff {
 
 Now, `ITest` contains a `name` field. Cool! But ITest still isn't doing anything. It's just sitting there in space. So let's make `Test` *implement* the `ITest` resource interface.
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -84,7 +84,7 @@ Notice what we just did. We made `Test` implement `ITest` by adding the `: ITest
 
 But you'll notice there's an error: "resource Stuff.Test does not conform to resource interface Stuff.ITest". Remember what we said above? Resource interfaces are *requirements*. If a resource implements a resource interface, it MUST define the things in the interface. Let's fix it.
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -107,7 +107,7 @@ There's no errors now! Woohoo!
 
 Above, we learned that resource interfaces make the resource implement certain things. But resource interfaces are actually much more important than that. Remember the 2nd thing they do? We said: "It allows you to only expose certain things to certain people". THAT is why they are powerful. Let's look below:
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -151,7 +151,7 @@ So, why does the `log` in `yesInterface` fail? Well, it's because `ITest` does N
 
 Here's a more complex example that also includes functions:
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -193,7 +193,7 @@ pub contract Stuff {
 
 I wanted to show you another example to show you that you can also choose not to expose functions. There's so many things you can do! :D If we wanted to fix this code, we would do:
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -250,7 +250,7 @@ Great job in getting through today's content. Resource interfaces will be extrem
 
 3. How would we fix this code? 
 
-```swift
+```javascript
 pub contract Stuff {
 
     pub struct interface ITest {

@@ -12,7 +12,7 @@ Events: https://www.youtube.com/watch?v=xRHG6Kgkxpg
 
 So far, we have only learned of 1 way to abort a program if something isn't correct: the `panic` keyword. `panic` is a keyword that completely reverts what happened in the code if it's called, and it sends a message along with it. Here's an example:
 
-```swift
+```javascript
 pub fun main(): String {
   let a: Int = 3
 
@@ -30,7 +30,7 @@ Often times, we want to handle errors in a clearer way, and also implement a con
 
 Pre/post conditions are perfect for this. They allow us to specify a very clear way to fail if something is wrong before (pre) or after (post) a function is called. Let's look at an example:
 
-```swift
+```javascript
 pub contract Test {
 
   pub fun logName(name: String) {
@@ -50,7 +50,7 @@ Pre-conditions and post-conditions **must** be defined as the first thing of a f
 Post-conditions are the same thing, except they are checked at the end of a function (they still have to be defined at the start. I know, it's confusing, but you'll get used to it):
 
 
-```swift
+```javascript
 pub contract Test {
 
   pub fun makePositiveResult(x: Int, y: Int): Int {
@@ -67,7 +67,7 @@ You may be wondering: "what the heck is that `result` variable? We never defined
 
 Additionally, you can use a `before()` function inside your post condition to access the value of something before the function modified that thing, even after the function has taken place. 
 
-```swift
+```javascript
 pub contract Test {
 
   pub resource TestResource {
@@ -96,7 +96,7 @@ The above code will always work, because the post-condition is satisfied. It say
 It's important to understand what `panic` or pre/post conditions actually do. They "abort" a transaction, which means none of the state is actually changed.
 
 Example:
-```swift
+```javascript
 pub contract Test {
 
   pub resource TestResource {
@@ -126,7 +126,7 @@ For example, if we mint an NFT, we want the outside world to know that an NFT wa
 
 Here's how you can define an event in Cadence:
 
-```swift
+```javascript
 pub contract Test {
 
   // define an event here
@@ -167,7 +167,7 @@ That's all for today! I hope you enjoyed the shorter lesson.
 
 4. For each of the functions below (numberOne, numberTwo, numberThree), follow the instructions.
 
-```swift
+```javascript
 pub contract Test {
 
   // TODO
