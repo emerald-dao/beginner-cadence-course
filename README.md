@@ -10,7 +10,7 @@ If you're seeing this message, you have arrived at the very first part of the Ze
 
 <img src="./images/course.png" alt="drawing" width="500"/>
 
-In this course, you will learn how to go from 0 computer science programming skills to being as smart as the greatest person on planet Earth, Jacob. Just kidding, you will learn the basic and major Cadence concepts needed to deploy your contracts. Specifically, you will to code out your own NFT contract by the end of this course.
+In this course, you will learn the basic Cadence concepts needed to deploy your own contracts. Specifically, you will learn how to code out your own NFT contract by the end of this course.
 
 The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
 
