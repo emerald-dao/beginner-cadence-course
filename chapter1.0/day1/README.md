@@ -63,6 +63,27 @@ Here is the normal workflow:
 2. A user runs a "transaction" that takes in some payment (to pay for gas fees, execution, etc) that calls some functions in the Smart Contract
 3. **The Smart Contract changes its data in some way**
 
+## "MainNet" vs. "TestNet"
+
+<img src="../../images/tvm.PNG" alt="drawing" width="600"/>
+
+You may have heard these terms come up, but what do they actually mean? 
+
+**TestNet** is an environment where developers test their applications before releasing it to the public. This is a perfect space to figure out what's wrong with your application before actually releasing it to the public to use. Here are a few additional notes:
+- Everything is fake
+- No actual money involved
+- Transactions cost fake money
+- A good way for developers to test their smart contracts and applications BEFORE releasing to the public
+- If something bad happens, no one cares.
+
+**MainNet** is an environment where everything is real. When you release your application to the public, you put it on MainNet. On MainNet, everything is live, so things cost real money, there are risks, and you must make sure everything is working correctly. Here are a few additional notes:
+- Everything is real
+- Money is involved
+- Transactions cost real money
+- When your application is fully ready, you put it on MainNet for users to interact with.
+- If something bad happens, that's really bad.
+
+
 ## Decentralized Applications (DApps)
 
 <img src="../../images/dapps.jpeg" alt="drawing" width="300"/>
