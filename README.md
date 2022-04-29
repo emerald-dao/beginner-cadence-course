@@ -2,7 +2,7 @@
 
 <img src="./images/welcome.jpeg" alt="drawing" width="500"/>
 
-If you're seeing this message, you have arrived at the very first part of the Zero to Jacob course. WELCOME! My name is Jacob Tucker, and I will give a brief introduction of the course and what you can expect.
+If you're seeing this message, you have arrived at the very first part of the Beginner Cadence Course. WELCOME! My name is Jacob Tucker, and I will give a brief introduction of the course and what you can expect.
 
 # *Want to watch a Welcome Video instead of reading this text? You can watch <a href="https://www.youtube.com/watch?v=JBtmLjZBR6M" target="_blank">here</a>.*
 
@@ -54,7 +54,7 @@ If you are ready for me to see one of your quests to review it, please message i
 
 Whenever you want my friend! :)
 
-You can start the first day [here](https://github.com/jacob-tucker/Flow-Zero-to-Jacob/tree/main/chapter1.0/day1).
+You can start the first day [here](https://github.com/emerald-dao/beginner-cadence-course/tree/main/chapter1.0/day1).
 
 ## <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>
 
