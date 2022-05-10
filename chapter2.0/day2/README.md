@@ -122,7 +122,7 @@ transaction(myNewGreeting: String) {
 }
 ```
 
-Now, on the right side, you'll see a prompt pop up. We can type in our new greeting into the little box! Because the Flow playground is a little glitchy, you have to surround your new greeting with quotes, like this: "Goodbye, World!". So let's type that in like so:
+Now, on the right side, you'll see a prompt pop up. We can type in our new greeting into the little box! Let's type "Goodbye, World!":
 
 <img src="../images/txgoodbye.PNG" alt="drawing" size="400" />
 
