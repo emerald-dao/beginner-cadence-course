@@ -241,7 +241,7 @@ pub fun main(): Int {
 ... this will `panic` and abort the program if there is no value at the "Bonjour" key. Instead, we can write the code like this:
 
 ```javascript
-pub fun main(): Int? {
+pub fun main(): Int? { // notice the return value is an optional type
     let thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
     return thing["Bonjour"] // we leave the optional
 }
