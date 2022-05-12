@@ -227,6 +227,28 @@ pub fun main(): Int {
 
 Now, there are no errors :D
 
+### Returning Optionals vs. Unwrapping
+
+You may be asking, "is there ever a case where I want to return an optional instead of force-unwrapping the optional? The answer is yes. In fact, most times, it is preferred to return an optional instead of unwrapping. For example, looking at this code:
+
+```javascript
+pub fun main(): Int {
+    let thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
+    return thing["Bonjour"]! // we are force-unwrapping the optional
+}
+```
+
+... this will `panic` and abort the program if there is no value at the "Bonjour" key. Instead, we can write the code like this:
+
+```javascript
+pub fun main(): Int? { // notice the return value is an optional type
+    let thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
+    return thing["Bonjour"] // we leave the optional
+}
+```
+
+This way, the client/caller can handle the case where the return value is `nil`, instead of having to worry about errors in the program. This same logic applies for other functions in your Cadence code as well.
+
 ### The Main Point
 
 The main takeaway is that when accessing values of a dictionary, you will always get optionals back. So if you want the *actual type* and not the optional, you must "unwrap" it using the force-unwrap operator `!`
