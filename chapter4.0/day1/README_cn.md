@@ -1,12 +1,12 @@
 # 第4章 Day 1 - 账户存储
 
-Alriiiiighty then. We made it through 3 chapters. But there's lots to go ;) Let's do this.
+进行的还不错。我们完成了 3 个章节。但是还有很多事情要做；）让我们继续。
 
-## Video
+## 视频
 
-Watch this video up until 14:45: https://www.youtube.com/watch?v=01zvWVoDKmU
+观看这个视频到14:45: https://www.youtube.com/watch?v=01zvWVoDKmU
 
-We will cover the rest tomorrow.
+其余部分留到下一个章节看
 
 ## flow链上中的账户（Accounts）
 
@@ -232,6 +232,6 @@ transaction() {
 
 6. 定义一个合同，该合同返回一个至少包含 1 个字段的资源。然后，编写 2 个事务：
 
-首先将资源保存到帐户存储，然后将其从帐户存储中加载，记录资源内的字段并销毁它的事务。
+    1) 首先将资源保存到帐户存储，然后将其从帐户存储中加载，记录资源内的字段并销毁它的事务。
 
-首先将资源保存到帐户存储，然后借用对它的引用，并在资源中记录一个字段的事务。
+    2) 首先将资源保存到帐户存储，然后借用对它的引用，并在资源中记录一个字段的事务。
