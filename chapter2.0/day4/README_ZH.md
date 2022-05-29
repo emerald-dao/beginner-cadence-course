@@ -28,7 +28,7 @@ pub struct Profile {
 }
 ```
 
-好的，这里发生了很多事情。究竟发生了什么？简单说，我们定了一个新的类型叫做 `Profile`（用户信息）. 它是一个Struct。正如你看到的这样，它包含4个数据。
+好的，这里发生了很多事情。究竟发生了什么？简单说，我们定义了一个新的类型叫做 `Profile`（用户信息）. 它是一个Struct。正如你看到的这样，它包含4个数据。
 
 1. 一个名字 (`firstName`)
 2. 一个姓氏 (`lastName`)
@@ -81,7 +81,6 @@ pub contract Authentication {
 }
 ```
 
-I threw a lot at you here. But you actually know all of it now! We can break it down:
 我在这里写了很多内容，但你现在其实已经了解他们了。让我们一个个来看一下他们：
 
 1. 我们声明了一个新的合约名为 `Authentication`
@@ -111,7 +110,7 @@ transaction() {
 }
 ```
 
-好的，现在我们想要在 `Authentication` 合约中添加一个新的profile到 `profiles` dictionary。我们该怎么做呢？对，我们可以调用 `addProfile` 函数，传入所需的所有的变量，比如: `Authentication.addProfile(firstName: firstName, lastName: lastName, birthday: birthday, account: account)`。 但首先，我们需要要从某个地方获取这些变量。我们可以通过transaction的变量把这些信息传过去，就像这样：
+好的，现在我们想要在 `Authentication` 合约中添加一个新的profile到 `profiles` dictionary。我们该怎么做呢？对，我们可以调用 `addProfile` 函数，传入所需的所有的变量，比如: `Authentication.addProfile(firstName: firstName, lastName: lastName, birthday: birthday, account: account)`。 但首先，我们需要从某个地方获取这些变量。我们可以通过transaction的变量把这些信息传过去，就像这样：
 
 ```javascript
 import Authentication from 0x01

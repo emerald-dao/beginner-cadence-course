@@ -10,9 +10,9 @@
 
 <img src="../images/resources.jpeg" alt="drawing" width="500" />
 
-resource或许是Cadence中最关键的一个组件，也是为什么Cadence是如此的特殊。顺便说一下，可以看做 **一个resource是一个更安全的struct**。这个是简单说法。但更重要的是，因为resource的安全性，resource会有很多很有意思的用途，我们稍后会讲到。
+resource或许是Cadence中最关键的一个组件，也是为什么Cadence是如此的特殊。顺便说一下，可以把 **一个resource看作是一个更安全的struct**。这个是简单说法。但更重要的是，因为resource的安全性，resource会有很多很有意思的用途，我们稍后会讲到。
 
-读代码总是由帮助的，我们先来看一看这个：
+读代码总是有帮助的，我们先来看一看这个：
 ```javascript
 pub resource Greeting {
     pub let message: String
@@ -80,9 +80,7 @@ pub contract Test {
 }
 ```
 
-You can already see resources are very different from structs. We have to be much more communicative with how we handle resources. Let's look at some things we can't do with resources:
-
-你已经能发发现resources和struct有很大的不同。我们需要更清晰的表述我们想要如何操控resource。让我们来看一下resource有哪些事情我们不能做：
+你已经能发现resources和struct有很大的不同。我们需要更清晰的表述我们想要如何操控resource。让我们来看一下resource有哪些事情我们不能做：
 
 ```javascript
 pub contract Test {
@@ -126,7 +124,7 @@ pub contract Test {
 }
 ```
 
-不过这个为什么会有很用呢？ 它不是非常繁琐吗？不是的，这其实非常有用。比如说，我们想给某个人一个价值几十亿刀的NFT。难道我们不想确定我们不会弄丢这个NFT吗？ **非常确定** ? 我们在Cadence中能做到，因为在Cadence中是 ”非常非常“ 丢失Resource，除非我们真正的告诉它我们想要销毁。这也是Cadence的一个总的主题： **Cadence让开发者很难出错，这是件好事**
+不过这个为什么会有很用呢？ 它不是非常繁琐吗？不是的，这其实非常有用。比如说，我们想给某个人转一个价值几十亿刀的NFT。难道我们不想确定我们不会弄丢这个NFT吗？ **非常确定** ? 我们在Cadence中能做到，因为在Cadence中是 ”非常非常难“ 丢失Resource，除非我们真正的告诉它我们想要销毁。这也是Cadence的一个总的主题： **Cadence让开发者很难出错，这是件好事**
 
 下面是关于Struct和Resource区别的一些总结：
 - Structs是数据的容器，仅此而已

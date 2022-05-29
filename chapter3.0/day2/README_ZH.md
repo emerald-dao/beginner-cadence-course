@@ -10,7 +10,7 @@
 首先，我们为什么要讨论Dictionary中的resource，而不是structs中的resource呢？因为，首先你要知道，*你不能在struct中存储resource*。虽然struct是一个数据的容器，但我们不能把resource放在里面。
 
 那我们能在哪里存储resource呢？
-1. 在dictionary或者array中。
+1. 在dictionary或者array中
 2. 在另外一个resource中
 3. 一个合约的状态变量
 4. 在账户的存储空间中 (我们稍后会讨论)
@@ -56,7 +56,7 @@ pub contract Test {
 }
 ```
 
-请注意这个 `arrayOfGreetings`: `@[Greeting]` 类型。我们昨天学到resource在开头必须有 `@` 符号。这在包含resource的数组中也同样适用，你需要在开头加入 `@` 来告之Cadence这是一个包含resources的数组。并且，这个 `@` 必须是在括号外的，不是里面。
+请注意这个 `arrayOfGreetings`: `@[Greeting]` 类型。我们昨天学到resource在开头必须有 `@` 符号。这在包含resource的数组中也同样适用，你需要在开头加入 `@` 来告知Cadence这是一个包含resources的数组。并且，这个 `@` 必须是在括号外的，不是里面。
 
 `[@Greeting]` - 错误
 
@@ -130,8 +130,6 @@ pub contract Test {
 还是那么简单直接。在一个通常的数组中，我们会用 `remove` 函数来把某一个元素取出来。在处理resource时也同样适用，唯一的区别就是我们要用 `<-` 运算符来把resource从数组中取出。
 
 ## Dictionaries中的resource
-
-Resources in dictionaries is a bit more complicated. One of the reasons for this is because, if you remember from Chapter 2 Day 3, dictionaries always return optionals when you access the values inside of it. This makes storing and retrieving resources a lot more difficult. Either way, I would say that resources *most commonly get stored in dictionaries*, so it's important to learn how it's done.
 
 Dictionaries中的resource相对有一点复杂。原因之一是，如果你还记得在前面第二章第三天时我们提到，当时访问Dictionary中的值的时候，返回的一定是optional的。这使得存储和提取resource更复杂点。无论怎样，resource *通常也都是存储在Dictionary中*，因此学习如何处理这些是非常重要的。
 
@@ -277,8 +275,6 @@ pub fun removeGreeting(key: String): @Greeting {
 }
 ```
 
-we would get an error: "Mismatched types. Expected `Test.Greeting`, got `Test.Greeting?`" To fix it, we can either use `panic`, or the force-unwrap operator `!`, like so:
-
 我们会发现一个报错："Mismatched types. Expected `Test.Greeting`, got `Test.Greeting?`"。修正这个问题，我们可以要么使用 `panic` ，或者我们使用强制打开运算符 `！`，比如这样：
 
 
@@ -292,8 +288,6 @@ pub fun removeGreeting(key: String): @Greeting {
 ```
 
 ## 结语
-
-That's all for today! :D Now, you may be wondering: "What if I want to *access* an element of an array/dictionary that has a resource, and do something with it?" You can do that, but you would first have to move the resource out of the array/dictionary, do something, and then move it back in. Tomorrow we'll talk about references, which will allow you to do things with resources without having to move them everywhere. Peace!
 
 
 这就是我们今天的内容！也许你想问： “如果我想*获取*一个数组或dictionary中的一个resource，然后再对其进行一些操作，该怎么做？你当然可以做，但你第一步要先把resource从arry/dictionary中移动出来，做某些操作，然后再移动回去。明天，我们会讨论reference，通过reference我们可以对resource做一些操作，但不需要移动resource”
