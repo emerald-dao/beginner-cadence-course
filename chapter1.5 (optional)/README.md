@@ -36,7 +36,7 @@ When you're coding a program, there are always a lot of useful tools to help you
 
 The most basic function in Cadence is `log`, which means, "print this to the screen so I can read it." You can write it in code like this:
 
-```javascript
+```cadence
 log("Hello, idiot!")
 ```
 
@@ -72,7 +72,7 @@ In Cadence (and most other programming languages), everything has something call
 
 In Cadence, we call a number an "Integer". More specifically, it has type `Int`. However, we call text a "String", also known as `String`. Here's an example:
 
-```javascript
+```cadence
 let x: Int = 5
 let text: String = "Hello idiot"
 ```
@@ -81,7 +81,7 @@ You can see the different types of the variables here. And don't worry, we will 
 
 Here's an example mistake so you can see the difference:
 
-```javascript
+```cadence
 let x: String = 5 // WRONG
 let y: String = "5" // GOOD
 ```

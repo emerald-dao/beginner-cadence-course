@@ -39,7 +39,7 @@ The key part to remember is that only the account owner can ever access their `/
 
 You may be wondering: "well, how do I access my `/storage/`?" The answer is your `AuthAccount` type. If you remember, when you sign a transaction, the signer's `AuthAccount` gets placed as a parameter in the `prepare` phase, like so:
 
-```javascript
+```cadence
 transaction() {
   prepare(signer: AuthAccount) {
     // We can access the signer's /storage/ path here!
@@ -57,7 +57,7 @@ As you can see above, we can access the signer's `/storage/` in the `prepare` ph
 
 Let's practice storing something in an account. First let's define a contract:
 
-```javascript
+```cadence
 pub contract Stuff {
 
   pub resource Test {
@@ -76,7 +76,7 @@ pub contract Stuff {
 
 We have defined a simple contract that lets you create and return a `@Test` resource type. Let's get this in a transaction:
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -92,7 +92,7 @@ transaction() {
 
 All we're doing is creating and destroying a `@Test`. But what if we wanted to store it in our account? Let's see how that's done, and then we'll walk through it:
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -116,7 +116,7 @@ Look at how we saved it to our account. First, we **have to have an `AuthAccount
 
 In the example above, I saved `testResource` (note the `<-` syntax since it's a resource) to the path `/storage/MyTestResource`. Now, anytime we want to get it, we can go to that path. Let's do that below.
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -141,7 +141,7 @@ You'll notice that we have to do this weird thing: `<@Stuff.Test>`. What is that
 
 One more important thing is that when you `load` data from storage, it returns an optional. `testResource` actually has type `@Stuff.Test?`. The reason for this is because Cadence has no idea that you are telling the truth and something actually lives there, or that it's even the right type. So if you were wrong, it will return `nil`. Let's look at an example:
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -159,7 +159,7 @@ transaction() {
 
 See? It is an optional. To fix this, we can either use `panic` or the `!` operator. I like to use `panic` because you can specify an error message.
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -180,7 +180,7 @@ transaction() {
 
 Previously, we saved and loaded from our account. But what if we just want to look at something in an account? That's where references and the `.borrow()` function comes in.
 
-```javascript 
+```cadence 
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {

@@ -12,7 +12,7 @@
 
 NonFungibleToken 标准中有很多内容。让我们来看看它：
 
-```javascript
+```cadence
 /**
 ## The Flow Non-Fungible Token standard
 */
@@ -93,7 +93,7 @@ pub contract interface NonFungibleToken {
 
 我们实际上已经实现了其中的大部分内容。让我们看看到目前为止我们写的合约：
 
-```javascript
+```cadence
 pub contract CryptoPoops {
   pub var totalSupply: UInt64
 
@@ -174,7 +174,7 @@ pub contract CryptoPoops {
 
 还不错吧！？记住，为了实现一个合约接口，我们必须使用`: {contract interface}`语法，所以让我们在这里做......
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -187,7 +187,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 在合约接口`NonFungibleToken`中看到的第一件事是：
 
-```javascript
+```cadence
 pub var totalSupply: UInt64
 
 pub event ContractInitialized()
@@ -199,7 +199,7 @@ pub event Deposit(id: UInt64, to: Address?)
 
 我们已经有了`totalSupply`，但是我们需要将这些事件放入我们的`CryptoPoops`合约中，否则它会抱怨它们丢失了。下面这样做：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64
@@ -214,7 +214,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 `NonFungibleToken` 标准要求我们做的下一件事是去包含一个带有id字段的NFT资源，并且它还必须实现`NonFungibleToken.INFT`。好吧，我们已经做了前两件事，但是它没有像标准中那样实现`NonFungibleToken.INFT`资源接口。因此，让我们也将其添加到合约中。
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64
@@ -249,7 +249,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 下面讨论的是在标准中的三个资源接口：
 
-```javascript
+```cadence
 pub resource interface Provider {
     pub fun withdraw(withdrawID: UInt64): @NFT {
         post {
@@ -278,7 +278,7 @@ pub resource interface CollectionPublic {
 
 现在让我们在 Collection 上实现 `Provider`：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -313,7 +313,7 @@ pub contract CryptoPoops: NonFungibleToken {
 ### Receiver
 Cool! `Receiver` 合约接口怎么样？它说任何实现它的资源都需要一个 `deposit` 函数，该函数接受一个 `@NonFungibleToken.NFT` 类型的 `token` 参数。 让我们将 `NonFungibleToken.Receiver` 添加到下面的集合中：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -356,7 +356,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 让我们在下面进行这三个更改：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -405,7 +405,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 接下来，想想 `@NonFungibleToken.NFT` 类型是什么。 它是一种比 `@NFT` 更通用的类型。 从字面上看，Flow 上的任何 NFT 都适合`@NonFungibleToken.NFT` 类型。 这有利有弊，但一个明确的缺点是，现在，任何人都可以将自己的 NFT 类型存入我们的 Collection。 例如，如果我的朋友定义了一个名为 `BoredApes` 的合约，他们可以在技术上将其存入我们的 Collection，因为它具有`@NonFungibleToken.NFT` 类型。 因此，我们必须在我们的 `deposit` 函数中添加一个称为“强制转换”的东西：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -450,7 +450,7 @@ pub contract CryptoPoops: NonFungibleToken {
 ### CollectionPublic
 我们需要实现的最后一个资源接口是 `CollectionPublic`，如下所示：
 
-```javascript
+```cadence
 pub resource interface CollectionPublic {
     pub fun deposit(token: @NFT)
     pub fun getIDs(): [UInt64]
@@ -460,7 +460,7 @@ pub resource interface CollectionPublic {
 
 我们已经有了 `deposit`，但我们需要 `getIDs` 和 `borrowNFT`。 让我们将 `NonFungibleToken.CollectionPublic` 添加到下面的Collection中：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -511,7 +511,7 @@ Cool! 我们添加了`getIDs`（与我们之前的内容没有变化）和`borro
 
 已经快要完成了！标准希望我们实现的最后一件事是我们已经拥有的 `createEmptyCollection` 函数！ 让我们在下面添加它：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -529,7 +529,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 最后，我们想在合约的 `init` 中使用 `ContractInitialized` 事件：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   // ...other stuff...
@@ -543,7 +543,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 现在我们已经正确实现了标准，让我们也添加回我们的铸币功能：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   
@@ -576,7 +576,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 我们全部完成了!!!! 现在让我们看一下整个合约：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64
@@ -666,7 +666,7 @@ pub contract CryptoPoops: NonFungibleToken {
 
 为了解决这个问题，我们需要使用一个叫做 `auth` 的引用。 如果您还记得上面的“强制转换”运算符 `as!`，它会将泛型类型“向下转换”为更具体的类型，如果它不起作用，它就会出现错误。 对于引用，为了“向下转换”，您需要一个标有 `auth` 关键字的“授权引用”。 我们可以这样做：
 
-```javascript
+```cadence
 pub fun borrowAuthNFT(id: UInt64): &NFT {
   let ref = &self.ownedNFTs[id] as auth &NonFungibleToken.NFT
   return ref as! &NFT
@@ -693,7 +693,7 @@ pub fun borrowAuthNFT(id: UInt64): &NFT {
 
 3. 这最后一个作业将是你迄今为止最困难的。 阅读这个合约：
 
-```javascript
+```cadence
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64

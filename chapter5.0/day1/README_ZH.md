@@ -12,7 +12,7 @@ Events (事件): https://www.youtube.com/watch?v=xRHG6Kgkxpg
 
 之前我们只学习了一种异常处理中止程序的方法：`panic`。`panic`是一个关键字，如果它被调用，会完全还原代码中发生的事情，并随之发送一条消息。例如:
 
-```javascript
+```cadence
 pub fun main(): String {
   let a: Int = 3
 
@@ -30,7 +30,7 @@ pub fun main(): String {
 
 Pre/Post 条件非常适合实现这一点。如果在调用函数之前（pre）或之后（post）出现问题，它们允许我们指定一种非常清晰的失败方式。例如:
 
-```javascript
+```cadence
 pub contract Test {
 
   pub fun logName(name: String) {
@@ -49,7 +49,7 @@ pub contract Test {
 
 后置条件是一样的，除了在函数的末尾检查它们（它们仍然必须在开始时定义。我知道，这很令人困惑，但你会习惯的）：
 
-```javascript
+```cadence
 pub contract Test {
 
   pub fun makePositiveResult(x: Int, y: Int): Int {
@@ -66,7 +66,7 @@ pub contract Test {
 
 此外，您可以在后置条件中使用`before()`函数，在函数修改`self.number`之前访问`self.number`的值，即使值已经被修改过。
 
-```javascript
+```cadence
 pub contract Test {
 
   pub resource TestResource {
@@ -95,7 +95,7 @@ pub contract Test {
 了解`panic`实际执行的操作或前置/后置条件非常重要。他们“中止”交易，这意味着实际上链上没有任何状态被改变。
 
 例如:
-```javascript
+```cadence
 pub contract Test {
 
   pub resource TestResource {
@@ -125,7 +125,7 @@ pub contract Test {
 
 以下是在 Cadence 中定义事件的方法：
 
-```javascript
+```cadence
 pub contract Test {
 
   // define an event here
@@ -166,7 +166,7 @@ pub contract Test {
 
 4. 对于以下每个函数（`numberOne`、`numberTwo`、`numberThree`），请按照说明进行操作。
 
-```javascript
+```cadence
 pub contract Test {
 
   // TODO

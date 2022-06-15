@@ -15,7 +15,7 @@ GM！今天，我们将学习访问控制。
 
 
 之前，在我们的所有课程中，我们使用 `pub` 关键字声明了所有变量和函数，如下所示：
-```javascript
+```cadence
 pub let x: Bool
 
 pub fun jacobIsAwesome(): Bool {
@@ -51,7 +51,7 @@ This means we can access our thing from **anywhere**. Inside the contract, in tr
 这意味着我们只能从定义的地方和它内部访问我们的东西。
 
 Ex. 
-```javascript
+```cadence
 pub contract Stuff {
 
   pub struct TestStruct {
@@ -77,7 +77,7 @@ pub contract Stuff {
 这意味着我们可以在合约中定义的任何地方访问我们的东西。
 
 Ex. 
-```javascript
+```cadence
 pub contract TestContract {
 
   // "包含合约" 的 'x' 在这里...
@@ -116,7 +116,7 @@ pub contract TestContract {
 `pub(set)` 仅适用于变量、常量和字段。功能**不能**公开设置。它也是最危险、最容易接近的修饰语。
 
 Ex.
-```javascript
+```cadence
 pub(set) var x: String
 ```
 
@@ -131,7 +131,7 @@ pub(set) var x: String
 `pub` 和 `access(all)` 是一回事。这是 pub(set) 的下一层。
 
 Ex.
-```javascript
+```cadence
 pub var x: String
 access(all) var y: String
 
@@ -148,7 +148,7 @@ access(all) fun testFuncTwo() {}
 `access（account）`由于其读取范围，比 `pub` 更具限制性。
 
 Ex.
-```javascript
+```cadence
 access(account) var x: String
 
 access(account) fun testFunc() {}
@@ -165,7 +165,7 @@ access(account) fun testFunc() {}
 由于它的读取范围，它比 `access(account)` 有一点限制性。
 
 Ex.
-```javascript
+```cadence
 access(contract) var x: String
 
 access(contract) fun testFunc() {}
@@ -180,7 +180,7 @@ access(contract) fun testFunc() {}
 `priv` 与 `access(self)`是同一个词。这是最严格（也是最安全）的访问修改器。
 
 Ex.
-```javascript
+```cadence
 priv var x: String
 access(self) var y: String
 
@@ -210,7 +210,7 @@ For today's quest, you will be looking at a contract and a script. You will be l
 
 在今天的任务中，你将看到一份合约和一份脚本。您将看到 `SomeContract` 中定义的 4 个变量（a、b、c、d）和 3 个函数（publicFunc、contractFunc、privateFunc）。在每个区域（1、2、3 和 4）中，我希望您执行以下操作：对于每个变量（a、b、c 和 d），请告诉我在哪些区域可以读取它们（读取范围），哪些区域可以修改它们（写入范围）。对于每个函数（publicFunc、contractFunc和privateFunc），只需告诉我在哪里可以调用它们。
 
-```javascript
+```cadence
 access(all) contract SomeContract {
     pub var testStruct: SomeStruct
 
@@ -284,7 +284,7 @@ access(all) contract SomeContract {
 ```
 
 This is a script that imports the contract above:
-```javascript
+```cadence
 import SomeContract from 0x01
 
 pub fun main() {

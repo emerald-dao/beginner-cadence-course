@@ -10,7 +10,7 @@
 
 什么是Structs？Structs是其他数据类型的容器。让我们来看一个例子。
 
-```javascript
+```cadence
 pub struct Profile {
     pub let firstName: String
     pub let lastName: String
@@ -49,7 +49,7 @@ pub struct Profile {
 我们首先来在账户 `0x01` 中部署一个新的合约。
 
 
-```javascript
+```cadence
 pub contract Authentication {
 
     pub var profiles: {Address: Profile}
@@ -97,7 +97,7 @@ pub contract Authentication {
 
 我们来打开一个新的transaction，并把下面的这些transaction代码复制进去。
 
-```javascript
+```cadence
 import Authentication from 0x01
 
 transaction() {
@@ -112,7 +112,7 @@ transaction() {
 
 好的，现在我们想要在 `Authentication` 合约中添加一个新的profile到 `profiles` dictionary。我们该怎么做呢？对，我们可以调用 `addProfile` 函数，传入所需的所有的变量，比如: `Authentication.addProfile(firstName: firstName, lastName: lastName, birthday: birthday, account: account)`。 但首先，我们需要从某个地方获取这些变量。我们可以通过transaction的变量把这些信息传过去，就像这样：
 
-```javascript
+```cadence
 import Authentication from 0x01
 
 transaction(firstName: String, lastName: String, birthday: String, account: Address) {
@@ -134,7 +134,7 @@ transaction(firstName: String, lastName: String, birthday: String, account: Addr
 
 为了读取我们的新profile，我们来打开一个Script，把下面这段代码复制过去。
 
-```javascript
+```cadence
 import Authentication from 0x01
 
 pub fun main() {
@@ -144,7 +144,7 @@ pub fun main() {
 
 现在，让我们尝试读取我们的profile。 我们可以把代表账户的 `Address` 传进去，因为我们已经在这个合约中有了 accounts -> `profiles` dictionary的映射。我们可以从dictionary中返回 `Profile` 类型，就像这样：
 
-```javascript
+```cadence
 import Authentication from 0x01
 
 pub fun main(account: Address): Authentication.Profile {
@@ -154,7 +154,7 @@ pub fun main(account: Address): Authentication.Profile {
 
 啊，Jacob这里有一个报错！"mismatched types. expected `Authentication.Profile`, got `Authentication.Profile?`"， 但我们通过昨天的内容已经知道了该如何解决的这个问题。我们需要加上一个强制打开运算符，就像这样：
 
-```javascript
+```cadence
 import Authentication from 0x01
 
 pub fun main(account: Address): Authentication.Profile {

@@ -13,7 +13,7 @@
 resource或许是Cadence中最关键的一个组件，也是为什么Cadence是如此的特殊。顺便说一下，可以把 **一个resource看作是一个更安全的struct**。这个是简单说法。但更重要的是，因为resource的安全性，resource会有很多很有意思的用途，我们稍后会讲到。
 
 读代码总是有帮助的，我们先来看一看这个：
-```javascript
+```cadence
 pub resource Greeting {
     pub let message: String
     init() {
@@ -36,7 +36,7 @@ pub resource Greeting {
 5. Resources更难操作。
 
 让我们看下面的这些代码来学习resource：
-```javascript
+```cadence
 pub contract Test {
 
     pub resource Greeting {
@@ -62,7 +62,7 @@ pub contract Test {
 
 好的，这很酷。但如果我们 *想* 销毁一个resource呢？好的，这个做起来很简单：
 
-```javascript
+```cadence
 pub contract Test {
 
     pub resource Greeting {
@@ -82,7 +82,7 @@ pub contract Test {
 
 你已经能发现resources和struct有很大的不同。我们需要更清晰的表述我们想要如何操控resource。让我们来看一下resource有哪些事情我们不能做：
 
-```javascript
+```cadence
 pub contract Test {
 
     pub resource Greeting {
@@ -159,7 +159,7 @@ pub contract Test {
 
 5. 下面的这个resource类型是什么？
 
-```javascript
+```cadence
 pub resource Jacob {
 
 }
@@ -167,7 +167,7 @@ pub resource Jacob {
 
 6. 下面的代码中有四个错误，请修复他们
 
-```javascript
+```cadence
 pub contract Test {
 
     // Hint: There's nothing wrong here ;)

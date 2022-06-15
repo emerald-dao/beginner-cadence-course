@@ -16,7 +16,7 @@ In Cadence, references are *almost always* used on Structs or Resources. It does
 
 References always use the `&` symbol in front of them. Let's look at an example:
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -28,8 +28,8 @@ pub contract Test {
         }
     }
 
-    pub fun getReference(key: String): &Greeting {
-        return &self.dictionaryOfGreetings[key] as &Greeting
+    pub fun getReference(key: String): &Greeting? {
+        return &self.dictionaryOfGreetings[key] as &Greeting?
     }
 
     init() {
@@ -41,17 +41,24 @@ pub contract Test {
 }
 ```
 
-In the above example, you can see that `getReference` returns a `&Greeting` type, which simply means "A reference to the `@Greeting` type." Inside the function, a few things are happening:
+In the above example, you can see that `getReference` returns a `&Greeting?` type, which simply means "An optional reference to the `@Greeting` type." Inside the function, a few things are happening:
 1. We first get a reference of the value at `key` by doing `&self.dictionaryOfGreetings[key]`. 
-2. We "type cast" the reference by doing `as &Greeting`
+2. We "type cast" the reference by doing `as &Greeting?`. Notice that it is an optional, which makes sense because when we index into dictionaries, it returns an optional type.
 
-Notice that if we had forgotten the `as &Greeting`, Cadence would yell at us and say "expected casting expression." This is because in Cadence, **you have to type cast when getting a reference**. Type casting is when you tell Cadence the type you're getting the reference as, which is what `as &Greeting` is doing. It's saying "get this reference that is a &Greeting reference." If it's not, we will abort the program.
+Notice that if we had forgotten the `as &Greeting?`, Cadence would yell at us and say "expected casting expression." This is because in Cadence, **you have to type cast when getting a reference**. Type casting is when you tell Cadence the type you're getting the reference as, which is what `as &Greeting?` is doing. It's saying "get this optional reference that is a &Greeting reference." If it's not, we will abort the program.
 
-Now, you might be wondering "doesn't a dictionary return an optional? Why aren't we unwrapping `&self.dictionaryOfGreetings[key]` with a `!` symbol?" The truth is, we don't have to. If there is no value at the `key`, the optional will fail to type case to a `&Greeting` type. So we can ignore the optional case for now.
+Now, you might be wondering "how can I unwrap this optional reference?" You can do that like so:
+```cadence
+pub fun getReference(key: String): &Greeting {
+    return (&self.dictionaryOfGreetings[key] as &Greeting?)!
+}
+```
+
+Notice that we wrap the whole thing and use the force-unwrap operator `!` to unwrap it, like normal. It also changes the return type to a non-optional `&Greeting`. Make sure to change this in your code.
 
 Now that we can get a reference, we can get the reference in a transaction or script like so:
 
-```javascript
+```cadence
 import Test from 0x01
 
 pub fun main(): String {

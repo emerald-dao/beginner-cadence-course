@@ -21,7 +21,7 @@
 
 通过示例还学习总是很好的，我们来打开一个Flow playground，并在Chapter 3 Day 1中部署这个合约。
 
-```javascript
+```cadence
 pub contract Test {
 
     pub resource Greeting {
@@ -37,7 +37,7 @@ pub contract Test {
 到此为止，我们有了1个 `@Greeting`类型的resource。现在我们试着创建一个状态变量，把一列 Greetings 存储在一个数组array里。
 
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var arrayOfGreetings: @[Greeting]
@@ -70,7 +70,7 @@ pub contract Test {
 
 *请注意：今天我们将会以变量的形式把resource传入到我们的函数中。也就是说我们不关心resource是如何被创建的，我们只是用一些例子来展示如何把resource加入到array和Dictionary中*
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var arrayOfGreetings: @[Greeting]
@@ -100,7 +100,7 @@ pub contract Test {
 
 好的，我们知道了如何加入到数组中。我们来看一下如何从数组中删除resource
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var arrayOfGreetings: @[Greeting]
@@ -135,7 +135,7 @@ Dictionaries中的resource相对有一点复杂。原因之一是，如果你还
 
 我们用一个类似的合约作为例子：
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -164,7 +164,7 @@ pub contract Test {
 
 将一个resource加到dictionary里最简单的办法就是用 “强制移动” 运算符 `<-!`，比如这样：
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -196,7 +196,7 @@ pub contract Test {
 
 第二种方式是两次移动语法，比如这样：
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -234,7 +234,7 @@ pub contract Test {
 
 下面是，我们如何从dictionary中删除一个resource：
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -268,7 +268,7 @@ pub contract Test {
 还记得我们在“从array中删除值的”那一部分讲到的，需要我们做的只是调用那个 `remove` 函数。在 dictionary中，访问一个元素的返回值是optional的，所以我们需要怎么着“打开”它。如果我们这样写。。。
 
 
-```javascript
+```cadence
 pub fun removeGreeting(key: String): @Greeting {
     let greeting <- self.dictionaryOfGreetings.remove(key: key)
     return <- greeting
@@ -278,7 +278,7 @@ pub fun removeGreeting(key: String): @Greeting {
 我们会发现一个报错："Mismatched types. Expected `Test.Greeting`, got `Test.Greeting?`"。修正这个问题，我们可以要么使用 `panic` ，或者我们使用强制打开运算符 `！`，比如这样：
 
 
-```javascript
+```cadence
 pub fun removeGreeting(key: String): @Greeting {
     let greeting <- self.dictionaryOfGreetings.remove(key: key) ?? panic("Could not find the greeting!")
     // 或者...

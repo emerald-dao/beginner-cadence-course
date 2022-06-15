@@ -25,7 +25,7 @@
 在过去的一天里，我们实际上在 Flow Playground 上实现了我们的第一个脚本。让我们重温一下这个例子。
 
 加载 Flow Playground（https://play.onflow.org），把这个合约复制到`0x01` 账户中，然后点击“Deploy”。
-```javascript
+```cadence
 pub contract HelloWorld {
 
     pub let greeting: String
@@ -37,7 +37,7 @@ pub contract HelloWorld {
 ```
 
 然后，点击左侧的“Script”标签，把我们昨天的脚本贴进去：
-```javascript
+```cadence
 import HelloWorld from 0x01
 
 pub fun main(): String {
@@ -55,7 +55,7 @@ pub fun main(): String {
 
 好的，很酷。现在我们想修改区块链上的数据。为了做到这一点，让我们设置我们的交易。把这段代码放到页面中：
 
-```javascript
+```cadence
 transaction() {
     prepare(signer: AuthAccount) {}
 
@@ -78,7 +78,7 @@ Boom！这是一个空的交易，不做任何事情。为了解释什么是 `pr
 
 回到账户`0x01`，在合约中添加这个函数：
 
-```javascript
+```cadence
 pub fun changeGreeting(newGreeting: String) {
     self.greeting = newGreeting
 }
@@ -91,7 +91,7 @@ pub fun changeGreeting(newGreeting: String) {
 
 但是，等等! 合约中出现了一个错误。它说 “不能赋值给常量：`greeting`”。为什么这样说呢？记住，我们用 `let` 定义 `greeting`。`let` 意味着它是一个常量，所以如果我们想改变我们的 `greeting`，我们必须把它改用 `var` 定义。请再次点击 “Deploy”。你的代码现在应该是这样的：
 
-```javascript
+```cadence
 pub contract HelloWorld {
 
     pub var greeting: String
@@ -110,7 +110,7 @@ pub contract HelloWorld {
 
 我们可以通过在 `execute` 阶段添加这一行来做到这一点。`HelloWorld.changeGreeting(newGreeting: myNewGreeting)`。当你在Cadence中调用一个函数时，你通过 `(参数名: 参数值`) 来传递参数，其中`参数名` 是参数的名称，`参数值` 是实际值。你会注意到我们得到了一个错误，即`myNewGreeting` 没有被定义，这很合理，因为我们没有从任何地方获取这个参数。所以让我们在交易中添加一个叫做 `myNewGreeting` 的参数，这样我们就可以为新的 `greeting` 传递一个值。我们可以这样做：
 
-```javascript
+```cadence
 import HelloWorld from 0x01
 
 transaction(myNewGreeting: String) {

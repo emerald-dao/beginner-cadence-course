@@ -25,7 +25,7 @@
 
 资源接口是用 `resource interface` 关键字定义的（对于结构，它是 `struct interface`）：
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -45,7 +45,7 @@ pub contract Stuff {
 就我个人而言，我总是用前面的 “I” 来命名接口，因为这有助于我确定它实际上是什么。
 在上面的例子中，`ITest` 实际上什么都不做。只是坐在那里。让我们给它添加一些东西。
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -61,7 +61,7 @@ pub contract Stuff {
 
 现在，`ITest` 包含一个 `name` 字段。酷！但 ITest 仍然什么都没做。它只是坐在哪里。那么让我们让 `Test` *实现* `ITest` 资源接口。
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -83,7 +83,7 @@ pub contract Stuff {
 但你会注意到有一个错误：“resource Stuff.Test 不符合资源接口 Stuff.ITest”。还记得我们上面说的吗？资源接口是 *需求*。
 如果资源实现了资源接口，那么它必须定义接口中的内容。我们来修正它吧。
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -106,7 +106,7 @@ pub contract Stuff {
 
 在上面的文章中，我们了解到资源接口使资源实现某些事情。但资源接口实际上比这重要得多。还记得他们做的第二件事吗？我们说：“它只允许你把某些东西暴露给某些人。”。这就是他们强大的原因。让我们看看下面：
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -151,7 +151,7 @@ pub contract Stuff {
 
 下面是一个更复杂的示例，其中还包括函数：
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -193,7 +193,7 @@ pub contract Stuff {
 
 我想给你们展示另一个例子，告诉你们你们也可以选择不公开函数。你能做的事情太多了！:D 如果我们想修复此代码，我们会：
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub resource interface ITest {
@@ -250,7 +250,7 @@ pub contract Stuff {
 
 3. 我们将如何修复此代码？
 
-```javascript
+```cadence
 pub contract Stuff {
 
     pub struct interface ITest {

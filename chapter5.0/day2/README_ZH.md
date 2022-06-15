@@ -12,7 +12,7 @@
 
 合约接口与资源接口非常相似，只是它们是用于合约的。但是有一些区别，比如“我们如何定义合约接口？” 让我们看看下面：
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
 
 }
@@ -24,7 +24,7 @@ pub contract interface IHelloWorld {
 
 与资源接口类似，您不能初始化任何变量或定义任何函数。例如：
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
   pub var greeting: String
   
@@ -34,7 +34,7 @@ pub contract interface IHelloWorld {
 
 我们可以在实际合约中实现它：
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
 
@@ -45,7 +45,7 @@ pub contract HelloWorld: IHelloWorld {
 
 您还会注意到我们收到一些编译错误：“合约`HelloWorld`不符合合约接口`IHelloWorld`”。为什么会这样？因为我们还没有实现接口里的东西！
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
   pub var greeting: String
@@ -66,7 +66,7 @@ OK，现在没问题了。
 
 我们昨天了解了前置/后置条件。它们的好处是我们实际上可以在资源接口或合约接口中使用它们，如下所示：
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
   pub var greeting: String
   
@@ -90,7 +90,7 @@ pub contract interface IHelloWorld {
 
 让我们在合约接口中添加一个资源和一个资源接口：
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
   pub var greeting: String
   
@@ -114,7 +114,7 @@ pub contract interface IHelloWorld {
 
 理解这一点非常重要。如果我们定义合约来定义自己的`IGreeting`，就像这样：
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
   pub var greeting: String
@@ -145,7 +145,7 @@ pub contract HelloWorld: IHelloWorld {
 
 我们会得到一个错误。原因是因为我们的合约接口明确说明我们的Greeting资源必须实现`IHelloWorld.IGreeting`接口，而不是其他人定义的`IGreeting`接口。合约应该是：
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
   pub var greeting: String
@@ -199,7 +199,7 @@ pub contract HelloWorld: IHelloWorld {
 3. 请修复下面的代码（提示：有两处错误）：
 
 The contract interface:
-```javascript
+```cadence
 pub contract interface ITest {
   pub var number: Int
   
@@ -223,7 +223,7 @@ pub contract interface ITest {
 ```
 
 The implementing contract:
-```javascript
+```cadence
 pub contract Test {
   pub var number: Int
   

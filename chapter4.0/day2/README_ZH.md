@@ -23,7 +23,7 @@
 这一章内容我们继续沿用上一章的合约代码：
 
 
-```javascript
+```cadence
 pub contract Stuff {
 
   pub resource Test {
@@ -42,7 +42,7 @@ pub contract Stuff {
 
 并且我们通过以下代码已经将资源存入了用户存储空间中：
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -65,7 +65,7 @@ transaction() {
 
 在之前，当我们往账户存储中保存了一些东西之后，只有账户主人可以访问它，这是因为它被保存到了/storage/路径下。但如果我希望其他人能够读取我资源中的name字段该怎么实现呢？你可能已经猜到了，让我们通过如下代码使资源可以被大家访问把。
 
-```javascript 
+```cadence 
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -101,7 +101,7 @@ transaction() {
 
 前面提到过使用AuthAccount使你可以对该账户进行任何操作；另一方面，使用PublicAccount可以获得读取权限，从而读取账户主人暴露出来的所有数据内容。你可以通过使用getAccount函数来获得一个PublicAccount类型：
 
-```javascript
+```cadence
 let account: PublicAccount = getAccount(0x1)
 // `account` now holds the PublicAccount of address 0x1
 ```
@@ -112,7 +112,7 @@ let account: PublicAccount = getAccount(0x1)
 
 好的，我们已经把我们的资源链接到/public/中了，接下来我们写一个脚本来读取它：
 
-```javascript
+```cadence
 import Stuff from 0x01
 pub fun main(address: Address): String {
   // gets the public capability that is pointing to a `&Stuff.Test` type
@@ -144,7 +144,7 @@ OK，那么我们接下来这个主题就是搞明白如何对资源引用的一
 
 下面再定义一个合约：
 
-```javascript
+```cadence
 pub contract Stuff {
 
   pub resource Test {
@@ -168,7 +168,7 @@ pub contract Stuff {
 
 其中，我们添加了一个changeName函数用来改变资源的name字段。那么假如我们不希望其他人能够调用这个函数该咋办呢？
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction(address: Address) {
 
@@ -197,7 +197,7 @@ transaction(address: Address) {
 
 接下来让我们在合约中添加这个资源接口：
 
-```javascript
+```cadence
 pub contract Stuff {
 
   pub resource interface ITest {
@@ -226,7 +226,7 @@ pub contract Stuff {
 
 好的，现在我们编写了一个Test资源的接口ITest，通过这个接口你只能访问资源中的name字段。接下来我们将我们的资源链接到/public/中：
 
-```javascript 
+```cadence 
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -246,7 +246,7 @@ transaction() {
 
 现在我们尝试访问一下这个引用：
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction(address: Address) {
   prepare(signer: AuthAccount) {
@@ -270,7 +270,7 @@ EMMM，报了个错误！因为我们尝试取借来&Stuff.Test引用，但我�
 
 那再试试看下面这段代码呢：
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction(address: Address) {
 
@@ -295,7 +295,7 @@ transaction(address: Address) {
 
 好了，下面这段代码绝对可以了：
 
-```javascript
+```cadence
 import Stuff from 0x01
 pub fun main(address: Address): String {
   let publicCapability: Capability<&Stuff.Test{Stuff.ITest}> =

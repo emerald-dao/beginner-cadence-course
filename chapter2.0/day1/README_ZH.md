@@ -41,7 +41,7 @@
 在这个例子中，我们将把我们的智能合约部署到账户 `0x01`。这意味着账户 `0x01` 是这个智能合约的**所有者**。在现实世界中，你会将智能合约部署到**你的**账户，但由于这是一个模拟世界，我们可以选择任何我们想要的账户，所以我们选择了 `0x01`。
 
 现在让我们来编写我们的合约。在空白处，输入以下内容：
-```javascript
+```cadence
 pub contract HelloWorld {
 
     init() {
@@ -57,7 +57,7 @@ pub contract HelloWorld {
 好了，开始吧！这是你的第一个智能合约，尽管它没有做任何事情;( 让我们在它里面存储一个名为 `greeting` 的变量，这样我们就可以在这个合约中存储一些数据了。
 
 修改你的合约代码，使它看起来像这样：
-```javascript
+```cadence
 pub contract HelloWorld {
 
     pub let greeting: String
@@ -94,7 +94,7 @@ pub contract HelloWorld {
 让我们确保我们的 `greeting` 变量确实被设置为 “Hello, World!”。记住，我们可以用脚本来查看区块链的数据。
 
 在页面左侧的“Script Templates”下，点击“Script”标签，删除里面的所有内容。接下来，在里面写入以下代码：
-```javascript
+```cadence
 import HelloWorld from 0x01
 
 pub fun main(): String {

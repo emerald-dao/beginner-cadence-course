@@ -15,7 +15,7 @@ Flow 的小伙伴们，今天我们将要学习引用 —— Cadence 语言的�
 
 引用总是在前面使用 `&` 符号。让我们看一个例子：
 
-```javascript
+```cadence
 pub contract Test {
 
     pub var dictionaryOfGreetings: @{String: Greeting}
@@ -28,7 +28,7 @@ pub contract Test {
     }
 
     pub fun getReference(key: String): &Greeting {
-        return &self.dictionaryOfGreetings[key] as &Greeting
+        return (&self.dictionaryOfGreetings[key] as &Greeting?)!
     }
 
     init() {
@@ -51,7 +51,7 @@ pub contract Test {
 
 现在我们可以获得引用，我们可以在事务或脚本中获得引用，如下所示：
 
-```javascript
+```cadence
 import Test from 0x01
 
 pub fun main(): String {

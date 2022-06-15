@@ -43,7 +43,7 @@
 
 你可能在想：“唔，那我该怎么访问我自己的/storage/呢？”答案就是你的AuthAccount类型。如果你还记得的话，当你签字了一笔交易，签名人的AuthAccount被作为参数输入prepare部分，如下所示：
 
-```javascript
+```cadence
 transaction() {
   prepare(signer: AuthAccount) {
     // We can access the signer's /storage/ path here!
@@ -61,7 +61,7 @@ transaction() {
 
 来练习一下在账户中保存些什么吧。首先定义一个合约：
 
-```javascript
+```cadence
 pub contract Stuff {
 
   pub resource Test {
@@ -80,7 +80,7 @@ pub contract Stuff {
 
 我们定义了一个简单的合约，提供了一个允许你创建并返回一个@Test资源的方法。让我们在交易中调用这个合约：
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -96,7 +96,7 @@ transaction() {
 
 这个交易中我们创建了一个@Test资源，然后销毁了它。那如果我们想把它保存在我们的账户中该怎么做呢？来看一下下面一段代码。
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -122,7 +122,7 @@ transaction() {
 
 在上面例子中，我们把testResource资源（注意使用了<-标志）保存到了/storage/MyTestResource路径。那么现在，我们可以随时去该路径取用这个资源：
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -147,7 +147,7 @@ transaction() {
 
 需要注意的一点是，当你从存储中取用数据时，它返回的是一个不定项（optional）！所以testResource实际上是一个“@Stuff.Test?”类型的数据。返回不定项的原因是Cadence并不知道你取用的数据是不是真的存在，或者你提供的数据类型是不是真的正确。所以如果你使用了错误的存储路径，调用返回nil。请看下面这个例子：
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -166,7 +166,7 @@ transaction() {
 看？它是可选的。要解决此问题，我们可以使用panic或!运算符。我喜欢使用panic，因为您可以指定错误消息。
 
 
-```javascript
+```cadence
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {
@@ -187,7 +187,7 @@ transaction() {
 
 前面提到了如何往账户里保存数据或提取数据。但如果我们只是想查看一下账户中的某些数据呢？这就需要用到引用（references）和.borrow()函数了。
 
-```javascript 
+```cadence 
 import Stuff from 0x01
 transaction() {
   prepare(signer: AuthAccount) {

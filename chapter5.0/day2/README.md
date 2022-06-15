@@ -12,7 +12,7 @@ The good news about todays lesson is it's actually pretty easy. You have learned
 
 Contract interfaces are pretty much exactly like resource interfaces, except they are for contracts. There are a few differences though, like "how do we define contract interfaces?" Let's look below:
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
 
 }
@@ -24,7 +24,7 @@ You deploy a contract interface just like you do a normal contract. The only dif
 
 Similar to resource interfaces, you can't initialize any variables or define any functions. Here's an example interface:
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
   pub var greeting: String
   
@@ -34,7 +34,7 @@ pub contract interface IHelloWorld {
 
 We can take this contract interface and implement it on an actual contract:
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
 
@@ -46,7 +46,7 @@ You'll notice we implement it just like we do with resources, using the `: {cont
 You'll also notice we get some errors: "contract `HelloWorld` does not conform to contract interface `IHelloWorld`". Why is this? Well, because we haven't implemented the stuff of course!
 
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
   pub var greeting: String
@@ -67,7 +67,7 @@ Ahh, all better now. Awesome!
 
 We learned yesterday about pre/post-conditions. The great thing about them is we can actually use them inside a resource interface or contract interface, like so:
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
   pub var greeting: String
   
@@ -90,7 +90,7 @@ This is a great way for us to make sure people are following our rules.
 
 Let's get fancy, shall we? Let's add a resource and a resource interface to our contract interface:
 
-```javascript
+```cadence
 pub contract interface IHelloWorld {
   pub var greeting: String
   
@@ -114,7 +114,7 @@ Lookey here! We have defined a resource named `Greeting` and a resource interfac
 
 This is very important to understand. If we define our own contract that defines it's own `IGreeting`, like so:
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
   pub var greeting: String
@@ -145,7 +145,7 @@ pub contract HelloWorld: IHelloWorld {
 
 ... we will get an error. The reason we're getting an error is because our contract interface specifically says our `Greeting` resource must implement `IHelloWorld.IGreeting`, not any arbitary `IGreeting` that someone defines. So this is what the contract would actually look like:
 
-```javascript
+```cadence
 import IHelloWorld from 0x01
 pub contract HelloWorld: IHelloWorld {
   pub var greeting: String
@@ -199,7 +199,7 @@ Coincidentally, contract interfaces are (in my opinion) the most heavily debated
 3. Please fix this code (Hint: There are two things wrong):
 
 The contract interface:
-```javascript
+```cadence
 pub contract interface ITest {
   pub var number: Int
   
@@ -223,7 +223,7 @@ pub contract interface ITest {
 ```
 
 The implementing contract:
-```javascript
+```cadence
 pub contract Test {
   pub var number: Int
   
