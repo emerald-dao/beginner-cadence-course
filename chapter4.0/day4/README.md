@@ -206,7 +206,7 @@ pub contract CryptoPoops {
     // Added this function so now we can
     // read our NFT
     pub fun borrowNFT(id: UInt64): &NFT {
-      return &self.ownedNFTs[id] as &NFT
+      return (&self.ownedNFTs[id] as &NFT?)!
     }
 
     init() {
@@ -370,7 +370,7 @@ pub contract CryptoPoops {
     }
 
     pub fun borrowNFT(id: UInt64): &NFT {
-      return &self.ownedNFTs[id] as &NFT
+      return (&self.ownedNFTs[id] as &NFT?)!
     }
 
     init() {

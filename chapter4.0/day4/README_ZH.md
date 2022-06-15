@@ -22,7 +22,7 @@
 
  _注意：这是假设您已经使用集合初始化设置了两个帐户。_ 
 
-```
+```cadence
 import CryptoPoops from 0x01
 
 // `id` is the `id` of the NFT
@@ -65,7 +65,7 @@ transaction(id: UInt64, recipient: Address) {
 
 Cadence 的美妙之处在于我们可以自己决定很多事情。为什么我们不从创建铸造 NFT 的资源开始呢？然后，拥有该资源的任何人都可以拥有铸造 NFT 的能力。让我们在之前的合约之上构建如下合约代码：
 
-```
+```cadence
 pub contract CryptoPoops {
   
   // ... other stuff here ...
@@ -101,7 +101,7 @@ pub contract CryptoPoops {
 
 最简单的解决方案是 `Minter` 自动将其提供给正在部署合约的帐户。我们可以通过将资源保存到函数 `Minter` 合约账户的存储中来做到这一点：具体看 `init` 函数：
 
-```
+```cadence
 pub contract CryptoPoops {
   
   // ... other stuff here ...
@@ -135,7 +135,7 @@ pub contract CryptoPoops {
 
  _注意：假设 `signer` 是部署合约的人，因为只有他拥有 `Minter` 资源_ 
 
-```
+```cadence
 import CryptoPoops from 0x01
 
 transaction(recipient: Address) {
@@ -167,7 +167,7 @@ transaction(recipient: Address) {
 
 好吧，最后一件事。还记得昨天我们说过，如果不从集合中提取我们的 NFT，我们就无法读取它，这很奇怪吗？好吧，让我们在 `Collection` 资源中添加一个函数，让我们借用 NFT：
 
-```
+```cadence
 pub contract CryptoPoops {
   pub var totalSupply: UInt64
 
@@ -214,7 +214,7 @@ pub contract CryptoPoops {
     // Added this function so now we can
     // read our NFT
     pub fun borrowNFT(id: UInt64): &NFT {
-      return &self.ownedNFTs[id] as &NFT
+      return (&self.ownedNFTs[id] as &NFT?)!
     }
 
     init() {
@@ -377,7 +377,7 @@ pub contract CryptoPoops {
     }
 
     pub fun borrowNFT(id: UInt64): &NFT {
-      return &self.ownedNFTs[id] as &NFT
+      return (&self.ownedNFTs[id] as &NFT?)!
     }
 
     init() {

@@ -138,7 +138,7 @@ pub contract CryptoPoops {
     }
 
     pub fun borrowNFT(id: UInt64): &NFT {
-      return &self.ownedNFTs[id] as &NFT
+      return (&self.ownedNFTs[id] as &NFT?)!
     }
 
     init() {
@@ -493,7 +493,7 @@ pub contract CryptoPoops: NonFungibleToken {
     // We have to change the types to `&NonFungibleToken.NFT` 
     // to fit the standard.
     pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
-      return &self.ownedNFTs[id] as &NonFungibleToken.NFT
+      return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
     }
 
     init() {
@@ -624,7 +624,7 @@ pub contract CryptoPoops: NonFungibleToken {
     }
 
     pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
-      return &self.ownedNFTs[id] as &NonFungibleToken.NFT
+      return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
     }
 
     init() {
@@ -670,7 +670,7 @@ To fix that, we need to use something called an `auth` reference. If you remembe
 
 ```cadence
 pub fun borrowAuthNFT(id: UInt64): &NFT {
-  let ref = &self.ownedNFTs[id] as auth &NonFungibleToken.NFT
+  let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
   return ref as! &NFT
 }
 ```
@@ -741,7 +741,7 @@ pub contract CryptoPoops: NonFungibleToken {
     }
 
     pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
-      return &self.ownedNFTs[id] as &NonFungibleToken.NFT
+      return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
     }
 
     init() {
