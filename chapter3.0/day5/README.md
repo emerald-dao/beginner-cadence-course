@@ -43,12 +43,12 @@ This means we can access our thing from **anywhere**. Inside the contract, in tr
 ### 2. Current & Inner Scope
 This means we can only access our thing from where it is defined and inside of that.
 
-<img src="../images/currentandinner.png" />
+<img src="../images/currentandinner.PNG" />
 
 ### 3. Containing Contract Scope
 This means we can access our thing anywhere inside the contract that it is defined.
 
-<img src="../images/contractscope.png" />
+<img src="../images/contractscope.PNG" />
 
 ### 4. Account Scope
 This means we can access our thing anywhere inside the account that it is defined. This means all of the contracts that are in the account. Remember: we can deploy multiple contracts to one account.
