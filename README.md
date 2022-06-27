@@ -10,7 +10,9 @@ If you're seeing this message, you have arrived at the very first part of the Be
 
 <img src="./images/course.png" alt="drawing" width="500"/>
 
-In this course, you will learn the basic Cadence concepts needed to deploy your own contracts. Specifically, you will learn how to code out your own NFT contract by the end of this course.
+In this course, you will learn basic Cadence concepts that will allow you to deploy your own smart contracts. By the end of the course, you will be able to fully understand how to code your own NFT contract and most other contracts you wish.
+
+### Pace
 
 The lessons will be split into "chapters," and chapters will be split into "days." I did it this way so you can manage your time and progress through the course as you like. Do not feel pressured to do this every day. Do it at your own pace and have fun with it! It will always be here :)
 
@@ -44,9 +46,7 @@ There will be quests associated with each day. They will test your understanding
 
 ### How to Submit Quests
 
-When you finish a quest, please store all your quests together. Then, when you want me to review them, you can send me a link to all of your quests and tell me which day you'd like me to review.
-
-If you are ready for me to see one of your quests to review it, please message in the [Emerald City DAO Discord](https://discord.gg/z6zgjr7HEm) (the #quest-submissions channel). Once you do that, I will personally review your submissions, give you valuable insight on what you could improve, and mark it as complete.
+When you finish a quest, please store all your quests together. Then, when you want them to be reviewed, submit them in the #quest-submissions channel inside the [Emerald City DAO Discord](https://discord.gg/z6zgjr7HEm) and our instructors will review them.
 
 *Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! We are dedicated to teaching people all about Flow and Cadence, as well as building the tooling for all DAOs on Flow. If you'd like to learn more about it or learn how to get involved, please join our [Discord](https://discord.gg/emeraldcity).*
 
@@ -56,7 +56,7 @@ Whenever you want my friend! :)
 
 You can start the first day [here](https://github.com/emerald-dao/beginner-cadence-course/tree/main/chapter1.0/day1).
 
-## <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>
+## Emerald Academy
 
 This course is being used inside of <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>, which is a series of educational resources & bootcamps created by your *best* friends at Emerald City. If you're interested in more educational content or getting involved in the broader Emerald City community, come join our <a href="https://discord.gg/emeraldcity" target="_blank">Discord</a> :)
 
