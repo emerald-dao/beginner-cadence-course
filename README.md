@@ -4,7 +4,7 @@
 
 ## 📖 What is this course?
 
-This is a course meant to teach you Cadence. During the bootcamp, you will learn ALL of the major aspects of the language. 
+This is a course created by <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>. It is meant to teach you Cadence. During the bootcamp, you will learn ALL of the major aspects of the language. 
 
 In addition to writing your own NFT Contract during the course, you will have the knowledge to write your own contracts too.
 
