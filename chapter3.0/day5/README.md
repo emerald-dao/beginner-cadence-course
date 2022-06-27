@@ -38,54 +38,17 @@ Scope is the area in which you can access, modify, or call your "things" (variab
 ### 1. All Scope
 This means we can access our thing from **anywhere**. Inside the contract, in transactions and scripts, wherever.
 
+<img src="../images/allscope.PNG" />
+
 ### 2. Current & Inner Scope
 This means we can only access our thing from where it is defined and inside of that.
 
-Ex. 
-```cadence
-pub contract Stuff {
-
-  pub struct TestStruct {
-  
-    pub var x: String
-
-    // The "current and inner scope" for 'x' is here...
-
-    pub fun testFunc() {
-      // and in here...
-    }
-
-    init(){...}
-  }
-
-  // NOT here.
-
-}
-```
+<img src="../images/currentandinner.PNG" />
 
 ### 3. Containing Contract Scope
 This means we can access our thing anywhere inside the contract that it is defined.
 
-Ex. 
-```cadence
-pub contract TestContract {
-
-  // The "containing contract" for 'x' is here...
-
-  pub struct TestStruct {
-    
-    pub var x: String
-
-    // here...
-
-    pub fun testFunc() {
-      // and in here.
-    }
-
-    init(){...}
-  }
-}
-```
+<img src="../images/contractscope.PNG" />
 
 ### 4. Account Scope
 This means we can access our thing anywhere inside the account that it is defined. This means all of the contracts that are in the account. Remember: we can deploy multiple contracts to one account.
@@ -190,6 +153,9 @@ See you in Chapter 4, folks! <3
 ## Quests
 
 For today's quest, you will be looking at a contract and a script. You will be looking at 4 variables (a, b, c, d) and 3 functions (publicFunc, contractFunc, privateFunc) defined in `SomeContract`. In each AREA (1, 2, 3, and 4), I want you to do the following: for each variable (a, b, c, and d), tell me in which areas they can be read (read scope) and which areas they can be modified (write scope). For each function (publicFunc, contractFunc, and privateFunc), simply tell me where they can be called.
+
+You can use this diagram to help you:
+<img src="../images/boxdiagram.PNG" />
 
 ```cadence
 access(all) contract SomeContract {
