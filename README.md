@@ -1,4 +1,4 @@
-# WELCOME EVERYBODY!
+# 👋 WELCOME EVERYBODY!
 
 > *Want to watch a Welcome Video instead of reading this text? You can watch <a href="https://www.youtube.com/watch?v=JBtmLjZBR6M" target="_blank">here</a>.*
 
