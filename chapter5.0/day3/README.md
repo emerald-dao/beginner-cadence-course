@@ -685,7 +685,7 @@ Yaaaaay! Now we can read our NFTs metadata with the `borrowAuthNFT` function. Bu
 
 You have successfully completed your very own NFT contract. And even better, it is now officially a NonFungibleToken contract, meaning you could use this anywhere you want and applications would know they are working with an NFT contract. That is amazing.
 
-Additionally, you have officially completed the first main section of the course. You can call yourself a Cadence developer! I would suggest pausing this course and implementing some of your own contracts, because you now have the knowledge to do so. In the next chapters, we will get into more advanced topics so you can really start becoming a true Jacob.
+Additionally, you have officially completed the first main section of the course. You can call yourself a Cadence developer! I would suggest pausing this course and implementing some of your own contracts, because you now have the knowledge to do so. In the next chapter, we will learn how to deploy our contract to Flow Testnet and interact with it.
 
 ## Quests
 
