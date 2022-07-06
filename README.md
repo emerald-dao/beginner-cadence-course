@@ -34,7 +34,7 @@ Here's an overview:
 - Lessons split into days
 - Written & video content associated with each day. The videos will be from my [YouTube Channel](https://www.youtube.com/channel/UCf6DzMRwj7SJ3nPrZqd5hHw).
 - Quests to complete
-- A completion certificate (<a href="https://floats.city/jacob.find/event/241503135">this FLOAT</a>) if you have completed all the quests. This will be proof that you have significant Cadence knowledge, and you will be able to show it to whoever you like as proof of expertise. Or just for fun! :D
+- A completion certificate (<a href="https://floats.city/jacob.find/event/241503135">this FLOAT</a>) if you have completed all the quests from Chapters 1-5 (Chapter 6 is extra credit). This will be proof that you have significant Cadence knowledge, and you will be able to show it to whoever you like as proof of expertise. Or just for fun! :D
 
 ## ❓ What do I need ahead of time?
 
