@@ -18,7 +18,9 @@ In addition to writing & deploying your own NFT Contract during the course, you 
 
 ## 🔖 What will I create?
 
-You will create your own NFT smart contract deployed to Flow Testnet. However, the foundational skills you learn will allow you to make much more than that.
+You will create your own NFT smart contract deployed to Flow Testnet. You can see an example of that <a href="https://flow-view-source.com/testnet/account/0xfa88aefbb588049d/contract/YoungJacob">here</a>.
+
+However, the foundational skills you learn will allow you to make much more than that.
 
 ## 😇 Who is this course meant for?
 
