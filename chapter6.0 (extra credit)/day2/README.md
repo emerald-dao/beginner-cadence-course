@@ -14,7 +14,7 @@ Let's read the total supply of our smart contract!
 
 > Step 1: Make a script that reads the totalSupply of our contract and returns it.
 
-> Step 2: Paste that scripts into your scripts folder and name it `read_total_supply.cdc`
+> Step 2: Paste that script into your scripts folder and name it `read_total_supply.cdc`
 
 > Step 3: Open up your terminal in the base directory of the project and run:
 
