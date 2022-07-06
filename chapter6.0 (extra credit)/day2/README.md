@@ -94,8 +94,15 @@ That was a lot today, but how cool is this?! We deployed our own contract to Flo
 
 4. Run a script to read a specific NFT's metadata from someone's collection using the Flow CLI
 
-5. Run a script to read the GoatedGoats `totalSupply`. Their contract lives here: https://flow-view-source.com/mainnet/account/0x2068315349bdfce5/contract/GoatedGoats
+5. Run a script to read the GoatedGoats `totalSupply` on **Flow Mainnet**. Their contract lives here: https://flow-view-source.com/mainnet/account/0x2068315349bdfce5/contract/GoatedGoats
 
-That is all I will tell you.
+*Helpful tip #1*: In order to run scripts on Mainnet, simply switch the `--network=testnet` flag to `--network=mainnet`
+
+*Helpful tip #2*: Because you will be running the script from a local file, you will have to hardcode in the mainnet address of the GoatedGoats contract into your script, like:
+```cadence
+import GoatedGoats from 0x2068315349bdfce5
+```
+
+Unfortunately you will now get compile errors (the VSCode extension won't be able to understand the import), but it will still work.
 
 6. Figure out how to read someone's GoatedGoats NFTs from their collection and run a script using the Flow CLI to do it.
