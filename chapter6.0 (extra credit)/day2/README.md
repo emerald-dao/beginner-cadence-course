@@ -2,7 +2,7 @@
 
 Now that we deployed our contract to testnet, we can interact with it in our terminal using the Flow CLI. Wooohooo! This is only going to get more complicated. I hope you all get super lost!
 
-Today things will be a little different. It's going to involve doing things together ;)
+Today things will be a little different. It's going to involve doing things together. I'm not gonna give you all the answers ;)
 
 ## Interacting with our Contract
 
