@@ -238,7 +238,7 @@ pub fun main(): Int {
 
 ```cadence
 pub fun main(): Int {
-    让thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
+    let thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
     return thing["Bonjour"]! // 我们添加了强制解包操作符
 }
 ```
@@ -251,7 +251,7 @@ pub fun main(): Int {
 
 ```cadence
 pub fun main(): Int {
-    让thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
+    let thing: {String: Int} = {"Hi": 1, "Bonjour": 2, "Hola": 3}
     return thing["Bonjour"]! // 我们正在强制解开可选值
 }
 ```

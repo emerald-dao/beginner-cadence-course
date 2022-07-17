@@ -1,4 +1,4 @@
-# 第一章-第二天-Flow链和Candence
+# 第一章-第二天-Flow链和Cadence
 
 现在我们已经了解了区块链是什么，第 2 天将介绍为什么我们决定学习 Flow 区块链以及它与其他区块链的区别。
 
@@ -34,7 +34,7 @@ Flow 链相对较新。我想说，直到 2020 年夏天 Flow 团队开始向全
 
 ![drawing](https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/cadence.png)
 
-Cadence 是 Flow 区块链的智能合约编程语言。也就是说，您将在本课程中使用Candence编写用于制作智能合约的代码。
+Cadence 是 Flow 区块链的智能合约编程语言。也就是说，您将在本课程中使用Cadence编写用于制作智能合约的代码。
 
 因为 Flow 主要是为了解决以太坊上的一些问题而创建的，所以 Cadence 的基本要素是对 Solidity 的改进（有些人会反对这一点）。下面列出了这些。
 
