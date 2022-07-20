@@ -35,7 +35,7 @@ You can confirm the Flow CLI is installed by going to a terminal and typing `flo
 
 ## Flow Folder
 
-Inside of our Emerald DApp, let's make a new folder called `flow`.
+Inside of our base directory, let's make a new folder called `flow`.
 
 Inside of the `flow` folder, let's make another folder called `cadence`.
 
