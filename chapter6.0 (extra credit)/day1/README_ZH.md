@@ -1,4 +1,4 @@
-# 第六章·第一天 - 创建一个测试账户并部署到 Testnet
+# 第六章·第一天 - 创建测试账户并部署到测试网（Testnet）
 
 嘿，大咖们。 在今天的课程中，我们将学习如何创建一个新的测试网账户，并把我们的 NFT 合约部署到 Flow 测试网。
 
@@ -18,7 +18,7 @@
 
 ## 安装 Flow CLI & flow.json
 
-Flow CLI 可以让我们从 terminal 运行 transactions & scripts，并允许我们执行其他的 Flow 操作，例如部署合约。
+Flow CLI 可以让我们从 terminal 运行 transactions & scripts，也可以执行其他的 Flow 操作，例如部署合约。
 
 > 安装 [Flow CLI](https://docs.onflow.org/flow-cli/install/). 通过以下方式:
 
@@ -101,7 +101,7 @@ import ExampleNFT from "../contracts/ExampleNFT.cdc"
 
 <img src="https://i.imgur.com/HbF4C73.png" alt="generate key pair" />
 
-> 👛 创建你的 **部署账户** ：跳转到 https://testnet-faucet.onflow.org/，粘贴上面的公钥（public key）然和单击 `CREATE ACCOUNT` : 
+> 👛 创建你的 **部署账户** ：跳转到 https://testnet-faucet.onflow.org/ ，粘贴上面的公钥（public key）然和单击 `CREATE ACCOUNT` : 
 
 <img src="https://i.imgur.com/73OjT3K.png" alt="configure testnet account on the website" />
 
@@ -145,5 +145,5 @@ flow project deploy --network=testnet
 
 ## 任务
 
-1. 跳转到 https://flow-view-source.com/testnet/。 在显示账户（"Account"）的地方，粘贴你生成的 Flow 地址，然后点击开始（"Go"）。在左手边，你将看到你的 NFT 合约。在 Testnet 上看到自己的合约是不是很🆒? 然后把 URL 发送到这个页面。
+1. 跳转到 https://flow-view-source.com/testnet/ 。在显示账户（"Account"）的地方，粘贴你生成的 Flow 地址，然后点击开始（"Go"）。在左手边，你将看到你的 NFT 合约。在 Testnet 上看到自己的合约是不是很🆒? 然后把 URL 发送到这个页面。
 - 示例: https://flow-view-source.com/testnet/account/0x90250c4359cebac7/
