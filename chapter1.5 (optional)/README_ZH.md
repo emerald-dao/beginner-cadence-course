@@ -108,7 +108,7 @@ let y: String = "5" // GOOD
 
 1. 在第6行，我们定义了我们自己的函数`myFunction`。记住，一个函数是当你调用时它会做某些事。
 2. 注意myFunction接受一个参数：一个Int类型的叫做number的参数。
-3. 在第7行，我们把numberlog到控制台。
+3. 在第7行，我们把number打印到控制台。
 4. 在第3行，我们调用myFunction让它执行我们写的操作。
 
 当你点击`Execute`的时候，你将会看到：
