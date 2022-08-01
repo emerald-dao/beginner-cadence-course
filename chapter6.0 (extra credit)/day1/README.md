@@ -93,6 +93,8 @@ Sweet! Now let's deploy our contract to TestNet so that we can start interacting
 },
 ```
 
+> Make sure replace "ExampleNFT" with whatever your contract's name is
+
 This will allow your `flow.json` to know where your contracts live. Note that `NonFungibleToken` already exists on Flow Testnet, which is why it looks more complicated.
 
 ### Creating an Account
@@ -135,7 +137,9 @@ This will allow your `flow.json` to know where your contracts live. Note that `N
 }
 ```
 
-> 🚀 Deploy your ExampleNFT smart contract:
+> Make sure to change "ExampleNFT" to whatever your contract's name is.
+
+> 🚀 Deploy your "ExampleNFT" smart contract:
 
 ```sh
 flow project deploy --network=testnet
