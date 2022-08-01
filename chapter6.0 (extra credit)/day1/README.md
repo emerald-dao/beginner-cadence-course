@@ -41,7 +41,7 @@ Inside of the `flow` folder, let's make another folder called `cadence`.
 
 Inside of the `cadence` folder, let's make a `contracts` folder, a `transactions` folder, and a `scripts` folder.
 
-Inside of the `contracts` folder, add a new file called `CONTRACT_NAME.cdc`. Replace CONTRACT_NAME with the name of your contract. In that file, put your contract code from Chapter 5.
+Inside of the `contracts` folder, add a new file called `CONTRACT_NAME.cdc`. Replace CONTRACT_NAME with the name of your contract. In that file, put your contract code from Chapter 5. For the sake of this lesson, we will be calling this contract "ExampleNFT", but please make sure to replace that with your own contract's name.
 
 Notice at the top, we now need to import from a local file path instead of a random Flow playground address. We aren't importing from `0x01` anymore, that was just a playground thing. In this case, we are importing from a local contract that exists in our project.
 
