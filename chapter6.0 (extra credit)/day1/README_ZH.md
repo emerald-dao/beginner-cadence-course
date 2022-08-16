@@ -4,8 +4,6 @@
 
 ## 安装 VSCode 插件：Cadence 
 
-*注意: 如果你的系统是 Windows，就不太好使。我知道，这很糟糕。Windows 版本的插件目前坏了，所以请跳过本节。*
-
 *如果你之前没安装过 VSCode，可以在这里下载: https://code.visualstudio.com/*
 
 现在我们就不再在 playground 上玩了，我们希望在编写 Cadence 时，VSCode 可以展示错误信息。刚好有一个插件可以满足这个需求！

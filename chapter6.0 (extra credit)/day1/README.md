@@ -4,8 +4,6 @@ Heyo nerds. In today's lesson, we will learn how to create a new testnet account
 
 ## Installing the Cadence VSCode Extension
 
-*NOTE: If you are on Windows, this will not work. I know, it sucks. The extension is currently broken for windows, so please skip this section.*
-
 *If you haven't installed VSCode before, you can do that here: https://code.visualstudio.com/*
 
 Now that we're no longer on the playground, we want to be able to have errors show up in our VSCode when we're coding Cadence. There's an extension to do that!
