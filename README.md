@@ -72,7 +72,7 @@ You can start the first day [here](https://github.com/emerald-dao/beginner-caden
 
 ## 💚 Emerald Academy
 
-This course is being used inside of <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>, which is a series of educational resources & bootcamps created by your *best* friends at Emerald City. If you're interested in more educational content or getting involved in the broader Emerald City community, come join our <a href="https://discord.gg/emeraldcity" target="_blank">Discord</a> :)
+This course was created by <a href="https://academy.ecdao.org" target="_blank">Emerald Academy</a>, which is a series of educational resources & bootcamps created by your *best* friends at <a href="https://ecdao.org/" target="_blank">Emerald City</a>. If you're interested in more educational content or getting involved in the broader Emerald City community, come join our <a href="https://discord.gg/emeraldcity" target="_blank">Discord</a> :)
 
 ## 🏁 Ending Remarks
 
