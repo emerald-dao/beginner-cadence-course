@@ -267,3 +267,5 @@ The main takeaway is that when accessing values of a dictionary, you will always
     - How to fix it
 
 <img src="../images/wrongcode.png" alt="drawing" size="400" />
+
+# <a href="https://forms.gle/thWXL8MkboadnBtLA">Quiz</a>

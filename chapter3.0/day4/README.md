@@ -281,3 +281,5 @@ pub contract Stuff {
     }
 }
 ```
+
+# <a href="https://forms.gle/Cq9GKcFMdhyDAQBy7">Quiz</a>

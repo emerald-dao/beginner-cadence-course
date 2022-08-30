@@ -60,6 +60,12 @@ When you finish a quest, please store all your quests together. Then, when you w
 
 *Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! We are dedicated to teaching people all about Flow and Cadence, as well as building the tooling for all DAOs on Flow. If you'd like to learn more about it or learn how to get involved, please join our [Discord](https://discord.gg/emeraldcity).*
 
+## 📝 Quizzes
+
+Every day *also* has a quiz associated with it to test your knowledge. It is a simple Google Form you can fill out to test your understanding for that day's content.
+
+*All of these quizzes are entirely thanks to FrankenSense. Thank you for being an absolute legend!*
+
 ## 🇺🇸 Multilingual Support
 
 This course is currently available in English (README.md), Chinese (README_ZH.md), and Russian (README_RU.md). Under each day of content, you will see a matching README file for your language of choice.

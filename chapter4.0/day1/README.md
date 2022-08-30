@@ -228,3 +228,5 @@ As of now, you should understand what `/storage/` is. In tomorrow's chapter, we'
     1) A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
 
     2) A transaction that first saves the resource to account storage, then borrows a reference to it, and logs a field inside the resource.
+
+# <a href="https://forms.gle/uE1K3MNqfPUc2hzA7">Quiz</a>

@@ -319,3 +319,5 @@ Please answer in the language of your choice.
     2) Run a script that tries to access a non-exposed field in the resource interface, and see the error pop up.
 
     3) Run the script and access something you CAN read from. Return it from the script.
+
+# <a href="https://forms.gle/ZG13mJCD77cCPnnK7">Quiz</a>

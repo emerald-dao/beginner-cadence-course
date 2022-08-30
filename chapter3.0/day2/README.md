@@ -292,3 +292,5 @@ That's all for today! :D Now, you may be wondering: "What if I want to *access* 
 For today's quest, you'll have 1 large quest instead of a few little ones.
 
 1. Write your own smart contract that contains two state variables: an array of resources, and a dictionary of resources. Add functions to remove and add to each of them. They must be different from the examples above.
+
+# <a href="https://forms.gle/NfDsHkwk5TyVA2uV9">Quiz</a>

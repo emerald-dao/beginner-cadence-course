@@ -780,3 +780,5 @@ pub contract CryptoPoops: NonFungibleToken {
 and add a function called `borrowAuthNFT` just like we did in the section called "The Problem" above. Then, find a way to make it publically accessible to other people so they can read our NFT's metadata. Then, run a script to display the NFTs metadata for a certain `id`.
 
 You will have to write all the transactions to set up the accounts, mint the NFTs, and then the scripts to read the NFT's metadata. We have done most of this in the chapters up to this point, so you can look for help there :)
+
+# <a href="https://forms.gle/dtwAhuovbTWFpgV37">Quiz</a>

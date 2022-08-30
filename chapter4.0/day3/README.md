@@ -383,3 +383,5 @@ And with that, give yourself a round of applause. You implemented a functioning 
     - Idea #1: Do we really want everyone to be able to mint an NFT? 🤔. 
 
     - Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?
+
+# <a href="https://forms.gle/HxGckQ6D81kp2Qr16">Quiz</a>

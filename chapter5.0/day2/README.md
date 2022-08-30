@@ -248,3 +248,5 @@ pub contract Test {
   }
 }
 ```
+
+# <a href="https://forms.gle/oeLaw1zyAgYhnBqR7">Quiz</a>
