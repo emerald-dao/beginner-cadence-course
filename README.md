@@ -68,7 +68,7 @@ Every day *also* has a quiz associated with it to test your knowledge. It is a s
 
 ## 🇺🇸 Multilingual Support
 
-This course is currently available in English (README.md), Chinese (README_ZH.md), and Russian (README_RU.md). Under each day of content, you will see a matching README file for your language of choice.
+This course is currently available in English (README.md), Chinese (README_ZH.md), Spanish (README_ES.md), and Russian (README_RU.md). Under each day of content, you will see a matching README file for your language of choice.
 
 ## 🚗 When can I start?
 
