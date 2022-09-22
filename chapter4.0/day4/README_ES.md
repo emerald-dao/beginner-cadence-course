@@ -261,7 +261,7 @@ transaction(recipient: Address, name: String, favouriteFood: String, luckyNumber
 
 ```cadence
 import CryptoPoops from 0x01
-pub fun main(address: Address, id: id) {
+pub fun main(address: Address, id: UInt64) {
   let publicCollection = getAccount(address).getCapability(/public/MyCollection)
               .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
               ?? panic("La dirección no tiene una Colección.")
@@ -311,7 +311,7 @@ Ahora, podemos intentar nuestra guión de nuevo (asumiendo que acuñas el NFT de
 
 ```cadence
 import CryptoPoops from 0x01
-pub fun main(address: Address, id: id) {
+pub fun main(address: Address, id: UInt64) {
   let publicCollection = getAccount(address).getCapability(/public/MyCollection)
               .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
               ?? panic("La dirección no tiene una Colección.")
