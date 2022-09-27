@@ -261,7 +261,7 @@ Awesome! We minted an NFT into the recipient's account. Now let's go ahead and u
 
 ```cadence
 import CryptoPoops from 0x01
-pub fun main(address: Address, id: id) {
+pub fun main(address: Address, id: UInt64) {
   let publicCollection = getAccount(address).getCapability(/public/MyCollection)
               .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
               ?? panic("The address does not have a Collection.")
@@ -296,7 +296,7 @@ Now, we can retry our script (assuming you mint the NFT all over again):
 
 ```cadence
 import CryptoPoops from 0x01
-pub fun main(address: Address, id: id) {
+pub fun main(address: Address, id: UInt64) {
   let publicCollection = getAccount(address).getCapability(/public/MyCollection)
               .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
               ?? panic("The address does not have a Collection.")
