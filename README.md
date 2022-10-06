@@ -56,9 +56,7 @@ Quests are like homework assignments. There are quests for every day of content.
 
 ## 🙋 How to Submit Quests
 
-When you finish a quest, please store all your quests together. Then, when you want them to be reviewed, submit them in the #quest-submissions channel inside the [Emerald City DAO Discord](https://discord.gg/z6zgjr7HEm) and our instructors will review them.
-
-*Note: The Emerald City DAO is the first DAO on the Flow Blockchain. I founded it in November 2021 and it has some amazing people in it! We are dedicated to teaching people all about Flow and Cadence, as well as building the tooling for all DAOs on Flow. If you'd like to learn more about it or learn how to get involved, please join our [Discord](https://discord.gg/emeraldcity).*
+When you finish a quest, please store all your quests together. Then, when you want them to be reviewed, submit them in the #quest-submissions channel inside the [Emerald Academy Discord](https://discord.gg/wjA875sMjV) and our instructors will review them.
 
 ## 📝 Quizzes
 
