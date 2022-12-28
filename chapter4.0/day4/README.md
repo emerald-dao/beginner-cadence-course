@@ -34,7 +34,7 @@ transaction(id: UInt64, recipient: Address) {
 
     // Get a reference to the `recipient`s public Collection
     let recipientsCollection = getAccount(recipient).getCapability(/public/MyCollection)
-                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>
+                                  .borrow<&CryptoPoops.Collection{CryptoPoops.CollectionPublic}>()
                                   ?? panic("The recipient does not have a CryptoPoops Collection.")
     
     // withdraws the NFT with id == `id` and moves it into the `nft` variable
