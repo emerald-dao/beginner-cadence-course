@@ -57,7 +57,7 @@ Quests are like homework assignments. There are quests for every day of content.
 
 ## 🙋 How to Submit Quests
 
-When you finish a quest, please store all your quests together. Then, when you want them to be reviewed, submit them in the #quest-submissions channel inside the [Emerald Academy Discord](https://discord.gg/wjA875sMjV) and our instructors will review them.
+When you finish a quest, please store all your quests together. Then, when you want them to be reviewed, submit them in the #quest-submissions channel inside the [Emerald City Discord](https://discord.gg/emeraldcity) and our instructors will review them.
 
 ## 📝 Quizzes
 
