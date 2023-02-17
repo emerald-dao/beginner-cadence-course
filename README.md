@@ -51,7 +51,7 @@ In order to complete this course, you need to know absolutely nothing about codi
 
 ## 📁 What are quests?
 
-<img src="./images/quests.png" alt="drawing" width="300"/>
+<img src="https://i.imgur.com/Bocrjvn.png" alt="drawing" width="300"/>
 
 Quests are like homework assignments. There are quests for every day of content. They will test your understanding of the concepts that are in that day's content. 
 

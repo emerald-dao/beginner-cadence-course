@@ -10,13 +10,13 @@ Si quieres aprender con un video, puedes hacerlo con el enlace debajo.
 
 ## El Blockchain de Flow
 
-<img src="../../images/flowb.png" alt="drawing" width="500"/>
+<img src="https://i.imgur.com/UyBM4d3.png" alt="drawing" width="500"/>
 
 El Blockchain de Flow es lo mejor! 
 
 ### Un Pequeño Lección de Historia
 
-<img src="../../images/cryptokitty.png" alt="drawing" width="200"/>
+<img src="https://i.imgur.com/O24pDJ1.png" alt="drawing" width="200"/>
 
 El Blockchain de Flow es relativamente nuevo. Yo diría que no era reconocido hasta el verano de 2020 cuando el equipo de Flow comenzó a mostrar el mundo y personas se interesaron. Dapper Labs, es la compañía que posee Flow, y había originalmente creado la famosa aplicación descentralizada [CryptoKitties DApp](https://www.cryptokitties.co/) que creció a niveles altos de popularidad durante los años anteriores. De hecho, yo diría que CryptoKitties fuera uno de las cosas primeras de “blockchain” que el mundo realmente adoptado, fuera super gran para la industria.
 
@@ -30,7 +30,7 @@ Después que Dapper Labs tenido inmenso éxito con CryptoKitties, cual era en Et
 
 ## Cadence
 
-<img src="../../images/cadence.png" alt="drawing" width="600"/>
+<img src="https://i.imgur.com/UmJGA9x.png" alt="drawing" width="600"/>
 
 Cadence es el idioma de programación de los Smart Contracts en el Blockchain de Flow. Eso es, el código que te vas a escribir para crear Smart Contracts en este curso estará en Cadence. 
 

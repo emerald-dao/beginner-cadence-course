@@ -6,7 +6,7 @@ Let's start off our first day by going over what seems to be complicated terms t
 
 ## What the heck is a Blockchain?
 
-<img src="../../images/blockchain.png" alt="drawing" width="600"/>
+<img src="https://i.imgur.com/1wpLIxl.png" alt="drawing" width="600"/>
 
 *If you already understand what the Blockchain is or you simply don't care (that's fair!), you can skip this section.*
 
@@ -27,7 +27,7 @@ It's also important to note that there are many different Blockchains out there.
 
 ## Smart Contracts? Ooo, that sounds cool.
 
-<img src="../../images/smart contract.png" alt="drawing" width="600"/>
+<img src="https://i.imgur.com/hezJRPm.png" alt="drawing" width="600"/>
 
 Why yes, yes it is. Smart Contracts are very cool. Smart Contracts are programs, or "rulebooks" that developers make. Developers create them because it allows us to specify some functionality that users can interact with. For example, if I want to make an application that allows users to store their favourite fruit on the Blockchain, I need to make a Smart Contract that:
 
@@ -50,7 +50,7 @@ What are some downsides?
 
 ## Transactions & Scripts
 
-<img src="../../images/transaction.jpeg" alt="drawing" width="600"/>
+<img src="https://i.imgur.com/6RbQ2V7.png" alt="drawing" width="600"/>
 
 *"Okay, so we have a Smart Contract. How do I actually interact with it? You keep saying call a function, but what does that mean!?"*
 
@@ -65,7 +65,7 @@ Here is the normal workflow:
 
 ## "MainNet" vs. "TestNet"
 
-<img src="../../images/tvm.PNG" alt="drawing" width="600"/>
+<img src="https://i.imgur.com/PnqG19G.png" alt="drawing" width="600"/>
 
 You may have heard these terms come up, but what do they actually mean? 
 
@@ -86,7 +86,7 @@ You may have heard these terms come up, but what do they actually mean?
 
 ## Decentralized Applications (DApps)
 
-<img src="../../images/dapps.jpeg" alt="drawing" width="300"/>
+<img src="https://i.imgur.com/SoeONiV.jpg" alt="drawing" width="300"/>
 
 Oh no, this sounds complicated. Nope! It's not. DApps are literally just normal applications (Javascript, Python, etc) that ALSO have Smart Contracts involved. That's it.
 
