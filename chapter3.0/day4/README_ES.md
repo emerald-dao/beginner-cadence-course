@@ -14,7 +14,7 @@ Los interfaces son muy comunes en los idiomas tradicionales de programación. Ha
 
 Miremos algún código para averiguar a qué me refiero. 
 
-<img src="../images/interfaces.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/interfaces.png" />
 
 ## Usando los interfaces como requisitos
 

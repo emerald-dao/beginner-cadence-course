@@ -16,7 +16,7 @@
 
 让我们看一些代码来理解我的意思。
 
-<img src="../images/interfaces.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/interfaces.png" />
 
 ## 使用接口作描述需求
 

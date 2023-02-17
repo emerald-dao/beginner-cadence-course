@@ -29,7 +29,7 @@ pub fun jacobIsAwesome(): Bool {
 
 `pub` 在 Cadence 中被称为 “访问修饰符”。访问修改器基本上是智能合约中的一种安全级别。但我们也可以使用其他一些。让我们看看这个图表，帮助我们了解我们可以使用的所有不同访问修饰符。
 
-<img src="../images/access_modifiers.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/access_modifiers.png" />
 
 We are only going to focus on the `var` rows, because `let` does not have a write scope since it is a constant. I really encourage you to watch the video before reading over this next section.
 
@@ -107,7 +107,7 @@ pub contract TestContract {
 
 太棒了，我们刚刚回顾了不同“范围”的含义。让我们再看看我们的图片。。。
 
-<img src="../images/access_modifiers.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/access_modifiers.png" />
 
 现在更容易理解它在说什么。让我们一起浏览所有访问修饰符。。。
 
@@ -194,7 +194,7 @@ access(self) fun testFuncTwo() {}
 
 ## 非常重要的注意事项
 
-<img src="../images/pleasenote.jpeg" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/pleasenote.jpeg" />
 
 在查看了我们的访问修饰符之后，我们必须做出一个极其重要的区分：尽管像 `priv` 这样的一些访问修饰符使您的 Cadence 代码中的字段无法读取，但这并不意味着人们无法通过查看区块链来读取此信息*区块链上的所有内容都是公开的*，无论其读取范围如何。访问修饰符只是让您确定在 Cadence 代码的上下文中什么是可读写的。永远不要在区块链上存储私人信息！
 

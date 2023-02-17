@@ -24,7 +24,7 @@ flow scripts execute ./scripts/read_total_supply.cdc --network=testnet
 
 Si funciona correctamente, debes ver el totalSupply en tu consola (debe ser 0 si no has creado algo hasta ahora).
 
-<img src="../images/read-total-supply.png" alt="read the total supply" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/read-total-supply.png" alt="read the total supply" />
 
 ### Configurar Nuestra Colección
 
@@ -42,7 +42,7 @@ flow transactions send ./transactions/setup_collection.cdc --network=testnet --s
 
 Si funciona correctamente, debes ver que el transaccion es sellado (completado) y funcionó! 
 
-<img src="../images/setup-collection.png" alt="setup collection transaction" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/setup-collection.png" alt="setup collection transaction" />
 
 GENIALLLLLL!!! Configuramos con éxito nuestra colección NFT en la red de pruebas. Esto es genial.
 

@@ -2,7 +2,7 @@
 
 Este capítulo va a cubrir los básicos de programación de computadoras. ***Si has codificado antes, este se va muy aburrido para ti, así que por favor omitir este capítulo si quieres.***
 
-<img src="./images/programmingdiagram.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/programmingdiagram.png" />
 
 ## Lo Más Importante
 
@@ -16,7 +16,7 @@ Dicho esto, ¡vamos a aprender sobre programación!
 
 ## Programación
 
-<img src="./images/programming.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/programming.png" />
 
 ¿Qué es programación? ¿Qué es codificación?
 
@@ -44,11 +44,11 @@ log("Hello, idiot!")
 
 Vamos a verlo en la programa de ejemplo yo escribí en Cadence: 
 
-<img src="./images/hello.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/hello.png" />
 
 Puedes ver la declaración de ‘log’ allí en la mitad. Pero que hay a alrededor? Oye, es una otra función! Pero esta vez, tuvimos que definir la función nosotros mismos. `log` ya existe en el idioma, es parte de la syntax. Pero la función `main` es algo que escribí yo mismo. No tienes que preocuparte sobre cómo yo hiciste eso, solo conoce que esa función `main` será ejecutada cuando el programa empiece. Se va a imprimir “Hello there!” de vuelta a nosotros, como así:
 
-<img src="./images/hello_there.png">
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/hello_there.png">
 
 Puedes realmente ejecutar este código si te vas a https://play.onflow.org y teclar el mismo código en la pestaña de “Script” a el lado izquierdo. 
 
@@ -60,7 +60,7 @@ Variables son más fáciles que funciones, sinceramente. Mientras una función p
 
 Puedes pensar variables como algo que se mantiene un pedazo de data en un momento determinado. Puedes cambiar que el variable representa (si se le permite) para que apunte a algo más. Aquí es un ejemplo: 
 
-<img src="./images/x.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/x.png" />
 
 En este caso, `x` es una variable. En línea 2, puedes ver que traemos x a la existencia “declarándolo”. Nosotros decir, `var x = 5`, cuál es la manera de Cadence de decir “Yo quiero crear una variable llamada x que almacena un valor de 5.”
 
@@ -96,13 +96,13 @@ Vamos a hacer un ejemplo de escribir nuestro propio funciones para prueba nuestr
 
 Abrir el <a href="https://play.onflow.org" target="_blank">Flow playground</a> a var para la pestaña de Script. Vamos a empezar con este: 
 
-<img src="./images/step1.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/step1.png" />
 
 ¡Genial! Todo lo que hemos hecho es decir nuestra variable `x` representa el número `5`. 
 
 Vamos a hacer nuestra propia función ahora y llamarlo. 
 
-<img src="./images/step2.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/step2.png" />
 
 Wow, nos añadimos mucho. Vamos a verlo en los pasos: 
 1. En línea 6, hemos definido nuestra propia función llamada `myFunction`. Recuerda, una función es justo algo que hace una cosa cuando se llama. No te preocupes sobre como yo hice esta función. Todo lo que tienes que saber es que cuando lo llamamos, hace algo (cúal es en la línea 7).
@@ -112,7 +112,7 @@ Wow, nos añadimos mucho. Vamos a verlo en los pasos:
 
 Cuando te haz clic “Execute”, debe ver este: 
 
-<img src="./images/result.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/result.png" />
 
 ¡Genial! Obtuvimos nuestra respuesta esperada. 
 
@@ -120,7 +120,7 @@ Tenga en cuenta si no hubiéramos puesto linea 3, `myFunction` no habría sido l
 
 Podemos cambiar nuestro código un poco para registrar muchos números diferentes a la consola. Hagamos esto aquí. 
 
-<img src="./images/newresult.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/newresult.png" />
 
 En este ejemplo, hemos definido 3 variables diferentes, `x`, `y`, e `z`, todo que contiene un número diferente. Para cada de ellos, los pasamos a `myFunction` para que se registraran en la consola. ¡Woohoo!
 
@@ -128,19 +128,19 @@ En este ejemplo, hemos definido 3 variables diferentes, `x`, `y`, e `z`, todo qu
 
 Te darás cuenta que funciones son útiles para escribir código que queramos hacer más de una vez. Nos salva de tener que escribir ese código una y otra vez. Por ejemplo, vamos a ver a este código:
 
-<img src="./images/nofunction.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/nofunction.png" />
 
 En este ejemplo, definimos dos variables: `greeting` y `person` para almacenar un mensaje dentro de ellos. Entonces, usamos la función de `concat` pre-definido para combinar los dos mensajes. A continuación, lo registramos en la consola.
 
 Este es genial y todo eso, pero qué pasa cuando queramos hacer este muchas veces, con diferentes saludos y personas?
 
-<img src="./images/long.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/long.png" />
 
 Okay, eso es MUCHO código. ¿Cuál es el problema con este? 
 
 El problema es que estamos constantemente escribiendo el mismo código que combina dos pedazos de texto juntos. ¿Por qué re-escribir el mismo lógico una y otra vez? ¿Hay una manera en que puede hacer esto más fácil? O hacerlo así tenemos que solo escribir eso lógico una vez, y entonces usarlo muchas veces. ¡Claro que sí! Vamos a usar una función: 
 
-<img src="./images/better.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/better.png" />
 
 En este ejemplo, definimos una función llamado `combine`, que hace lo siguiente:
 1. Toma en 2 mensajes
@@ -155,7 +155,7 @@ Puede que no sea muy beneficioso para hacer una función ahora, pero si hubiéra
 
 La última cosa mencionaré es que funciones también puede devolverle alguna información también. Vamos a verlo un ejemplo: 
 
-<img src="./images/add.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/add.png" />
 
 En este ejemplo, definimos una función llamada `add` que toma 2 números, agréguese y devuélvase. Puedes saber que una función devuelve un valor porque de el `: Int` en línea 12. Eso significa, “esta función devuelve un Integer”.
 

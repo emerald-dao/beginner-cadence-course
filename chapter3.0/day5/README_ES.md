@@ -27,7 +27,7 @@ Pero qué significa `pub` exactamente? ¿Por qué estamos poniéndolo allí? ¿H
 
 `pub` es algo llamado “modificador de acceso” en Cadence. Un modificador de acceso es básicamente un nivel de seguridad en nuestros smart contracts. Hay otras en que podemos usar también. Miremos este diagrama para darnos una idea de todo los modificadores de acceso diferentes que podemos usar. 
 
-<img src="../images/access_modifiers.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/access_modifiers.png" />
 
 Vamos a solamente concentrarnos en las filas de `var`, porque `let` no tiene un scope de escribir porque es una constante. Realmente te animo a ver el video antes de leer esta próxima parte.
 
@@ -39,19 +39,19 @@ Scope es el área en que puedes acceder, modificar, o llamar tus “cosas” (va
 
 Esto significa que podemos acceder a nuestras cosas desde **cualquier lugar**. Dentro del contrato, en los transacciones y guiones, etc. 
 
-<img src="../images/allscope.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/allscope.PNG" />
 
 ### 2. Scope de Corriente y Interior
 
 Esto significa que solo podemos acceder nuestras cosas desde donde se define y dentro de eso. 
 
-<img src="../images/currentandinner.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/currentandinner.PNG" />
 
 ### 3. Scope que Contiene el Contrato
 
 Esto significa que podemos acceder a nuestras cosas de cualquier lugar dentro del   contrato que está definido. 
 
-<img src="../images/contractscope.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/contractscope.PNG" />
 
 ### 4. Esto significa que podemos acceder a nuestras cosas desde cualquier lugar donde la cuenta está definida. Esto significa que todos los contratos que están en la cuenta. Recuerda: Podemos desplegar múltiples contratos a una cuenta.
 
@@ -59,7 +59,7 @@ Esto significa que podemos acceder a nuestras cosas de cualquier lugar dentro de
 
 ¡Genial! Acabamos de revisar que significa los diferentes de “scope”. Miremos a nuestro diagramo de nuevo… 
 
-<img src="../images/access_modifiers.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/access_modifiers.png" />
 
 Ahora es más fácil entender lo que está diciendo. Discutimos todos los modificadores de acesso juntos… 
 
@@ -146,7 +146,7 @@ Scope de Leer - Corriente y Interior
 
 ## Notas Muy Importantes
 
-<img src="../images/pleasenote.jpeg" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/pleasenote.jpeg" />
 
 Después de mirar a nuestro modificadores de acceso, tenemos que tomar una decisión super importante. **Aunque algunos modificadores de acceso como `priv` hacen campos ilegibles en tu código de Cadence, esto no significa que las personas no pueden leer esta información mirando a el blockchain. *Cada cosa en la blockchain es pública*, independientemente de su scope de leer.** Los modificadores de acceso permiten determinar que es legible/escribible en el contexto de tu código de Cadence. ¡Nunca almacenar información privada en el blockchain! 
 
@@ -161,7 +161,7 @@ Aprendimos MUCHO sobre los modificadores de acceso hoy. En orden para prueba tu 
 Para la búsqueda de hoy, vas a mirar un contrato y un guión. Te vas a mirar a 4 variables (a, b, c, d) y 3 funciones (publicFunc, contractFunc, privateFunc) todo definido en `SomeContract`. En cada ÁREA (1, 2, 3, y 4), quiero que hagas lo siguiente: para cada variable (a, b, c, y d), dime en cuál áreas donde se pueden leer (scope de leer) y cuál áreas donde pueden ser modificados (scope de escribir). Para cada funcion (publicFunc, contractFunc, y privateFunc), simplemente dime donde ellos pueden ser llamados. 
 
 Puedes usar este diagramó para ayudarlo: 
-<img src="../images/boxdiagram.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/boxdiagram.PNG" />
 
 ```cadence
 access(all) contract SomeContract {

@@ -125,7 +125,7 @@ transaction(firstName: String, lastName: String, birthday: String, account: Addr
 
 Бам! Давайте запустим эту транзакцию с любым аккаунтом и передадим некоторые данные следующим образом:
 
-<img src="../images/txstuff.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/txstuff.png" alt="drawing" size="400" />
 
 ### Чтение нашего профиля
 

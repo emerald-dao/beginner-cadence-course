@@ -24,7 +24,7 @@ flow scripts execute ./scripts/read_total_supply.cdc --network=testnet
 
 Если все работает правильно, вы должны увидеть общий запас в консоли (он должен быть равен 0, если вы еще ничего не чеканили).
 
-<img src="../images/read-total-supply.png" alt="read the total supply" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/read-total-supply.png" alt="read the total supply" />
 
 ### Настройка нашей коллекции
 
@@ -42,7 +42,7 @@ flow transactions send ./transactions/setup_collection.cdc --network=testnet --s
 
 Если все работает правильно, вы должны увидеть, что транзакция (завершена) и работает!
 
-<img src="../images/setup-collection.png" alt="setup collection transaction" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/setup-collection.png" alt="setup collection transaction" />
 
 Мы успешно установили нашу коллекцию NFT в testnet. Это так круто.
 

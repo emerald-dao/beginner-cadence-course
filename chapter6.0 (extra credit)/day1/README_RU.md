@@ -12,7 +12,7 @@
 
 > Нажмите на расширение и нажмите "Установить":
 
-<img src="../images/cadence-vscode-extension.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/cadence-vscode-extension.png" />
 
 ## Установка Flow CLI и flow.json
 
@@ -139,7 +139,7 @@ import ExampleNFT from "../contracts/ExampleNFT.cdc"
 flow project deploy --network=testnet
 ```
 
-<img src="../images/deploy-contract.png" alt="deploy contract to testnet" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/deploy-contract.png" alt="deploy contract to testnet" />
 
 ## Квесты
 

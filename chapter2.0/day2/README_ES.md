@@ -10,13 +10,13 @@ Si quieres ver un video de este contenido, puedes hacerlo aqui: https://www.yout
 
 Transacciones y guiones son esenciales en cualquier aplicación de blockchain. Sin ellos, no podemos interactuar con el blockchain. En Flow, ellos son más especiales porque ambos están separados desde el contrato. Si has codificado antes en Ethereum, sabes transacciones son como funciones que te llamas dentro del contrato (si no sabes eso, ¡está bien!). Sin embargo, en Flow, transacciones y guiones son como un intermedio entre la persona interactuando con el blockchain y los smart contracts. Se parece a algo como así:
 
-<img src="../images/sctsworkflow.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/sctsworkflow.png" alt="drawing" size="400" />
 
 ## Transacciones v. Guiones
 
 Ahora, ¿cuál es la diferencia entre transacciones y guiones? Pues, la diferencia más grande es que transacciones puede **cambiar el data** en el blockchain, y los guiones solo **ver el data** en el blockchain. Aquí es un diagrama útil para entender las diferencias: 
 
-<img src="../images/transactionvscript.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/transactionvscript.png" alt="drawing" size="400" />
 
 Como puedes ver, los guiones también no cuestan ningún dinero. A la otra mano, transacciones cuestan “gas”, cúal es una forma de pago necesario para cambiar datos en el blockchain.
 
@@ -50,7 +50,7 @@ Sí haz clic “Execute”, debe ver “Hello, World!” en la consola. ¡Genial
 
 Ahora, vamos a hacer un ejemplo de una transacción. A el lado izquierdo, debajo “Transaction Templates,” haz click en la pestaña de “Transaction”. Sigue adelante y borrar todo es eso pestana así que se parece así:
 
-<img src="../images/emptytx.PNG" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/emptytx.PNG" alt="drawing" size="400" />
 
 Ok, genial. Ahora, queremos modificar la data en el blockchain. Con el fin de hacer eso, vamos a configurar nuestra transacción. Podemos hacer eso poniendo este código en la página. 
 
@@ -122,7 +122,7 @@ transaction(myNewGreeting: String) {
 
 Ahora, en el lado derecho, verá un mensaje emergente. ¡Podemos escribir nuestro nuevo saludo en la pequeña caja! Escribimos “¡Adiós, Mundo!”:
 
-<img src="../images/txgoodbye.PNG" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/txgoodbye.PNG" alt="drawing" size="400" />
 
 Ves que también podemos “firmar” esta transacción de cualquier cuenta. Ya que realmente no importa (no estamos accediendo los datos en una cuenta), te sientes libre de elegir cualquier cuenta que deseas. 
 

@@ -20,7 +20,7 @@
 2) Удалите все, что находится на этой странице.
 
 Это должно выглядеть так:
-<img src="../images/blanksc.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/blanksc.png" alt="drawing" size="400" />
 
 Что мы сделали, так это нажали на `Аккаунт` с адресом `0x01` и удалили контракт на этом аккаунте. В связи с этим возникает важный вопрос.
 
@@ -80,7 +80,7 @@ pub contract HelloWorld {
 
 Чтобы развернуть этот контракт, нажмите зеленую кнопку "Deploy". Ваша страница должна выглядеть следующим образом:
 
-<img src="../images/helloworld.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/helloworld.png" alt="drawing" size="400" />
 
 ПРИМЕЧАНИЕ: Если вы получаете ошибки, попробуйте сначала обновить страницу. Если вы все еще видите ошибки, такие как: "GraphQL error", попробуйте переключить браузер на Google Chrome.
 
@@ -107,7 +107,7 @@ pub fun main(): String {
 
 Если вы нажмете кнопку "Execute" справа, вы увидите в терминале, что он выводит "Hello, World!", как показано ниже:
 
-<img src="../images/hwscript.png" alt="drawing" size="400">
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/hwscript.png" alt="drawing" size="400">
 
 Если ваш результат выглядит так, то вы выполнили свой первый скрипт!
 

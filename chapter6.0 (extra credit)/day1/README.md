@@ -12,7 +12,7 @@ Now that we're no longer on the playground, we want to be able to have errors sh
 
 > Click on the following extension and press "Install":
 
-<img src="../images/cadence-vscode-extension.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/cadence-vscode-extension.png" />
 
 ## Installing the Flow CLI & flow.json
 
@@ -143,7 +143,7 @@ This will allow your `flow.json` to know where your contracts live. Note that `N
 flow project deploy --network=testnet
 ```
 
-<img src="../images/deploy-contract.png" alt="deploy contract to testnet" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/deploy-contract.png" alt="deploy contract to testnet" />
 
 ## Quests
 

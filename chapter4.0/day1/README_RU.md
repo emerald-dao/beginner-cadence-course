@@ -18,7 +18,7 @@
  
 ## Что находится в аккаунте?
 
-<img src="../images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
 
 Как вы читали выше, на Flow аккаунты фактически хранят свои собственные данные. Это означает, что если у меня есть ресурс `NFT`, я могу хранить его в своем собственном аккаунте. Но где?
 
@@ -207,7 +207,7 @@ transaction() {
 
 Давайте снова посмотрим на этот рисунок:
 
-<img src="../images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
 
 Теперь вы должны понимать, что такое `/storage/`. В завтрашней главе мы поговорим о путях `/public/` и `/private/`.
 

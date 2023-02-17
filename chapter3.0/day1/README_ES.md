@@ -8,7 +8,7 @@ Puedes ver este video desde 00:00 - 08:00 (vamos a cubrir el resto más tarde): 
 
 ## Recursos
 
-<img src="../images/resources.jpeg" alt="drawing" width="500" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/resources.jpeg" alt="drawing" width="500" />
 
 Los recursos son probablemente el elemento más crucial de Cadence, y la razón por la que Cadence es tan único. Por la forma en que se vea, **un recurso es como un Struct pero más seguro**. Esa es la manera más fácil para ponerlo. Pero más importante, porque de su seguridad, se utilizan en muchas maneras interesantes que vamos a explorar. 
 

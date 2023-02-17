@@ -22,7 +22,7 @@
 2. 删除该页面中的所有内容。
 
 页面现在看起来应该像这样：
-<img src="../images/blanksc.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/blanksc.png" alt="drawing" size="400" />
 
 我们所做的是点击地址为 `0x01` 的`账户`，删除其中的合约。这引出了一个重要的话题。
 
@@ -83,7 +83,7 @@ pub contract HelloWorld {
 
 点击绿色的“Deploy”按钮以部署合约，你的页面应该看起来像这样：
 
-<img src="../images/helloworld.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/helloworld.png" alt="drawing" size="400" />
 
 注意：如果你遇到错误，先尝试刷新页面。如果你仍然看到像是“GraphQL error”这样的错误，尝试将你的浏览器切换到谷歌浏览器。
 
@@ -108,7 +108,7 @@ pub fun main(): String {
 
 如果你点击右边的 “Execute”，你会在终端看到它打印出：“Hello, World!”，就像下面这样：
 
-<img src="../images/hwscript.png" alt="drawing" size="400">
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/hwscript.png" alt="drawing" size="400">
 
 如果你的页面看起来像这样，你已经执行了你的第一个脚本！
 

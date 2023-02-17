@@ -8,8 +8,8 @@ In the next few chapters, we'll be doing exactly what I do in this video. Today,
 
 ## Review
 
-<img src="../images/accountstorage1.PNG" />
-<img src="../images/capabilities.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/capabilities.PNG" />
 
 ## NFT (NonFungibleToken) Example
 
@@ -283,7 +283,7 @@ transaction() {
 }
 ```
 
-<img src="../images/thanos.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/thanos.png" />
 Now this... does put a smile on my face. Let's experiment by depositing an NFT to our account and withdrawing it.
 
 ```cadence

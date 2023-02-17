@@ -17,7 +17,7 @@
  
 ## 账户中到底有些啥?
 
-<img src="../images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
 
 就如前面提到过的那样，福洛链上的账户可以真正意义上地存储数据自己的数据。这意味着如果我有一个NTF资源，我可以把它存在我的账户中，但具体来说到底是存储在哪里呢？
 
@@ -214,7 +214,7 @@ transaction() {
 
 再来看一次下面这幅图：
 
-<img src="../images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
 
 现在你应该能理解什么是/storage/了，下一章我们会来讨论一下/public/和/private/路径。
 

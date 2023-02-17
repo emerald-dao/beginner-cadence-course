@@ -27,7 +27,7 @@ pub fun jacobIsAwesome(): Bool {
 
 `pub` - это то, что в Cadence называется "модификатором доступа". Модификатор доступа - это, по сути, уровень безопасности в наших смарт-контрактах. Но есть и множество других, которые мы можем использовать. Давайте посмотрим на эту таблицу, чтобы узнать о различных модификаторах доступа, которые мы можем использовать.
 
-<img src="../images/access_modifiers.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/access_modifiers.png" />
 
 Мы сосредоточимся только на строках `var`, поскольку `let` не имеет области записи, так как является константой. Я очень рекомендую вам посмотреть видео, прежде чем читать далее.
 
@@ -38,17 +38,17 @@ pub fun jacobIsAwesome(): Bool {
 ### 1. Все области видимости
 Это означает, что мы можем получить доступ к нашей вещи **отовсюду**. Внутри контракта, в транзакциях и скриптах, где угодно.
 
-<img src="../images/allscope.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/allscope.PNG" />
 
 ### 2. Текущая и внутренняя область
 Это означает, что мы можем получить доступ к нашей вещи только из того места, где она определена, и внутри него.
 
-<img src="../images/currentandinner.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/currentandinner.PNG" />
 
 ### 3. Область видимости внутри контракта
 Это означает, что мы можем получить доступ к нашей вещи в любом месте внутри контракта, в котором она определена.
 
-<img src="../images/contractscope.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/contractscope.PNG" />
 
 ### 4. Область видимости аккаунта
 Это означает, что мы можем получить доступ к нашей вещи в любом месте внутри аккаунта, в котором она определена. Это означает, что мы имеем доступ ко всем контрактам, которые находятся в аккаунте. Помните: мы можем развернуть несколько контрактов в одном аккаунте.
@@ -57,7 +57,7 @@ pub fun jacobIsAwesome(): Bool {
 
 Круто! Мы только что рассмотрели, что означают различные "области видимости". Давайте снова посмотрим на нашу таблицу...
 
-<img src="../images/access_modifiers.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/access_modifiers.png" />
 
 Теперь легче понять, о чем идет речь. Давайте вместе пройдемся по всем модификаторам доступа...
 
@@ -140,7 +140,7 @@ access(self) fun testFuncTwo() {}
 
 ## Очень важные примечания
 
-<img src="../images/pleasenote.jpeg" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/pleasenote.jpeg" />
 
 Рассмотрев наши модификаторы доступа, мы должны сделать чрезвычайно важное замечание: **Даже если некоторые модификаторы доступа, такие как `priv`, делают поля нечитаемыми в вашем коде Cadence, это не означает, что люди не могут прочитать эту информацию, посмотрев на блокчейн. *Все в блокчейне является публичным*, независимо от области его чтения.** Модификаторы доступа просто позволяют вам определить, что можно читать/записывать в контексте вашего кода Cadence. Никогда не храните приватную информацию в блокчейне!
 
@@ -155,7 +155,7 @@ access(self) fun testFuncTwo() {}
 В сегодняшнем квесте вы будете рассматривать контракт и скрипт. Вы будете рассматривать 4 переменные (a, b, c, d) и 3 функции (publicFunc, contractFunc, privateFunc), определенные в `SomeContract`. В каждой из AREA (1, 2, 3 и 4) я хочу, чтобы вы сделали следующее: для каждой переменной (a, b, c и d) скажите, в каких областях они могут быть прочитаны (read scope) и в каких областях они могут быть изменены (write scope). Для каждой функции (publicFunc, contractFunc и privateFunc) просто скажите, где их можно вызвать.
 
 Вы можете использовать этот рисунок, в качестве шпаргалки:
-<img src="../images/boxdiagram.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/boxdiagram.PNG" />
 
 ```cadence
 access(all) contract SomeContract {

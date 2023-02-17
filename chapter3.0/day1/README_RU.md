@@ -8,7 +8,7 @@
 
 ## Ресурсы
 
-<img src="../images/resources.jpeg" alt="drawing" width="500" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/resources.jpeg" alt="drawing" width="500" />
 
 Ресурсы - это, вероятно, самый важный элемент Cadence, и причина, по которой Cadence настолько уникален. Судя по их виду, **ресурс - это более надежная структура**. Это простой способ выразить это. Но что более важно, благодаря своей защищенности, они используются многими интересными способами, которые мы рассмотрим.
 

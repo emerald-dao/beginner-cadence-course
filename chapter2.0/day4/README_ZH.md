@@ -128,7 +128,7 @@ transaction(firstName: String, lastName: String, birthday: String, account: Addr
 
 好了！我们可以用任何一个账户运行这笔交易，并把这个示例的数据传过去，就像这样：
 
-<img src="../images/txstuff.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/txstuff.png" alt="drawing" size="400" />
 
 ### 读取我们的profile
 

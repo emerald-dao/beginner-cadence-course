@@ -10,13 +10,13 @@
 
 交易和脚本对于任何区块链应用都是必不可少的。没有它们，我们就根本无法与区块链互动。在 Flow 上，它们更加特别，因为*它们都独立于合约。*如果你以前在以太坊上编程，你会知道交易只是你调用的合约内的函数（如果你不知道，那也没关系！）。然而，在 Flow 上，交易和脚本在与区块链交互的人和智能合约之间充当某种 “中间人”。它看起来像这样：
 
-<img src="../images/sctsworkflow.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/sctsworkflow.png" alt="drawing" size="400" />
 
 ## 交易 vs 脚本
 
 现在，交易和脚本之间有什么区别？嗯，最大的区别是，交易**修改区块链上的数据**，而脚本**查看区块链上的数据**。这里有一个有用的图表来帮助你理解这些区别：
 
-<img src="../images/transactionvscript.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/transactionvscript.png" alt="drawing" size="400" />
 
 正如你所看到的，脚本不需要花费任何金钱（呼！）。另一方面，交易需要花费 “gas”，这是改变区块链上的数据所需的一种支付方式。
 
@@ -51,7 +51,7 @@ pub fun main(): String {
 
 现在，我们来做一个交易的例子。在左侧的“Transaction Templates”下，点击“Transaction”标签。让我们删除该标签中的所有内容，使其看起来像这样：
 
-<img src="../images/emptytx.PNG" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/emptytx.PNG" alt="drawing" size="400" />
 
 好的，很酷。现在我们想修改区块链上的数据。为了做到这一点，让我们设置我们的交易。把这段代码放到页面中：
 
@@ -125,7 +125,7 @@ transaction(myNewGreeting: String) {
 
 现在，在右侧你会看到一个提示框弹出。我们可以在里面输入新的 `greeting`! 让我们输入 “Goodbye, World!”。
 
-<img src="../images/txgoodbye.PNG" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/txgoodbye.PNG" alt="drawing" size="400" />
 
 还请注意，我们可以从任何账户 “签署” 这笔交易。因为这并不重要（我们并没有访问账户中的数据），所以请随意选择你希望的任何账户。
 

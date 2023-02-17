@@ -12,7 +12,7 @@ Ahora que no estamos usando el playground, queremos poder tener errores en nuest
 
 > Haga clic en la extensión siguiente y presione “Install”:
 
-<img src="../images/cadence-vscode-extension.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/cadence-vscode-extension.png" />
 
 ## Instalando el CLI de Flow & flow.json
 
@@ -143,7 +143,7 @@ Este permite a tu `flow.json` saber dónde viven tus contratos. Tenga en cuenta 
 flow project deploy --network=testnet
 ```
 
-<img src="../images/deploy-contract.png" alt="deploy contract to testnet" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/deploy-contract.png" alt="deploy contract to testnet" />
 
 ## Búsquedas
 

@@ -89,7 +89,7 @@ pub contract interface NonFungibleToken {
 }
 ```
 
-<img src="../images/homealone.jpg" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/homealone.jpg" />
 
 我们实际上已经实现了其中的大部分内容。让我们看看到目前为止我们写的合约：
 

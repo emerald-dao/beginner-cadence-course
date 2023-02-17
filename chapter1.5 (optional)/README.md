@@ -2,7 +2,7 @@
 
 This chapter will cover the very basics of computer programming. ***If you have ever coded before, this will be very boring for you, so please skip this chapter if you want to.***
 
-<img src="./images/programmingdiagram.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/programmingdiagram.png" />
 
 ## The Most Important
 
@@ -16,7 +16,7 @@ With that being said, let's learn about programming!
 
 ## Programming
 
-<img src="./images/programming.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/programming.png" />
 
 What is programming? What is coding?
 
@@ -44,11 +44,11 @@ See what we did? We wrote `log`, followed by a set of parenthesis. Functions alw
 
 Let's look at an example program I wrote in Cadence:
 
-<img src="./images/hello.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/hello.png" />
 
 You can see the `log` statement in the middle there. But what is surrounding it? Hey, it's another function! But this time, we had to define the function ourselves. `log` already exists in the language, it's part of the syntax. But the function `main` is something I wrote myself. You don't have to worry about how I did that, just know that the function `main` gets executed when the program starts. It will print "Hello there!" back to us, like this:
 
-<img src="./images/hello_there.png">
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/hello_there.png">
 
 You can actually run this code yourself if you go to https://play.onflow.org and type the same code into the "Script" tab on the left.
 
@@ -60,7 +60,7 @@ Variables are easier than functions, honestly. While a function allows you to ex
 
 You can think of variables as something that holds a piece of data at a certain point in time. You can change what the variable represents (if you're allowed to) so that it points to something else. Here's an example:
 
-<img src="./images/x.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/x.png" />
 
 In this case, `x` is a `variable`. On line 2, you can see that we bring x into existence by "declaring" it. We say, `var x = 5`, which is the Cadence way of saying "I want to create a variable named x that stores a value of 5."
 
@@ -96,13 +96,13 @@ Let's come up with an example of writing our own functions to test our understan
 
 Open the <a href="https://play.onflow.org" target="_blank">Flow playground</a> and go to the Script tab. Let's start with this:
 
-<img src="./images/step1.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/step1.png" />
 
 Sweet! All we did so far is say our variable `x` represents the number `5`.
 
 Let's make our own function now and call it.
 
-<img src="./images/step2.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/step2.png" />
 
 Woah, we added a lot. Let's look at it in steps:
 1. On line 6, we defined our own function named `myFunction`. Remember, a function is just something that does a thing when you call it. Don't worry about how I made this function. All you have to know is that when we call it, it'll do something (which is on line 7).
@@ -112,7 +112,7 @@ Woah, we added a lot. Let's look at it in steps:
 
 When you click `Execute`, you should see this:
 
-<img src="./images/result.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/result.png" />
 
 Great! We got our expected answer.
 
@@ -120,7 +120,7 @@ Notice that if we had not put line 3, `myFunction` would have never gotten calle
 
 We can change our code up a bit to log a LOT of different numbers to the console. Let's do that here:
 
-<img src="./images/newresult.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/newresult.png" />
 
 In this example, we defined 3 different variables:
 `x`, `y`, and `z`, all of which hold a different number. For each of them, we pass them into `myFunction` so that it logs to the console. Woohoo!!
@@ -129,19 +129,19 @@ In this example, we defined 3 different variables:
 
 You'll begin to notice that functions are helpful for writing out some code that we may want to do more than once. It saves us from having to write that code over and over and over again. For example, let's look at this code:
 
-<img src="./images/nofunction.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/nofunction.png" />
 
 In this example, we define two variables `greeting` and `person` that store a message inside of them. Then, we use the pre-defined `concat` function to combine the two messages. We then log it to the console.
 
 This is great and all, but what happens when we want to do this a bunch of times, with different greetings and people?
 
-<img src="./images/long.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/long.png" />
 
 Okay, that's a LOT of code. What's the issue with this?
 
 The problem is we are constantly writing the same code that combines the two pieces of text together. Why re-write the same logic over and over again? Is there a way we could make this easier? Or make it so that we only have to write that logic one time, and then use it multiple times? Of course! Let's use a function:
 
-<img src="./images/better.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/better.png" />
 
 In this example, we define a function called `combine`, which does the following:
 1. Takes in 2 messages
@@ -156,7 +156,7 @@ It may not look really benefitial to make a function right now, but if we had mo
 
 The last thing I'll mention is that functions can also give you back some information as well. Let's look at an example:
 
-<img src="./images/add.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/add.png" />
 
 In this example, we define a function called `add` that takes in 2 numbers, adds them, and returns them back. You can tell a function returns a value because of the `: Int` on line 12. That means, "this function returns an Integer."
 

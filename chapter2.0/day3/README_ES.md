@@ -278,4 +278,4 @@ El punto principal de todo es que cuando accediendo los valores de un diccionari
 - Por qué estamos conseguindo este error
 - Cómo solucionarlo
 
-<img src="../images/wrongcode.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/wrongcode.png" alt="drawing" size="400" />

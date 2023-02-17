@@ -10,7 +10,7 @@ You can watch this video from 14:45 to the end (we watched the first half in the
 
 ## Review from Yesterday
 
-<img src="../images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
 
 Quick review:
 1. `/storage/` is only accessible to the account owner. We use `.save()`, `.load()` and `.borrow()` functions to interact with it.
@@ -85,7 +85,7 @@ Now, anyone can run a script to read the `name` field on our resource. I will sh
 
 When you "link" something to the `/public/` or `/private/` paths, you are creating something called a capability. Nothing *actually* lives in the `/public/` or `/private/` paths, everything lives in your `/storage/`. However, we can think of capabilities like "pointers" that point from a `/public/` or `/private/` path to its associated `/storage/` path. Here's a helpful visualization:
 
-<img src="../images/capabilities.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/capabilities.PNG" />
 
 The cool part is that you can make your `/public/` or `/private/` capabilities *more restrictive* than what is inside your `/storage/` path. This is super cool because you can limit what other people are able to do, but still allow them to do some things. We will do this with resource interfaces later.
 

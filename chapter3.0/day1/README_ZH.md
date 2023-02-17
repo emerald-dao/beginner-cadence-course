@@ -8,7 +8,7 @@
 
 ## Resources 资源
 
-<img src="../images/resources.jpeg" alt="drawing" width="500" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/resources.jpeg" alt="drawing" width="500" />
 
 resource或许是Cadence中最关键的一个组件，也是为什么Cadence是如此的特殊。顺便说一下，可以把 **一个resource看作是一个更安全的struct**。这个是简单说法。但更重要的是，因为resource的安全性，resource会有很多很有意思的用途，我们稍后会讲到。
 

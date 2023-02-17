@@ -22,7 +22,7 @@ Para empezar haciendo nuestro primer Smart Contract, necesitamos encontrar un lu
 
 Debe mirar como así:
 
-<img src="../images/blanksc.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/blanksc.png" alt="drawing" size="400" />
 
 Lo que hemos hecho es hacer click en la cuenta con la dirección `0x01` y borramos el contrato en su cuenta. Eso trae un tema importante. 
 
@@ -81,7 +81,7 @@ Siguiente, nos poner `self.greeting = “¡Hola, Mundo!”` dentro de la funció
 
 Para desplegar este contrato, haz clic en el botón verde que dice “Deploy”. Tu página debe mirar como así: 
 
-<img src="../images/helloworld.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/helloworld.png" alt="drawing" size="400" />
 
 NOTA: Si estás recibiendo errores, primero intenta actualizar la página. Si todavía estás viendo errores como: “GraphQL error”, intenta cambiar tu navegador a Google Chrome.
 
@@ -108,7 +108,7 @@ Este Guión se va a regresar el valor de `greeting`, cual es “¡Hola, Mundo!�
 
 Si haz click “Execute” en el lado derecho, vas a ver en el terminal que imprime, “¡Hola, Mundo!” cómo debajo:
 
-<img src="../images/hwscript.png" alt="drawing" size="400">
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/hwscript.png" alt="drawing" size="400">
 
 Si el tuyo se ve así, ¡has ejecutado tu primer guión!
 

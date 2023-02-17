@@ -14,7 +14,7 @@ Interfaces are very common in traditional programming languages. There are two m
 
 Let's look at some code to figure out what I mean.
 
-<img src="../images/interfaces.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/interfaces.png" />
 
 ## Using Interfaces as Requirements
 

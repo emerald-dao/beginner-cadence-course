@@ -266,6 +266,6 @@ The main takeaway is that when accessing values of a dictionary, you will always
     - Why we're getting this error
     - How to fix it
 
-<img src="../images/wrongcode.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/wrongcode.png" alt="drawing" size="400" />
 
 # <a href="https://forms.gle/thWXL8MkboadnBtLA">Quiz</a>

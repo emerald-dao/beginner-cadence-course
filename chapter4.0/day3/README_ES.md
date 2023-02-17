@@ -8,8 +8,8 @@ En los próximos capítulos, vamos a hacer exactamente lo que hago en este video
 
 ## Reviso
 
-<img src="../images/accountstorage1.PNG" />
-<img src="../images/capabilities.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/capabilities.PNG" />
 
 ## Ejemplo de NFT(NonFungibleToken)
 
@@ -283,7 +283,7 @@ transaction() {
 }
 ```
 
-<img src="../images/thanos.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/thanos.png" />
 Ahora esto…me hace feliz. Experimentemos depositando un NFT en nuestra cuenta y retirarlo. 
 
 ```cadence

@@ -284,4 +284,4 @@ pub fun main(): Int? { // 注意返回值是一个可选的类型
     - 为什么我们会得到这个错误
     - 如何修复它
 
-<img src="../images/wrongcode.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/wrongcode.png" alt="drawing" size="400" />

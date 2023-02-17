@@ -174,7 +174,7 @@ pub contract HelloWorld: IHelloWorld {
 
 ## Интерфейсы контрактов как "стандарты"
 
-<img src="../images/nftpicforcourse.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/nftpicforcourse.png" />
 
 Интерфейсы контрактов позволяют вам определить некоторые требования к реализующему контракту, а также создать "стандарты" того, как выглядят определенные контракты. 
 

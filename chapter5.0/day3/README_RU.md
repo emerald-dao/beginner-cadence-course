@@ -89,7 +89,7 @@ pub contract interface NonFungibleToken {
 }
 ```
 
-<img src="../images/homealone.jpg" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/homealone.jpg" />
 Ух ты. Мне страшно.
 
 Хорошая новость заключается в том, что мы уже выполнили большую его часть. Хотите верьте, хотите нет, но я настолько хороший учитель, что я заставил нас выполнить 75% этого контракта без вашего ведома. Черт, я молодец! Давайте посмотрим на контракт, который мы написали на данный момент:

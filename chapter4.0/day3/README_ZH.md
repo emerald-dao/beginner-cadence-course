@@ -10,8 +10,8 @@
 在接下来的几章中，我们将完全按照我在本视频中所做的工作。今天，我们只会从 00:00 - 20:35 开始：[https ://www.youtube.com/watch?v=bQVXSpg6GE8](https://www.youtube.com/watch?v=bQVXSpg6GE8)
 
 ##回顾
-<img src="../images/accountstorage1.PNG" />
-<img src="../images/capabilities.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/accountstorage1.PNG" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/capabilities.PNG" />
 
 
 ##NFT (NonFungibleToken) 示例

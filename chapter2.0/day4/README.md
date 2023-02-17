@@ -125,7 +125,7 @@ transaction(firstName: String, lastName: String, birthday: String, account: Addr
 
 Bam! Let's run this transaction with any account and pass in some example data like so:
 
-<img src="../images/txstuff.png" alt="drawing" size="400" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/txstuff.png" alt="drawing" size="400" />
 
 ### Read our Profile
 

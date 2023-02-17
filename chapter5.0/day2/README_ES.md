@@ -173,7 +173,7 @@ Ahora, estamos bien. :)
 
 ## Los Interfaces de Contratos como “Standards”
 
-<img src="../images/nftpicforcourse.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/nftpicforcourse.png" />
 
 Los interfaces de los contratos permiten especificar algunos requisitos para un contrato de implementación, y adicionalmente, crear “standards”(estándares) en qué contratos ciertos parece como. 
 

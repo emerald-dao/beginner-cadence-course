@@ -174,7 +174,7 @@ pub contract HelloWorld: IHelloWorld {
 
 ## 标准合约接口
 
-<img src="../images/nftpicforcourse.png" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/nftpicforcourse.png" />
 
 合约接口允许你在实现合约上指定一些要求，此外，还可以为某些合约的外观创建“标准”。
 

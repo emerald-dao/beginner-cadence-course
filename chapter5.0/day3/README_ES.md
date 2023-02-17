@@ -89,7 +89,7 @@ pub contract interface NonFungibleToken {
 }
 ```
 
-<img src="../images/homealone.jpg" />
+<img src="https://github.com/emerald-dao/beginner-cadence-course/raw/main/images/homealone.jpg" />
 Guau. Tengo miedo.
 Las buenas noticias es que hemos implementado casi todo de esto. Lo creas o no, soy tan buen maestro que nos hice implementar el 75% de este contrato sin que tú lo supieras. Maldito, estoy bien! Veamos el contrato que escribimos hasta ahora:
 
