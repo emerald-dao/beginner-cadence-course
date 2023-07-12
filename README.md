@@ -1,3 +1,5 @@
 # 👋 WELCOME EVERYBODY!
 
-This GitHub repo is now old. For an updated (and much nicer) version, follow this course on the official Emerald Academy website: https://academy.ecdao.org/en/catalog/courses/beginner-cadence
+We have moved this course to the Emerald Academy website, so this GitHub repo is now old. 
+
+**For the updated (and much nicer) version, go (https://academy.ecdao.org/en/catalog/courses/beginner-cadence)[here].**
